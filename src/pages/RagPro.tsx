@@ -63,35 +63,161 @@ export default function RagPro() {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-20 lg:py-28 gradient-subtle">
+        <section className="py-20 lg:py-28 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-4xl mx-auto">
-              <Badge variant="secondary" className="mb-6">
+              <Badge variant="secondary" className="mb-6 bg-primary/20 text-primary-foreground border-primary/30">
                 <Cpu className="w-4 h-4 mr-2" />
-                RAG-Technologie • Retrieval-Augmented Generation
+                Premium RAG-Technologie • 3-4 Complexity Points
               </Badge>
               
-              <h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 RAG Pro: Ihr intelligenter{" "}
-                <span className="bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent">
-                  Wissensassistent
+                <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                  Premium-Wissensassistent
                 </span>
               </h1>
               
-              <p className="text-xl lg:text-2xl text-muted-foreground mb-10 leading-relaxed">
-                Verwandeln Sie Ihre Unternehmensdokumente in eine intelligente, durchsuchbare Wissensbasis. 
-                RAG Pro versteht Ihre Daten und liefert präzise Antworten in Sekundenschnelle.
+              <p className="text-xl lg:text-2xl text-gray-200 mb-10 leading-relaxed">
+                Unser fortschrittlichster KI-Agent mit Vektordatenbank, SQL-Tools und Hybrid-Search. 
+                Verwandelt Ihre komplexesten Unternehmensdaten in präzise, quellenbasierte Antworten.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="hero" size="lg">
-                  <Zap className="w-5 h-5 mr-2" />
-                  Demo vereinbaren
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+                <Button variant="cta" size="lg" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700" asChild>
+                  <a href="/analyse">
+                    <Zap className="w-5 h-5 mr-2" />
+                    RAG Pro anfragen
+                  </a>
                 </Button>
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
                   <Globe className="w-5 h-5 mr-2" />
                   Live-Demo ansehen
                 </Button>
+              </div>
+              
+              <div className="text-sm text-gray-300 bg-white/10 rounded-lg p-4 max-w-2xl mx-auto">
+                <strong className="text-cyan-400">Preisband:</strong> 3.500€ - 6.500€ inkl. Setup + monatliche Betreuung
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* RAG Process Diagram */}
+        <section className="py-16 bg-background">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                So funktioniert RAG Pro
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Ein intelligenter 4-Schritt-Prozess von der Dokumenten-Aufnahme bis zur quellenbasierten Antwort
+              </p>
+            </div>
+            
+            <div className="max-w-4xl mx-auto bg-gradient-to-br from-primary-light to-accent rounded-2xl p-8 shadow-soft">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <FileText className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="font-semibold text-foreground mb-2">1. Upload</h3>
+                  <p className="text-sm text-muted-foreground">Dokumente werden automatisch verarbeitet und segmentiert</p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Database className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="font-semibold text-foreground mb-2">2. Vektorisierung</h3>
+                  <p className="text-sm text-muted-foreground">Inhalte werden in Supabase Vector Store gespeichert</p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Search className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="font-semibold text-foreground mb-2">3. Hybrid-Search</h3>
+                  <p className="text-sm text-muted-foreground">Top-K Suche kombiniert mit SQL-Analyse</p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Zap className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="font-semibold text-foreground mb-2">4. LLM-Antwort</h3>
+                  <p className="text-sm text-muted-foreground">Präzise Antworten mit Quellenangaben</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Technical Features Section */}
+        <section className="py-20 bg-slate-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                Technische Kernfunktionen
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Unser n8n-RAG-Agent nutzt modernste Technologien für maximale Leistung und Zuverlässigkeit
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {[
+                {
+                  title: "Supabase Vector Store",
+                  description: "Hochperformante Vektordatenbank für semantische Suche mit pgvector-Extension"
+                },
+                {
+                  title: "SQL Analysis Tool",
+                  description: "Intelligente Tabellenauswertung und strukturierte Datenanalyse über SQL-Queries"
+                },
+                {
+                  title: "Postgres Chat Memory",
+                  description: "Persistente Gesprächshistorie für kontextuelle, aufbauende Dialoge"
+                },
+                {
+                  title: "Multi-Document Upload",
+                  description: "Batch-Verarbeitung von PDFs, Word, Excel, PowerPoint, Text- und Markdown-Dateien"
+                },
+                {
+                  title: "Top-K Semantic Search",
+                  description: "Konfigurierbare Relevanzschwelle für präzise Suchergebnisse"
+                },
+                {
+                  title: "Hybrid Search Engine",
+                  description: "Kombination aus semantischer und Volltext-Suche für optimale Trefferqualität"
+                },
+                {
+                  title: "Source Attribution",
+                  description: "Automatische Quellenangaben mit Seitenzahlen und Dokumentenreferenzen"
+                },
+                {
+                  title: "EU-Compliant Hosting",
+                  description: "DSGVO-konforme Verarbeitung mit deutschen/EU-Servern und Datenschutz by Design"
+                },
+                {
+                  title: "On-Premise Option",
+                  description: "Vollständige lokale Installation für maximale Datensicherheit und Compliance"
+                }
+              ].map((feature, index) => (
+                <div key={index} className="bg-white rounded-lg p-6 shadow-card hover:shadow-soft transition-all duration-200 border border-gray-100">
+                  <h3 className="font-semibold text-lg text-foreground mb-3">{feature.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+            
+            <div className="text-center mt-12">
+              <div className="bg-gradient-to-r from-primary-light to-accent rounded-xl p-6 max-w-2xl mx-auto">
+                <h3 className="text-xl font-semibold text-foreground mb-2">Verlässliche Quellenangaben</h3>
+                <p className="text-muted-foreground">
+                  Jede Antwort wird mit präzisen Quellenangaben, Seitenzahlen und Dokumentenreferenzen geliefert. 
+                  So können Sie jede Information überprüfen und Ihren Mitarbeitern vertrauen schenken.
+                </p>
               </div>
             </div>
           </div>
@@ -179,8 +305,10 @@ export default function RagPro() {
                 Kostenlose Demo und individuelle Beratung.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="cta" size="lg">
-                  Kostenlose Demo vereinbaren
+                <Button variant="cta" size="lg" asChild>
+                  <a href="/analyse">
+                    Kostenlose Demo vereinbaren
+                  </a>
                 </Button>
                 <Button variant="outline" size="lg">
                   Whitepaper herunterladen
