@@ -1,203 +1,188 @@
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { Header } from "@/components/Layout/Header";
 import { Footer } from "@/components/Layout/Footer";
-import { Link, useParams } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, User, ArrowLeft, ArrowRight, Share2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react";
+import { format } from "date-fns";
+import { de } from "date-fns/locale";
+import { useToast } from "@/hooks/use-toast";
+
+interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  teaser_text: string;
+  cover_image_url: string;
+  content_markdown: string;
+  read_time_minutes: number;
+  created_at: string;
+}
 
 export default function BlogDetail() {
-  const { slug } = useParams();
-  
-  // In einer echten App würde dieser Content aus einer API oder CMS kommen
-  const article = {
-    title: "KI-Automatisierung im Mittelstand: 5 sofort umsetzbare Strategien",
-    description: "Erfahren Sie, wie mittelständische Unternehmen mit gezielten KI-Automatisierungen ihre Effizienz steigern können und welche Quick Wins sofort möglich sind.",
-    date: "15. November 2024",
-    readTime: "8 Min.",
-    category: "Automatisierung",
-    author: "Thomas Maier",
-    slug: "ki-automatisierung-mittelstand-strategien"
+  const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const [post, setPost] = useState<BlogPost | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
+
+  useEffect(() => {
+    if (slug) {
+      fetchPost();
+    }
+  }, [slug]);
+
+  const fetchPost = async () => {
+    setLoading(true);
+    
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('slug', slug)
+      .eq('published', true)
+      .single();
+
+    if (error || !data) {
+      setNotFound(true);
+    } else {
+      setPost(data as BlogPost);
+      document.title = `${data.title} | Maier Automations Blog`;
+    }
+    
+    setLoading(false);
   };
 
-  const relatedArticles = [
-    {
-      title: "RAG-Systeme: Warum Ihre Wissensdatenbank intelligenter werden muss",
-      slug: "rag-systeme-intelligente-wissensdatenbank",
-      date: "12. November 2024"
-    },
-    {
-      title: "DSGVO & KI: Compliance-sichere Automatisierungen implementieren", 
-      slug: "dsgvo-ki-compliance-automatisierungen",
-      date: "8. November 2024"
+  const formatDate = (dateString: string) => {
+    return format(new Date(dateString), 'dd. MMMM yyyy', { locale: de });
+  };
+
+  const handleShare = async () => {
+    if (navigator.share && post) {
+      try {
+        await navigator.share({
+          title: post.title,
+          text: post.teaser_text,
+          url: window.location.href,
+        });
+      } catch (error) {
+        navigator.clipboard.writeText(window.location.href);
+        toast({
+          title: "Link kopiert",
+          description: "Der Link wurde in die Zwischenablage kopiert.",
+        });
+      }
     }
-  ];
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1 py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto animate-pulse">
+              <div className="h-8 bg-muted rounded w-3/4 mb-4"></div>
+              <div className="h-4 bg-muted rounded w-1/2 mb-8"></div>
+              <div className="aspect-video bg-muted rounded-lg mb-8"></div>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (notFound || !post) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1 py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-3xl font-bold mb-4">Artikel nicht gefunden</h1>
+              <Button onClick={() => navigate('/blog')}>
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Zurück zum Blog
+              </Button>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       
       <main className="flex-1">
-        {/* Navigation */}
-        <section className="py-4 bg-surface border-b">
+        <section className="py-8 bg-background border-b">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <Link to="/blog" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors">
-              <ArrowLeft className="w-4 h-4 mr-1" />
+            <Button variant="ghost" onClick={() => navigate('/blog')}>
+              <ArrowLeft className="w-4 h-4 mr-2" />
               Zurück zum Blog
-            </Link>
+            </Button>
           </div>
         </section>
 
-        {/* Article Header */}
-        <section className="py-12 bg-background">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="mb-8">
-                <Badge variant="secondary" className="mb-4">
-                  {article.category}
-                </Badge>
-                
-                <h1 className="text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
-                  {article.title}
-                </h1>
-                
-                <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-6">
-                  <div className="flex items-center">
-                    <User className="w-4 h-4 mr-1" />
-                    {article.author}
-                  </div>
-                  <div className="flex items-center">
-                    <Calendar className="w-4 h-4 mr-1" />
-                    {article.date}
-                  </div>
-                  <span>{article.readTime} Lesezeit</span>
-                </div>
-                
-                <div className="flex items-center space-x-2">
-                  <Button variant="outline" size="sm">
-                    <Share2 className="w-4 h-4 mr-1" />
-                    Teilen
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Article Content */}
-        <section className="py-8">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="prose prose-lg max-w-none">
-                <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                  {article.description}
-                </p>
-                
-                {/* Placeholder Content */}
-                <h2 className="text-2xl font-bold text-foreground mt-12 mb-6">
-                  1. Kundenservice-Automatisierung: Der erste Quick Win
-                </h2>
-                
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Der Kundenservice ist oft der erste Bereich, in dem Unternehmen von KI-Automatisierung profitieren können. 
-                  Durch intelligente Chatbots und automatisierte E-Mail-Antworten lassen sich bis zu 80% der Standardanfragen 
-                  vollautomatisch bearbeiten.
-                </p>
-                
-                <Card className="my-8 bg-primary-light border-primary/20">
-                  <CardContent className="p-6">
-                    <h4 className="font-semibold text-primary mb-2">
-                      💡 Praxis-Tipp
-                    </h4>
-                    <p className="text-sm text-primary/80">
-                      Starten Sie mit den 10 häufigsten Kundenanfragen. Diese eignen sich ideal für eine erste 
-                      Automatisierung und zeigen schnell messbaren ROI.
-                    </p>
-                  </CardContent>
-                </Card>
-                
-                <h2 className="text-2xl font-bold text-foreground mt-12 mb-6">
-                  2. Intelligente Dokumentenverarbeitung
-                </h2>
-                
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Die Verarbeitung eingehender Dokumente – von Rechnungen bis zu Bewerbungen – kann durch KI 
-                  dramatisch beschleunigt werden. Moderne OCR-Systeme in Kombination mit KI erreichen Genauigkeiten 
-                  von über 95%.
-                </p>
-                
-                <h2 className="text-2xl font-bold text-foreground mt-12 mb-6">
-                  3. Personalisierte Marketing-Automation
-                </h2>
-                
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  KI-gesteuerte Marketing-Automatisierung geht weit über einfache E-Mail-Kampagnen hinaus. 
-                  Intelligente Systeme analysieren Kundenverhalten und erstellen personalisierte Customer Journeys 
-                  in Echtzeit.
-                </p>
-                
-                <h2 className="text-2xl font-bold text-foreground mt-12 mb-6">
-                  Fazit: Der Weg zur intelligenten Automatisierung
-                </h2>
-                
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  KI-Automatisierung ist kein Zukunftstraum mehr, sondern eine konkrete Möglichkeit für 
-                  mittelständische Unternehmen, ihre Effizienz zu steigern. Der Schlüssel liegt darin, 
-                  klein anzufangen und kontinuierlich zu optimieren.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Related Articles */}
         <section className="py-16 gradient-subtle">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold text-foreground mb-8">
-                Verwandte Artikel
-              </h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {relatedArticles.map((relatedArticle, index) => (
-                  <Card key={index} className="shadow-card hover:shadow-soft transition-all duration-200 group">
-                    <CardContent className="p-6">
-                      <h4 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                        {relatedArticle.title}
-                      </h4>
-                      <p className="text-sm text-muted-foreground mb-4">
-                        {relatedArticle.date}
-                      </p>
-                      <Link 
-                        to={`/blog/${relatedArticle.slug}`}
-                        className="inline-flex items-center text-sm text-primary hover:text-primary-hover transition-colors"
-                      >
-                        Artikel lesen <ArrowRight className="w-3 h-3 ml-1" />
-                      </Link>
-                    </CardContent>
-                  </Card>
-                ))}
+              <div className="flex items-center space-x-4 mb-6">
+                <div className="flex items-center text-sm text-muted-foreground">
+                  <Calendar className="w-4 h-4 mr-1" />
+                  {formatDate(post.created_at)}
+                </div>
+                <div className="flex items-center text-sm text-muted-foreground">
+                  <Clock className="w-4 h-4 mr-1" />
+                  {post.read_time_minutes || 5} Min. Lesezeit
+                </div>
               </div>
+              
+              <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+                {post.title}
+              </h1>
+              
+              {post.teaser_text && (
+                <p className="text-xl text-muted-foreground mb-8">
+                  {post.teaser_text}
+                </p>
+              )}
+
+              <Button variant="outline" size="sm" onClick={handleShare}>
+                <Share2 className="w-4 h-4 mr-2" />
+                Teilen
+              </Button>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
+        {post.cover_image_url && (
+          <section className="py-8 bg-background">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto">
+                <img
+                  src={post.cover_image_url}
+                  alt={post.title}
+                  className="w-full aspect-video object-cover rounded-lg"
+                />
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto">
-              <h3 className="text-2xl font-bold text-foreground mb-4">
-                Bereit für Ihre eigene KI-Automatisierung?
-              </h3>
-              <p className="text-muted-foreground mb-8">
-                Lassen Sie uns gemeinsam analysieren, welche Automatisierungspotenziale 
-                in Ihrem Unternehmen stecken.
-              </p>
-              <Link to="/analyse">
-                <Button variant="cta" size="lg">
-                  Kostenlose Analyse anfordern
-                </Button>
-              </Link>
+            <div className="max-w-4xl mx-auto">
+              <article className="prose prose-lg max-w-none">
+                <div className="whitespace-pre-wrap text-foreground">
+                  {post.content_markdown}
+                </div>
+              </article>
             </div>
           </div>
         </section>
