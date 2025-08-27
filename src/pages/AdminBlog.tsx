@@ -45,24 +45,32 @@ export default function AdminBlog() {
     setLoading(false);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const getStr = (key: string) => (formData.get(key) as string) ?? "";
+    const toBool = (key: string) => {
+      const v = formData.get(key);
+      return v === "on" || v === "true" || v === "1";
+    };
+    const readTime = parseInt(getStr('read_time_minutes') || '5', 10) || 5;
     
     const postData = {
-      title: formData.get('title'),
-      slug: formData.get('slug'),
-      teaser_text: formData.get('teaser_text'),
-      content_markdown: formData.get('content_markdown'),
-      cover_image_url: formData.get('cover_image_url'),
-      published: formData.get('published') === 'on',
-      featured: formData.get('featured') === 'on',
-      read_time_minutes: parseInt(formData.get('read_time_minutes')) || 5,
-      author_id: user?.id
+      title: getStr('title'),
+      slug: getStr('slug'),
+      teaser_text: getStr('teaser_text'),
+      content_markdown: getStr('content_markdown'),
+      cover_image_url: getStr('cover_image_url'),
+      published: toBool('published'),
+      featured: toBool('featured'),
+      read_time_minutes: readTime,
+      author_id: user?.id as string
     };
 
     const { error } = editingPost
-      ? await supabase.from('blog_posts').update(postData).eq('id', editingPost.id)
+      ? await supabase.from('blog_posts').update(postData).eq('id', (editingPost as any).id)
       : await supabase.from('blog_posts').insert(postData);
 
     if (!error) {
