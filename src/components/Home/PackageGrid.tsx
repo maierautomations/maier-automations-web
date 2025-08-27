@@ -84,46 +84,58 @@ export function PackageGrid() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto">
           {packages.map((pkg, index) => (
             <Card 
               key={index} 
-              className={`relative ${pkg.popular ? 'ring-2 ring-primary shadow-soft scale-105' : 'shadow-card hover:shadow-soft'} 
-                         transition-all duration-200 hover:scale-[1.02]`}
+              className={`relative group animate-fade-in card-modern border-0 ${
+                pkg.popular 
+                  ? 'ring-2 ring-primary/20 shadow-elevated scale-105' 
+                  : 'shadow-card hover:shadow-elevated hover:scale-[1.02]'
+              } transition-all duration-300 ease-out`}
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               {pkg.popular && (
-                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground">
+                <Badge className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-2 font-medium shadow-soft">
                   Beliebteste Wahl
                 </Badge>
               )}
               
-              <CardHeader className="text-center pb-4">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <CardTitle className="text-xl font-semibold">{pkg.name}</CardTitle>
-                  <Badge variant="outline" className="text-xs">
+              <CardHeader className="text-center pb-6">
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <CardTitle className="text-2xl font-bold text-foreground">{pkg.name}</CardTitle>
+                  <Badge variant="outline" className="text-xs font-medium border-primary/30 text-primary bg-primary/5">
                     {pkg.complexityPoints} CP
                   </Badge>
                 </div>
-                <div className="mb-3">
-                  <span className="text-2xl font-bold text-primary">{pkg.priceRange}</span>
+                <div className="mb-6">
+                  <span className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent">
+                    {pkg.priceRange}
+                  </span>
                 </div>
-                <CardDescription className="text-sm">{pkg.description}</CardDescription>
+                <CardDescription className="text-base leading-relaxed text-muted-foreground px-2">
+                  {pkg.description}
+                </CardDescription>
               </CardHeader>
               
-              <CardContent>
-                <ul className="space-y-3 mb-6">
+              <CardContent className="px-6 pb-8">
+                <ul className="space-y-4 mb-8">
                   {pkg.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm">
-                      <Check className="w-4 h-4 text-primary mr-3 flex-shrink-0" />
-                      {feature}
+                    <li key={featureIndex} className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-sm leading-relaxed text-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 
                 <Link to="/analyse" className="w-full block">
                   <Button 
-                    variant={pkg.popular ? "cta" : "outline"} 
-                    className="w-full"
+                    variant={pkg.popular ? "default" : "outline"} 
+                    className={`w-full h-12 text-base font-medium rounded-lg transition-all duration-200 ${
+                      pkg.popular 
+                        ? 'bg-primary hover:bg-primary-hover shadow-soft hover:shadow-elevated' 
+                        : 'border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-soft'
+                    }`}
                   >
                     Kostenlose Analyse
                     <ArrowRight className="w-4 h-4 ml-2" />
@@ -134,12 +146,12 @@ export function PackageGrid() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
-            Benötigen Sie mehr als 10 Complexity Points?
+        <div className="text-center mt-16">
+          <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
+            Benötigen Sie mehr als 10 Complexity Points? Wir entwickeln auch individuelle Lösungen.
           </p>
           <Link to="/kontakt">
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="lg" className="btn-modern border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground">
               Individuelle Lösung anfragen
             </Button>
           </Link>

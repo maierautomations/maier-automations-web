@@ -85,44 +85,56 @@ export default function Packages() {
         {/* Packages */}
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 max-w-7xl mx-auto">
               {packages.map((pkg, index) => (
                 <Card 
                   key={index} 
-                  className={`relative ${pkg.popular ? 'ring-2 ring-primary shadow-soft scale-105' : 'shadow-card hover:shadow-soft'} 
-                             transition-all duration-200 hover:scale-[1.02]`}
+                  className={`relative group animate-fade-in card-modern border-0 ${
+                    pkg.popular 
+                      ? 'ring-2 ring-primary/20 shadow-elevated scale-105' 
+                      : 'shadow-card hover:shadow-elevated hover:scale-[1.02]'
+                  } transition-all duration-300 ease-out`}
+                  style={{ animationDelay: `${index * 150}ms` }}
                 >
                   {pkg.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                      <Badge className="bg-primary text-primary-foreground px-4 py-1">
-                        <Star className="w-3 h-3 mr-1" />
+                    <div className="absolute -top-5 left-1/2 -translate-x-1/2">
+                      <Badge className="bg-primary text-primary-foreground px-6 py-2 font-semibold shadow-soft">
+                        <Star className="w-4 h-4 mr-2" />
                         Beliebteste Wahl
                       </Badge>
                     </div>
                   )}
                   
-                  <CardHeader className="text-center pb-6">
-                    <CardTitle className="text-2xl font-semibold mb-2">{pkg.name}</CardTitle>
-                    <div className="mb-4">
-                      <span className="text-4xl font-bold text-primary">{pkg.price}</span>
-                      {pkg.period && <span className="text-muted-foreground ml-2">{pkg.period}</span>}
+                  <CardHeader className="text-center pb-8">
+                    <CardTitle className="text-3xl font-bold mb-4 text-foreground">{pkg.name}</CardTitle>
+                    <div className="mb-6">
+                      <span className="text-5xl font-bold bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent">
+                        {pkg.price}
+                      </span>
+                      {pkg.period && <span className="text-lg text-muted-foreground ml-3">{pkg.period}</span>}
                     </div>
-                    <CardDescription className="text-base leading-relaxed">{pkg.description}</CardDescription>
+                    <CardDescription className="text-lg leading-relaxed text-muted-foreground px-4">
+                      {pkg.description}
+                    </CardDescription>
                   </CardHeader>
                   
-                  <CardContent className="pt-0">
-                    <ul className="space-y-4 mb-8">
+                  <CardContent className="pt-0 px-8 pb-8">
+                    <ul className="space-y-5 mb-10">
                       {pkg.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-start">
-                          <Check className="w-5 h-5 text-primary mr-3 flex-shrink-0 mt-0.5" />
-                          <span className="text-sm">{feature}</span>
+                        <li key={featureIndex} className="flex items-start gap-4">
+                          <Check className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+                          <span className="text-base leading-relaxed text-foreground">{feature}</span>
                         </li>
                       ))}
                     </ul>
                     
                     <Button 
-                      variant={pkg.popular ? "cta" : "outline"} 
-                      className="w-full text-base py-3"
+                      variant={pkg.popular ? "default" : "outline"} 
+                      className={`w-full h-14 text-lg font-semibold rounded-lg transition-all duration-200 ${
+                        pkg.popular 
+                          ? 'bg-primary hover:bg-primary-hover shadow-soft hover:shadow-elevated' 
+                          : 'border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-soft'
+                      }`}
                       size="lg"
                     >
                       {pkg.name === "Enterprise" ? "Angebot anfragen" : "Paket wählen"}
@@ -144,11 +156,11 @@ export default function Packages() {
               Lassen Sie uns gemeinsam das optimale Automatisierungspaket für Ihr Unternehmen finden. 
               Kostenlose Beratung und individuelle Anpassungen möglich.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="cta" size="lg">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button variant="default" size="lg" className="bg-primary hover:bg-primary-hover shadow-soft btn-modern">
                 Kostenlose Beratung
               </Button>
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" className="border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground btn-modern">
                 Callback vereinbaren
               </Button>
             </div>

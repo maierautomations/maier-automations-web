@@ -71,6 +71,7 @@
 
 /* Custom utilities for Maier Automations */
 @layer utilities {
+  /* Gradients */
   .gradient-hero {
     background: linear-gradient(135deg, hsl(218, 89%, 35%), hsl(218, 89%, 45%));
   }
@@ -79,11 +80,78 @@
     background: linear-gradient(180deg, hsl(0, 0%, 100%), hsl(215, 50%, 97%));
   }
   
+  .gradient-card {
+    background: linear-gradient(145deg, hsl(0, 0%, 100%), hsl(215, 50%, 98%));
+  }
+  
+  .gradient-glass {
+    background: linear-gradient(145deg, hsl(0, 0%, 100%, 0.95), hsl(215, 50%, 97%, 0.9));
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(215, 30%, 88%, 0.2);
+  }
+  
+  /* Modern Shadows */
   .shadow-soft {
-    box-shadow: 0 4px 24px -6px hsl(218, 89%, 35%, 0.12);
+    box-shadow: 0 8px 32px -8px hsl(218, 89%, 35%, 0.12), 0 0 0 1px hsl(215, 30%, 88%, 0.4);
   }
   
   .shadow-card {
-    box-shadow: 0 2px 12px -4px hsl(218, 25%, 15%, 0.08);
+    box-shadow: 0 4px 16px -4px hsl(218, 25%, 15%, 0.08), 0 0 0 1px hsl(215, 30%, 88%, 0.3);
+  }
+  
+  .shadow-elevated {
+    box-shadow: 0 16px 48px -8px hsl(218, 89%, 35%, 0.15), 0 0 0 1px hsl(215, 30%, 88%, 0.2);
+  }
+  
+  .shadow-glass {
+    box-shadow: 0 8px 32px 0 hsl(218, 89%, 35%, 0.08), 0 0 0 1px hsl(215, 30%, 88%, 0.1);
+  }
+  
+  /* Modern interactive elements */
+  .card-modern {
+    @apply rounded-xl border shadow-card hover:shadow-soft transition-all duration-300 ease-out;
+    background: linear-gradient(145deg, hsl(0, 0%, 100%), hsl(215, 50%, 98%));
+  }
+
+  .card-glass {
+    @apply rounded-xl shadow-glass hover:shadow-elevated transition-all duration-300 ease-out;
+    background: linear-gradient(145deg, hsl(0, 0%, 100%, 0.95), hsl(215, 50%, 97%, 0.9));
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(215, 30%, 88%, 0.2);
+  }
+
+  .btn-modern {
+    @apply rounded-lg font-medium transition-all duration-200 ease-out hover:shadow-soft hover:scale-[1.02] active:scale-[0.98];
+  }
+  
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

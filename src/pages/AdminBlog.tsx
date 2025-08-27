@@ -174,73 +174,121 @@ export default function AdminBlog() {
     <div className="min-h-screen flex flex-col">
       <Header />
       
-      <main className="flex-1 py-8">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center mb-4">
-            <div className="flex items-center gap-4">
-              <Button variant="ghost" onClick={() => navigate('/blog')}>
+      <main className="flex-1 py-12 bg-gradient-subtle min-h-screen">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6 mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+              <Button variant="ghost" onClick={() => navigate('/blog')} className="self-start sm:self-auto">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Zurück zum Blog
               </Button>
-              <h1 className="text-3xl font-bold">Blog-Verwaltung</h1>
+              <h1 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+                Blog-Verwaltung
+              </h1>
             </div>
-            <Button onClick={() => { setShowForm(true); setEditingPost(null); }}>
+            <Button onClick={() => { setShowForm(true); setEditingPost(null); }} className="btn-modern shadow-soft">
               <Plus className="w-4 h-4 mr-2" />
               Neuer Artikel
             </Button>
           </div>
 
           {showForm && (
-            <Card className="mb-8">
-              <CardHeader>
-                <CardTitle>{editingPost ? 'Artikel bearbeiten' : 'Neuer Artikel'}</CardTitle>
+            <Card className="mb-12 card-glass shadow-elevated border-0">
+              <CardHeader className="pb-6">
+                <CardTitle className="text-2xl font-semibold text-foreground">
+                  {editingPost ? 'Artikel bearbeiten' : 'Neuer Artikel'}
+                </CardTitle>
               </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="title">Titel</Label>
-                      <Input name="title" defaultValue={editingPost?.title} required />
+              <CardContent className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="title" className="text-sm font-medium text-foreground">Titel</Label>
+                      <Input 
+                        name="title" 
+                        defaultValue={editingPost?.title} 
+                        required 
+                        className="h-11 rounded-lg border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
+                      />
                     </div>
-                    <div>
-                      <Label htmlFor="slug">URL-Slug</Label>
-                      <Input name="slug" defaultValue={editingPost?.slug} required />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="teaser_text">Teaser</Label>
-                    <Textarea name="teaser_text" defaultValue={editingPost?.teaser_text} />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="cover_image_url">Cover Bild URL</Label>
-                    <Input name="cover_image_url" defaultValue={editingPost?.cover_image_url} />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="content_markdown">Inhalt (Markdown)</Label>
-                    <Textarea name="content_markdown" rows={10} defaultValue={editingPost?.content_markdown} />
-                  </div>
-                  
-                  <div className="grid grid-cols-3 gap-4">
-                    <div>
-                      <Label htmlFor="read_time_minutes">Lesezeit (Min.)</Label>
-                      <Input name="read_time_minutes" type="number" defaultValue={editingPost?.read_time_minutes || 5} />
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox name="published" defaultChecked={editingPost?.published} />
-                      <Label>Veröffentlicht</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox name="featured" defaultChecked={editingPost?.featured} />
-                      <Label>Empfohlen</Label>
+                    <div className="space-y-2">
+                      <Label htmlFor="slug" className="text-sm font-medium text-foreground">URL-Slug</Label>
+                      <Input 
+                        name="slug" 
+                        defaultValue={editingPost?.slug} 
+                        required 
+                        className="h-11 rounded-lg border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
+                      />
                     </div>
                   </div>
                   
-                  <div className="flex gap-2">
-                    <Button type="submit">Speichern</Button>
-                    <Button type="button" variant="outline" onClick={() => setShowForm(false)}>
+                  <div className="space-y-2">
+                    <Label htmlFor="teaser_text" className="text-sm font-medium text-foreground">Teaser</Label>
+                    <Textarea 
+                      name="teaser_text" 
+                      defaultValue={editingPost?.teaser_text} 
+                      rows={3}
+                      className="rounded-lg border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 resize-none"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="cover_image_url" className="text-sm font-medium text-foreground">Cover Bild URL</Label>
+                    <Input 
+                      name="cover_image_url" 
+                      defaultValue={editingPost?.cover_image_url} 
+                      className="h-11 rounded-lg border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="content_markdown" className="text-sm font-medium text-foreground">Inhalt (Markdown)</Label>
+                    <Textarea 
+                      name="content_markdown" 
+                      rows={12} 
+                      defaultValue={editingPost?.content_markdown} 
+                      className="rounded-lg border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 font-mono text-sm"
+                    />
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="read_time_minutes" className="text-sm font-medium text-foreground">Lesezeit (Min.)</Label>
+                      <Input 
+                        name="read_time_minutes" 
+                        type="number" 
+                        defaultValue={editingPost?.read_time_minutes || 5} 
+                        className="h-11 rounded-lg border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
+                      />
+                    </div>
+                    <div className="flex items-center space-x-3 p-4 rounded-lg bg-surface/50 border border-border/30">
+                      <Checkbox 
+                        name="published" 
+                        defaultChecked={editingPost?.published}
+                        className="data-[state=checked]:bg-primary data-[state=checked]:border-primary" 
+                      />
+                      <Label className="text-sm font-medium text-foreground">Veröffentlicht</Label>
+                    </div>
+                    <div className="flex items-center space-x-3 p-4 rounded-lg bg-surface/50 border border-border/30">
+                      <Checkbox 
+                        name="featured" 
+                        defaultChecked={editingPost?.featured}
+                        className="data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                      />
+                      <Label className="text-sm font-medium text-foreground">Empfohlen</Label>
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-border/30">
+                    <Button type="submit" className="btn-modern shadow-soft flex-1 sm:flex-initial h-11 px-8">
+                      Speichern
+                    </Button>
+                    <Button 
+                      type="button" 
+                      variant="outline" 
+                      onClick={() => setShowForm(false)}
+                      className="h-11 px-8 rounded-lg border-border/50 hover:bg-surface/80"
+                    >
                       Abbrechen
                     </Button>
                   </div>
@@ -249,28 +297,57 @@ export default function AdminBlog() {
             </Card>
           )}
 
-          <div className="space-y-4">
+          <div className="space-y-6">
             {posts.map((post) => (
-              <Card key={post.id}>
-                <CardContent className="p-6">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="text-lg font-semibold">{post.title}</h3>
-                      <p className="text-muted-foreground text-sm">{post.teaser_text}</p>
-                      <div className="flex gap-2 mt-2">
-                        {post.published && <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Veröffentlicht</span>}
-                        {post.featured && <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Empfohlen</span>}
+              <Card key={post.id} className="card-modern border-0 shadow-card hover:shadow-elevated">
+                <CardContent className="p-8">
+                  <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-6">
+                    <div className="flex-1 space-y-3">
+                      <h3 className="text-xl font-semibold text-foreground leading-tight">{post.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">{post.teaser_text}</p>
+                      <div className="flex flex-wrap gap-3 mt-4">
+                        {post.published && (
+                          <span className="inline-flex items-center px-3 py-1 text-xs font-medium bg-green-50 text-green-700 rounded-full border border-green-200">
+                            ✓ Veröffentlicht
+                          </span>
+                        )}
+                        {post.featured && (
+                          <span className="inline-flex items-center px-3 py-1 text-xs font-medium bg-blue-50 text-blue-700 rounded-full border border-blue-200">
+                            ⭐ Empfohlen
+                          </span>
+                        )}
+                        <span className="inline-flex items-center px-3 py-1 text-xs font-medium bg-gray-50 text-gray-600 rounded-full border border-gray-200">
+                          {post.read_time_minutes || 5} Min. Lesezeit
+                        </span>
                       </div>
                     </div>
-                    <div className="flex gap-2">
-                      <Button variant="outline" size="sm" onClick={() => navigate(`/blog/${post.slug}`)}>
-                        <Eye className="w-4 h-4" />
+                    <div className="flex flex-row lg:flex-col gap-3 lg:gap-2 min-w-fit">
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        onClick={() => navigate(`/blog/${post.slug}`)}
+                        className="h-9 px-3 rounded-lg hover:bg-surface/80 flex-1 lg:flex-initial"
+                      >
+                        <Eye className="w-4 h-4 mr-2 lg:mr-0" />
+                        <span className="lg:hidden">Anzeigen</span>
                       </Button>
-                      <Button variant="outline" size="sm" onClick={() => { setEditingPost(post); setShowForm(true); }}>
-                        <Edit className="w-4 h-4" />
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        onClick={() => { setEditingPost(post); setShowForm(true); }}
+                        className="h-9 px-3 rounded-lg hover:bg-surface/80 flex-1 lg:flex-initial"
+                      >
+                        <Edit className="w-4 h-4 mr-2 lg:mr-0" />
+                        <span className="lg:hidden">Bearbeiten</span>
                       </Button>
-                      <Button variant="outline" size="sm" onClick={() => handleDelete(post.id)}>
-                        <Trash2 className="w-4 h-4" />
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        onClick={() => handleDelete(post.id)}
+                        className="h-9 px-3 rounded-lg hover:bg-destructive/10 hover:text-destructive hover:border-destructive/50 flex-1 lg:flex-initial"
+                      >
+                        <Trash2 className="w-4 h-4 mr-2 lg:mr-0" />
+                        <span className="lg:hidden">Löschen</span>
                       </Button>
                     </div>
                   </div>
