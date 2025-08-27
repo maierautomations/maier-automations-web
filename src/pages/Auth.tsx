@@ -23,7 +23,7 @@ export default function Auth() {
   // Redirect if already logged in
   useEffect(() => {
     if (user) {
-      navigate('/');
+      navigate('/admin/blog');
     }
   }, [user, navigate]);
 
@@ -50,7 +50,7 @@ export default function Auth() {
         title: "Erfolgreich angemeldet",
         description: "Willkommen zurück!",
       });
-      navigate('/');
+      navigate('/admin/blog');
     }
 
     setIsLoading(false);

@@ -9,8 +9,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { supabase } from "@/integrations/supabase/client";
-import { Plus, Edit, Trash2, Eye } from "lucide-react";
+import { Plus, Edit, Trash2, Eye, ArrowLeft, ShieldAlert } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export default function AdminBlog() {
@@ -21,6 +22,36 @@ export default function AdminBlog() {
   const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [editingPost, setEditingPost] = useState(null);
+  const [hasAccess, setHasAccess] = useState<boolean | null>(null);
+  const [checkingAccess, setCheckingAccess] = useState(true);
+
+  const checkUserAccess = async (userId: string) => {
+    setCheckingAccess(true);
+    const { data: hasAdminRole } = await supabase.rpc('has_role', {
+      _user_id: userId,
+      _role: 'admin'
+    });
+    
+    const { data: hasEditorRole } = await supabase.rpc('has_role', {
+      _user_id: userId,
+      _role: 'editor'
+    });
+
+    const access = hasAdminRole || hasEditorRole;
+    setHasAccess(access);
+    setCheckingAccess(false);
+    
+    if (!access) {
+      toast({
+        title: "Zugriff verweigert",
+        description: "Sie haben keine Berechtigung für den Admin-Bereich.",
+        variant: "destructive",
+      });
+      setTimeout(() => navigate('/'), 2000);
+    }
+    
+    return access;
+  };
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -28,7 +59,11 @@ export default function AdminBlog() {
       return;
     }
     if (user) {
-      fetchPosts();
+      checkUserAccess(user.id).then((access) => {
+        if (access) {
+          fetchPosts();
+        }
+      });
     }
   }, [user, authLoading, navigate]);
 
@@ -100,7 +135,40 @@ export default function AdminBlog() {
     }
   };
 
-  if (authLoading) return <div>Loading...</div>;
+  if (authLoading || checkingAccess) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Berechtigung wird überprüft...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (hasAccess === false) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1 flex items-center justify-center">
+          <Card className="max-w-md w-full mx-4">
+            <CardContent className="p-6 text-center">
+              <ShieldAlert className="h-12 w-12 text-destructive mx-auto mb-4" />
+              <h2 className="text-xl font-semibold mb-2">Zugriff verweigert</h2>
+              <p className="text-muted-foreground mb-4">
+                Sie haben keine Berechtigung für den Admin-Bereich. Sie benötigen Admin- oder Editor-Rechte.
+              </p>
+              <Button onClick={() => navigate('/')} variant="outline">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Zurück zur Startseite
+              </Button>
+            </CardContent>
+          </Card>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -108,8 +176,14 @@ export default function AdminBlog() {
       
       <main className="flex-1 py-8">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center mb-8">
-            <h1 className="text-3xl font-bold">Blog-Verwaltung</h1>
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex items-center gap-4">
+              <Button variant="ghost" onClick={() => navigate('/blog')}>
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Zurück zum Blog
+              </Button>
+              <h1 className="text-3xl font-bold">Blog-Verwaltung</h1>
+            </div>
             <Button onClick={() => { setShowForm(true); setEditingPost(null); }}>
               <Plus className="w-4 h-4 mr-2" />
               Neuer Artikel
