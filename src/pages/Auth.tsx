@@ -50,7 +50,7 @@ export default function Auth() {
         title: "Erfolgreich angemeldet",
         description: "Willkommen zurück!",
       });
-      navigate('/');
+      navigate('/admin/blog');
     }
 
     setIsLoading(false);

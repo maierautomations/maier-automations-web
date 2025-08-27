@@ -1,12 +1,21 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User, LogOut, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/contexts/AuthContext";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { user, signOut } = useAuth();
 
   const navigation = [
     { name: "Startseite", href: "/" },
@@ -17,6 +26,10 @@ export function Header() {
   ];
 
   const isActive = (href: string) => location.pathname === href;
+
+  const handleSignOut = async () => {
+    await signOut();
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -50,8 +63,37 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex">
+          {/* User Menu or Auth Links */}
+          <div className="hidden md:flex items-center space-x-4">
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm" className="flex items-center space-x-2">
+                    <User className="h-4 w-4" />
+                    <span>Admin</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuItem asChild>
+                    <Link to="/admin/blog" className="flex items-center">
+                      <Settings className="mr-2 h-4 w-4" />
+                      Blog verwalten
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={handleSignOut} className="flex items-center">
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Abmelden
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link to="/auth">
+                <Button variant="outline" size="sm">
+                  Anmelden
+                </Button>
+              </Link>
+            )}
             <Link to="/analyse">
               <Button variant="cta" size="default">
                 Kostenlose Analyse
@@ -94,7 +136,32 @@ export function Header() {
                   {item.name}
                 </Link>
               ))}
-              <div className="px-3 py-2">
+              <div className="px-3 py-2 space-y-2">
+                {user ? (
+                  <>
+                    <Link to="/admin/blog">
+                      <Button variant="outline" size="sm" className="w-full justify-start">
+                        <Settings className="mr-2 h-4 w-4" />
+                        Blog verwalten
+                      </Button>
+                    </Link>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="w-full justify-start"
+                      onClick={handleSignOut}
+                    >
+                      <LogOut className="mr-2 h-4 w-4" />
+                      Abmelden
+                    </Button>
+                  </>
+                ) : (
+                  <Link to="/auth">
+                    <Button variant="outline" size="sm" className="w-full">
+                      Anmelden
+                    </Button>
+                  </Link>
+                )}
                 <Link to="/analyse">
                   <Button variant="cta" size="default" className="w-full">
                     Kostenlose Analyse
