@@ -14,7 +14,102 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      wizard_submissions: {
+        Row: {
+          budget_range: string | null
+          company: string | null
+          complexity_points: number | null
+          created_at: string
+          current_systems: string[] | null
+          data_category: string | null
+          data_volume: string | null
+          department: string[] | null
+          document_types: string[] | null
+          email: string
+          eu_processing_only: boolean | null
+          first_name: string | null
+          goals: string[] | null
+          id: string
+          industry: string[] | null
+          ip_address: unknown | null
+          last_name: string | null
+          main_pain_point: string | null
+          monthly_queries: number | null
+          on_premise_required: boolean | null
+          phone: string | null
+          rag_score: number | null
+          recommended_package: string | null
+          session_id: string | null
+          source_requirements: boolean | null
+          timeframe: string | null
+          updated_at: string
+          usage_frequency: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          budget_range?: string | null
+          company?: string | null
+          complexity_points?: number | null
+          created_at?: string
+          current_systems?: string[] | null
+          data_category?: string | null
+          data_volume?: string | null
+          department?: string[] | null
+          document_types?: string[] | null
+          email: string
+          eu_processing_only?: boolean | null
+          first_name?: string | null
+          goals?: string[] | null
+          id?: string
+          industry?: string[] | null
+          ip_address?: unknown | null
+          last_name?: string | null
+          main_pain_point?: string | null
+          monthly_queries?: number | null
+          on_premise_required?: boolean | null
+          phone?: string | null
+          rag_score?: number | null
+          recommended_package?: string | null
+          session_id?: string | null
+          source_requirements?: boolean | null
+          timeframe?: string | null
+          updated_at?: string
+          usage_frequency?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          budget_range?: string | null
+          company?: string | null
+          complexity_points?: number | null
+          created_at?: string
+          current_systems?: string[] | null
+          data_category?: string | null
+          data_volume?: string | null
+          department?: string[] | null
+          document_types?: string[] | null
+          email?: string
+          eu_processing_only?: boolean | null
+          first_name?: string | null
+          goals?: string[] | null
+          id?: string
+          industry?: string[] | null
+          ip_address?: unknown | null
+          last_name?: string | null
+          main_pain_point?: string | null
+          monthly_queries?: number | null
+          on_premise_required?: boolean | null
+          phone?: string | null
+          rag_score?: number | null
+          recommended_package?: string | null
+          session_id?: string | null
+          source_requirements?: boolean | null
+          timeframe?: string | null
+          updated_at?: string
+          usage_frequency?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
