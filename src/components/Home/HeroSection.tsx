@@ -33,7 +33,7 @@ export function HeroSection() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <Link to="/analyse">
-              <Button variant="hero" size="lg" className="min-w-[200px]">
+              <Button variant="default" size="lg" className="min-w-[200px]">
                 <Zap className="w-5 h-5 mr-2" />
                 Kostenlose Analyse starten
               </Button>
@@ -49,7 +49,7 @@ export function HeroSection() {
           {/* Trust Indicators */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-light rounded-lg mb-3">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-3">
                 <Shield className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-semibold text-foreground mb-2">100% DSGVO-konform</h3>
@@ -58,7 +58,7 @@ export function HeroSection() {
               </p>
             </div>
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-light rounded-lg mb-3">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-3">
                 <Zap className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-semibold text-foreground mb-2">Sofort einsatzbereit</h3>
@@ -67,7 +67,7 @@ export function HeroSection() {
               </p>
             </div>
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-light rounded-lg mb-3">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-3">
                 <Users className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-semibold text-foreground mb-2">DACH-spezialisiert</h3>

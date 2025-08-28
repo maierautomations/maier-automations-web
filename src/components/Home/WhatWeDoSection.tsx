@@ -47,7 +47,7 @@ export function WhatWeDoSection() {
               key={index} 
               className="bg-card border border-border rounded-xl p-6 shadow-card hover:shadow-soft transition-all duration-200 group"
             >
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-light rounded-lg mb-4 group-hover:scale-110 transition-transform duration-200">
+              <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-4 group-hover:scale-110 transition-transform duration-200">
                 <service.icon className="w-6 h-6 text-primary" />
               </div>
               

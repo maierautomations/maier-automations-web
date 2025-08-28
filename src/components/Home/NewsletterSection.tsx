@@ -8,7 +8,7 @@ export function NewsletterSection() {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-primary-light via-accent to-surface rounded-2xl p-8 lg:p-12 shadow-soft relative overflow-hidden">
+          <div className="bg-gradient-to-br from-primary/10 via-accent to-surface rounded-2xl p-8 lg:p-12 shadow-soft relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -translate-y-16 translate-x-16"></div>
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/5 rounded-full translate-y-12 -translate-x-12"></div>
