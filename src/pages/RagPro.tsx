@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Database, Search, FileText, Zap, Shield, Clock, Cpu, Globe } from "lucide-react";
+import { SEOHead } from "@/components/SEO/SEOHead";
 
 export default function RagPro() {
   const features = [
@@ -59,6 +60,12 @@ export default function RagPro() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title="RAG Pro - Premium KI-Wissensassistent mit Vektordatenbank"
+        description="RAG Pro: Intelligenter Wissensassistent für Unternehmen. Semantische Suche, Quellenangaben, Excel-Auswertung, DSGVO-konform. 3-4 Complexity Points. EU-Hosting Frankfurt."
+        keywords="RAG Pro, KI-Wissensassistent, Vektordatenbank, semantische Suche, Quellenangaben, DSGVO, pgvector, Supabase, Unternehmenswissen"
+        url="https://maier-automations.de/rag-pro"
+      />
       <Header />
       
       <main className="flex-1">

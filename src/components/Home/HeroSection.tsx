@@ -1,18 +1,30 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Shield, Zap, Users } from "lucide-react";
+import { Shield, Zap, Users, Globe, FileCheck, Lock, Eye } from "lucide-react";
 
 export function HeroSection() {
   return (
     <section className="relative py-20 lg:py-28 gradient-subtle overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto">
-          {/* Trust Badge */}
-          <div className="flex justify-center mb-8">
+          {/* Trust Badges */}
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
             <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
-              <Shield className="w-4 h-4 mr-2" />
-              DSGVO-konform • EU-Hosting • Maximale Sicherheit
+              <Globe className="w-4 h-4 mr-2" />
+              EU-Hosting (Frankfurt)
+            </Badge>
+            <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
+              <FileCheck className="w-4 h-4 mr-2" />
+              DPA/SCCs verfügbar
+            </Badge>
+            <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
+              <Lock className="w-4 h-4 mr-2" />
+              RBAC-Sicherheit
+            </Badge>
+            <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
+              <Eye className="w-4 h-4 mr-2" />
+              Keine Tracker ohne Einwilligung
             </Badge>
           </div>
 
@@ -47,32 +59,41 @@ export function HeroSection() {
           </div>
 
           {/* Trust Indicators */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-3">
-                <Shield className="w-6 h-6 text-primary" />
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-lg mb-3">
+                <Shield className="w-6 h-6 text-green-600" />
               </div>
-              <h3 className="font-semibold text-foreground mb-2">100% DSGVO-konform</h3>
-              <p className="text-sm text-muted-foreground">
-                Alle Daten bleiben in der EU. Höchste Datenschutzstandards garantiert.
+              <h3 className="font-semibold text-foreground mb-2">100% DSGVO</h3>
+              <p className="text-xs text-muted-foreground">
+                EU-Server • Privacy by Design • DPA verfügbar
               </p>
             </div>
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-3">
-                <Zap className="w-6 h-6 text-primary" />
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-lg mb-3">
+                <Zap className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="font-semibold text-foreground mb-2">Sofort einsatzbereit</h3>
-              <p className="text-sm text-muted-foreground">
-                Vorkonfigurierte Lösungen, die in wenigen Tagen implementiert sind.
+              <h3 className="font-semibold text-foreground mb-2">2-3 Wochen</h3>
+              <p className="text-xs text-muted-foreground">
+                Von Analyse bis Go-Live • Vorkonfiguriert
               </p>
             </div>
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-3">
-                <Users className="w-6 h-6 text-primary" />
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 rounded-lg mb-3">
+                <Users className="w-6 h-6 text-purple-600" />
               </div>
-              <h3 className="font-semibold text-foreground mb-2">DACH-spezialisiert</h3>
-              <p className="text-sm text-muted-foreground">
-                Entwickelt für deutsche, österreichische und Schweizer Unternehmen.
+              <h3 className="font-semibold text-foreground mb-2">DACH-Fokus</h3>
+              <p className="text-xs text-muted-foreground">
+                Speziell für deutsche Compliance entwickelt
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 rounded-lg mb-3">
+                <Globe className="w-6 h-6 text-orange-600" />
+              </div>
+              <h3 className="font-semibold text-foreground mb-2">n8n Cloud</h3>
+              <p className="text-xs text-muted-foreground">
+                Enterprise-Grade • EU-zertifiziert
               </p>
             </div>
           </div>

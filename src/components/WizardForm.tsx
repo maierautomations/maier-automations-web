@@ -7,11 +7,15 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, ArrowRight, CheckCircle, Loader2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle, Loader2, Globe } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
 interface WizardData {
+  // Step 0 - URL Analysis
+  websiteUrl: string;
+  websiteAnalysisConsent: boolean;
+  
   // Contact
   firstName: string;
   lastName: string;
@@ -52,6 +56,8 @@ interface WizardData {
 }
 
 const initialData: WizardData = {
+  websiteUrl: "",
+  websiteAnalysisConsent: false,
   firstName: "",
   lastName: "",
   email: "",
@@ -81,7 +87,7 @@ export function WizardForm() {
   const [isCompleted, setIsCompleted] = useState(false);
   const { toast } = useToast();
 
-  const totalSteps = 9; // Contact + 8 steps
+  const totalSteps = 10; // URL + Contact + 8 steps
   const progress = ((currentStep + 1) / totalSteps) * 100;
 
   const handleArrayToggle = (field: keyof WizardData, value: string) => {
@@ -130,6 +136,8 @@ export function WizardForm() {
     
     try {
       const { data: insertData, error } = await supabase.from('wizard_submissions').insert({
+        website_url: data.websiteUrl || null,
+        website_analysis_consent: data.websiteAnalysisConsent,
         first_name: data.firstName,
         last_name: data.lastName,
         email: data.email,
@@ -156,11 +164,11 @@ export function WizardForm() {
 
       if (error) throw error;
 
-      // Trigger analysis in background
+      // Trigger CP calculation in background
       if (insertData?.id) {
-        supabase.functions.invoke('analyze-submission', {
+        supabase.functions.invoke('cp-calculator', {
           body: { submissionId: insertData.id }
-        }).catch(err => console.error('Analysis error:', err));
+        }).catch(err => console.error('CP calculation error:', err));
       }
 
       setIsCompleted(true);
@@ -182,25 +190,124 @@ export function WizardForm() {
 
   if (isCompleted) {
     return (
-      <Card className="max-w-2xl mx-auto">
-        <CardContent className="p-8 text-center">
-          <CheckCircle className="w-16 h-16 text-primary mx-auto mb-4" />
-          <h2 className="text-2xl font-bold mb-4">Vielen Dank!</h2>
-          <p className="text-muted-foreground mb-6">
-            Ihre Anfrage wurde erfolgreich übermittelt. Unser Team analysiert Ihre Angaben und 
-            meldet sich binnen 24 Stunden mit einer maßgeschneiderten Empfehlung bei Ihnen.
-          </p>
-          <Button onClick={() => window.location.href = '/'}>
-            Zurück zur Startseite
-          </Button>
-        </CardContent>
-      </Card>
+      <div className="max-w-4xl mx-auto space-y-6">
+        <Card className="text-center">
+          <CardContent className="p-8">
+            <CheckCircle className="w-16 h-16 text-primary mx-auto mb-4" />
+            <h2 className="text-3xl font-bold mb-4">Analyse abgeschlossen!</h2>
+            <p className="text-muted-foreground mb-6 text-lg">
+              Vielen Dank für Ihre Angaben. Wir berechnen gerade Ihre Complexity Points und 
+              erstellen eine maßgeschneiderte Empfehlung für Sie.
+            </p>
+          </CardContent>
+        </Card>
+        
+        <Card className="bg-gradient-to-br from-primary/10 to-accent/10">
+          <CardContent className="p-8">
+            <h3 className="text-2xl font-bold text-center mb-6">Ihre vorläufige Einschätzung</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="text-center p-4 bg-background rounded-lg">
+                <div className="text-3xl font-bold text-primary mb-2">≈ 6-8 CP</div>
+                <div className="text-sm text-muted-foreground">Geschätzte Complexity Points</div>
+              </div>
+              <div className="text-center p-4 bg-background rounded-lg">
+                <div className="text-2xl font-bold text-green-600 mb-2">Core Paket</div>
+                <div className="text-sm text-muted-foreground">Empfohlenes Paket</div>
+              </div>
+              <div className="text-center p-4 bg-background rounded-lg">
+                <div className="text-2xl font-bold text-blue-600 mb-2">3-5 Wochen</div>
+                <div className="text-sm text-muted-foreground">Geschätzte Umsetzungszeit</div>
+              </div>
+            </div>
+            
+            <div className="text-center space-y-4">
+              <p className="text-muted-foreground">
+                Diese Einschätzung basiert auf Ihren Angaben. Unser Team erstellt eine detaillierte 
+                Analyse und meldet sich binnen 24 Stunden mit der finalen Empfehlung bei Ihnen.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button className="bg-primary hover:bg-primary-hover">
+                  <Globe className="w-4 h-4 mr-2" />
+                  Termin für Beratung buchen
+                </Button>
+                <Button variant="outline" onClick={() => window.location.href = '/'}>
+                  Zurück zur Startseite
+                </Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardContent className="p-6">
+            <h4 className="font-semibold mb-3">💡 Was passiert als Nächstes?</h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+              <div>
+                <div className="font-medium text-primary">1. Analyse (24h)</div>
+                <div className="text-muted-foreground">Detaillierte CP-Berechnung und Roadmap-Erstellung</div>
+              </div>
+              <div>
+                <div className="font-medium text-primary">2. Empfehlung (E-Mail)</div>
+                <div className="text-muted-foreground">Persönliche Empfehlung mit Preisangabe und Zeitplan</div>
+              </div>
+              <div>
+                <div className="font-medium text-primary">3. Beratungsgespräch</div>
+                <div className="text-muted-foreground">30-Min-Gespräch zur Verfeinerung der Anforderungen</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     );
   }
 
   const renderStep = () => {
     switch (currentStep) {
-      case 0: // Contact Information
+      case 0: // URL Analysis (Optional)
+        return (
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-2xl font-bold mb-2">Website-Analyse (Optional)</h2>
+              <p className="text-muted-foreground">Geben Sie Ihre Website-URL ein für eine automatische Potenzial-Analyse.</p>
+            </div>
+            
+            <div>
+              <Label htmlFor="websiteUrl">Website-URL (optional)</Label>
+              <Input
+                id="websiteUrl"
+                type="url"
+                value={data.websiteUrl}
+                onChange={(e) => setData(prev => ({ ...prev, websiteUrl: e.target.value }))}
+                placeholder="https://ihr-unternehmen.de"
+              />
+            </div>
+            
+            {data.websiteUrl && (
+              <div className="flex items-start space-x-2">
+                <Checkbox
+                  id="websiteAnalysisConsent"
+                  checked={data.websiteAnalysisConsent}
+                  onCheckedChange={(checked) => setData(prev => ({ ...prev, websiteAnalysisConsent: !!checked }))}
+                />
+                <Label htmlFor="websiteAnalysisConsent" className="cursor-pointer text-sm leading-relaxed">
+                  Ich erlaube die Analyse öffentlich zugänglicher Inhalte meiner Website zur 
+                  Identifikation von Automatisierungspotenzialen. Es werden keine personenbezogenen Daten erfasst.
+                </Label>
+              </div>
+            )}
+            
+            <div className="p-4 bg-blue-50 rounded-lg">
+              <p className="text-sm text-blue-800">
+                <strong>Datenschutz:</strong> Wir analysieren nur öffentlich zugängliche Inhalte Ihrer Website 
+                (keine Login-Bereiche, keine personenbezogenen Daten). Die Analyse hilft uns, bessere Empfehlungen zu geben.
+              </p>
+            </div>
+          </div>
+        );
+
+      case 1: // Contact Information
         return (
           <div className="space-y-6">
             <div>
@@ -263,7 +370,7 @@ export function WizardForm() {
           </div>
         );
 
-      case 1: // Branche & Abteilung
+      case 2: // Branche & Abteilung
         return (
           <div className="space-y-6">
             <div>
@@ -305,7 +412,7 @@ export function WizardForm() {
           </div>
         );
 
-      case 2: // Ziele
+      case 3: // Ziele
         return (
           <div className="space-y-6">
             <div>
@@ -342,7 +449,7 @@ export function WizardForm() {
           </div>
         );
 
-      case 3: // Genutzte Systeme
+      case 4: // Genutzte Systeme
         return (
           <div className="space-y-6">
             <div>
@@ -402,7 +509,7 @@ export function WizardForm() {
           </div>
         );
 
-      case 4: // Datenlage
+      case 5: // Datenlage
         return (
           <div className="space-y-6">
             <div>
@@ -455,7 +562,7 @@ export function WizardForm() {
           </div>
         );
 
-      case 5: // Volumen & Häufigkeit
+      case 6: // Volumen & Häufigkeit
         return (
           <div className="space-y-6">
             <div>
@@ -492,7 +599,7 @@ export function WizardForm() {
           </div>
         );
 
-      case 6: // Datenschutz & Region
+      case 7: // Datenschutz & Region
         return (
           <div className="space-y-6">
             <div>
@@ -542,7 +649,7 @@ export function WizardForm() {
           </div>
         );
 
-      case 7: // Zeit- & Budgetrahmen
+      case 8: // Zeit- & Budgetrahmen
         return (
           <div className="space-y-6">
             <div>
@@ -584,7 +691,7 @@ export function WizardForm() {
           </div>
         );
 
-      case 8: // Pain Point
+      case 9: // Pain Point
         return (
           <div className="space-y-6">
             <div>

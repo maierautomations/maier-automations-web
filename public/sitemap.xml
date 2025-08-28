@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+   
+   <!-- Homepage -->
+   <url>
+      <loc>https://maier-automations.de/</loc>
+      <changefreq>weekly</changefreq>
+      <priority>1.0</priority>
+   </url>
+   
+   <!-- Main Pages -->
+   <url>
+      <loc>https://maier-automations.de/pakete</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.9</priority>
+   </url>
+   
+   <url>
+      <loc>https://maier-automations.de/rag-pro</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.9</priority>
+   </url>
+   
+   <url>
+      <loc>https://maier-automations.de/analyse</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   
+   <!-- Blog -->
+   <url>
+      <loc>https://maier-automations.de/blog</loc>
+      <changefreq>daily</changefreq>
+      <priority>0.8</priority>
+   </url>
+   
+   <!-- Blog Posts -->
+   <url>
+      <loc>https://maier-automations.de/blog/5-n8n-workflows-jedes-kmu-braucht</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+   </url>
+   
+   <url>
+      <loc>https://maier-automations.de/blog/rag-vs-chatgpt-warum-unternehmen-rag-brauchen</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+   </url>
+   
+   <url>
+      <loc>https://maier-automations.de/blog/dsgvo-und-ki-was-unternehmen-wissen-muessen</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+   </url>
+   
+   <!-- Contact & Legal -->
+   <url>
+      <loc>https://maier-automations.de/kontakt</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+   </url>
+   
+   <url>
+      <loc>https://maier-automations.de/impressum</loc>
+      <changefreq>yearly</changefreq>
+      <priority>0.3</priority>
+   </url>
+   
+   <url>
+      <loc>https://maier-automations.de/datenschutz</loc>
+      <changefreq>yearly</changefreq>
+      <priority>0.3</priority>
+   </url>
+   
+</urlset>

@@ -17,7 +17,7 @@ export function PackageGrid() {
         "Standard-Support",
         "Basis-Dokumentation"
       ],
-      priceRange: "ab 2.400€ - 3.600€",
+      priceRange: "Preis noch nicht fix",
       popular: false
     },
     {
@@ -31,7 +31,7 @@ export function PackageGrid() {
         "Priority Support",
         "3 Monate Optimierung"
       ],
-      priceRange: "ab 4.800€ - 7.200€",
+      priceRange: "Preis noch nicht fix",
       popular: true
     },
     {
@@ -45,7 +45,7 @@ export function PackageGrid() {
         "Dedicated Support",
         "Kontinuierliche Optimierung"
       ],
-      priceRange: "ab 8.000€ - 12.000€",
+      priceRange: "Preis noch nicht fix",
       popular: false
     }
   ];
