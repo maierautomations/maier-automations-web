@@ -154,3 +154,80 @@
     transform: translateY(0);
   }
 }
+
+/* Mobile-specific optimizations */
+@layer utilities {
+  /* Viewport height fix for mobile */
+  .min-h-screen-mobile {
+    min-height: calc(var(--vh, 1vh) * 100);
+  }
+  
+  /* Touch-friendly interactions */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  
+  /* Mobile performance optimizations */
+  @media (max-width: 768px) {
+    /* Reduce animation complexity on mobile */
+    .animate-drift,
+    .animate-float {
+      animation: none;
+    }
+    
+    /* Optimize shadows for mobile */
+    .shadow-elevated {
+      @apply shadow-soft;
+    }
+    
+    /* Simplify gradients on mobile */
+    .card-glass {
+      background: hsl(0, 0%, 100%);
+      backdrop-filter: none;
+    }
+    
+    /* Better touch targets */
+    button,
+    [role="button"],
+    .cursor-pointer {
+      @apply touch-target;
+    }
+    
+    /* Optimize text for mobile reading */
+    h1, h2, h3 {
+      text-wrap: balance;
+    }
+    
+    p {
+      text-wrap: pretty;
+    }
+  }
+  
+  /* High-contrast mode support */
+  @media (prefers-contrast: high) {
+    .bg-gradient-to-r,
+    .bg-gradient-to-br,
+    .gradient-hero,
+    .gradient-subtle {
+      background: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+  }
+  
+  /* Focus improvements for keyboard navigation */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+}

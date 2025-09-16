@@ -1,28 +1,36 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, Quote, TrendingUp, Clock } from "lucide-react";
+import { TestimonialCarousel } from "@/components/ui/testimonial-carousel";
+import { TrendingUp, Clock, Users, Shield, Zap } from "lucide-react";
 
 export function SocialProofSection() {
   const stats = [
     {
-      value: "15+",
+      value: 15,
+      suffix: "+",
       label: "Umgesetzte Projekte",
-      description: "Erfolgreiche KI-Automatisierungen"
+      description: "Erfolgreiche KI-Automatisierungen",
+      icon: <Users className="w-6 h-6 text-blue-600" />
     },
     {
-      value: "60%",
+      value: 60,
+      suffix: "%",
       label: "Durchschnittliche Zeitersparnis",
-      description: "Weniger manuelle Arbeit"
+      description: "Weniger manuelle Arbeit",
+      icon: <Zap className="w-6 h-6 text-green-600" />
     },
     {
-      value: "100%",
+      value: 100,
+      suffix: "%",
       label: "DSGVO-Compliance",
-      description: "Alle Projekte rechtssicher"
+      description: "Alle Projekte rechtssicher",
+      icon: <Shield className="w-6 h-6 text-purple-600" />
     },
     {
-      value: "2-3",
-      label: "Wochen bis Go-Live",
-      description: "Von Analyse bis Produktivbetrieb"
+      value: 3,
+      suffix: " Wochen",
+      label: "Bis Go-Live",
+      description: "Von Analyse bis Produktivbetrieb",
+      icon: <Clock className="w-6 h-6 text-orange-600" />
     }
   ];
 
@@ -76,65 +84,33 @@ export function SocialProofSection() {
             für Unternehmen im DACH-Raum.
           </p>
           
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">
-                  {stat.value}
+              <div key={index} className="text-center group hover:scale-105 transition-transform duration-300">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 mb-4 group-hover:shadow-lg group-hover:shadow-blue-500/20 transition-all duration-300">
+                  {stat.icon}
                 </div>
-                <div className="font-semibold text-foreground mb-1">
+                <div className="text-4xl lg:text-5xl font-bold bg-gradient-to-br from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                  {stat.value}{stat.suffix}
+                </div>
+                <h3 className="font-bold text-foreground mb-2 text-lg">
                   {stat.label}
-                </div>
-                <div className="text-sm text-muted-foreground">
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {stat.description}
-                </div>
+                </p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Testimonials */}
+        {/* Testimonials Carousel */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold text-center text-foreground mb-12">
+          <h3 className="text-2xl lg:text-3xl font-bold text-center text-foreground mb-12">
             Was unsere Kunden sagen
           </h3>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-white border-0 shadow-card hover:shadow-elevated transition-all duration-200">
-                <CardContent className="p-6">
-                  <div className="flex items-start mb-4">
-                    <Quote className="w-8 h-8 text-primary/30 mr-3 flex-shrink-0" />
-                    <div className="flex-1">
-                      <div className="flex mb-2">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    "{testimonial.text}"
-                  </p>
-                  
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="font-medium text-foreground">{testimonial.company}</span>
-                      <Badge variant="outline" className="text-xs">
-                        {testimonial.cp}
-                      </Badge>
-                    </div>
-                    
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground">{testimonial.industry}</span>
-                      <span className="font-medium text-green-600">{testimonial.result}</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <TestimonialCarousel testimonials={testimonials} />
         </div>
 
         {/* Partners & Trust Badges */}

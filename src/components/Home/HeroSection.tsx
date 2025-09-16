@@ -1,110 +1,161 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { GradientButton } from "@/components/ui/gradient-button";
 import { Badge } from "@/components/ui/badge";
-import { Shield, Zap, Users, Globe, FileCheck, Lock, Eye } from "lucide-react";
+import { AnimatedGradient } from "@/components/ui/animated-gradient";
+import { AnimatedCounter } from "@/components/ui/animated-counter";
+import { motion } from "framer-motion";
+import { Shield, Zap, Users, Globe, FileCheck, Lock, Eye, ArrowRight, Star, Clock } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="relative py-20 lg:py-28 gradient-subtle overflow-hidden">
+    <AnimatedGradient variant="mesh" className="relative py-20 lg:py-32 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-4xl mx-auto">
-          {/* Trust Badges */}
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
-            <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
-              <Globe className="w-4 h-4 mr-2" />
-              EU-Hosting (Frankfurt)
-            </Badge>
-            <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
-              <FileCheck className="w-4 h-4 mr-2" />
-              DPA/SCCs verfügbar
-            </Badge>
-            <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
-              <Lock className="w-4 h-4 mr-2" />
-              RBAC-Sicherheit
-            </Badge>
-            <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
-              <Eye className="w-4 h-4 mr-2" />
-              Keine Tracker ohne Einwilligung
-            </Badge>
-          </div>
+        <div className="text-center max-w-5xl mx-auto">
+          {/* Trust Badges - Enhanced */}
+          <motion.div 
+            className="flex flex-wrap justify-center gap-3 mb-8"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            {[
+              { icon: Globe, text: "EU-Hosting (Frankfurt)", color: "green" },
+              { icon: FileCheck, text: "DPA/SCCs verfügbar", color: "blue" },
+              { icon: Lock, text: "RBAC-Sicherheit", color: "purple" },
+              { icon: Eye, text: "Keine Tracker ohne Einwilligung", color: "orange" }
+            ].map((badge, index) => (
+              <motion.div
+                key={badge.text}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+              >
+                <Badge 
+                  variant="secondary" 
+                  className="px-4 py-2 text-sm font-medium bg-white/80 hover:bg-white/90 transition-all duration-300 hover:scale-105"
+                >
+                  <badge.icon className="w-4 h-4 mr-2" />
+                  {badge.text}
+                </Badge>
+              </motion.div>
+            ))}
+          </motion.div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+          <motion.h1 
+            className="text-5xl lg:text-7xl font-bold text-foreground mb-6 leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             KI-Automatisierungen für{" "}
-            <span className="bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 bg-clip-text text-transparent">
               intelligente Unternehmen
             </span>
-          </h1>
+          </motion.h1>
 
           {/* Subline */}
-          <p className="text-xl lg:text-2xl text-muted-foreground mb-10 leading-relaxed max-w-3xl mx-auto">
+          <motion.p 
+            className="text-xl lg:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             Steigern Sie Ihre Effizienz mit maßgeschneiderten KI-Agenten und Automatisierungen auf n8n-Basis. 
             Speziell für DACH-Unternehmen entwickelt – sicher, DSGVO-konform und sofort einsatzbereit.
-          </p>
+          </motion.p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
             <Link to="/analyse">
-              <Button variant="default" size="lg" className="min-w-[200px]">
+              <GradientButton size="lg" className="min-w-[240px] h-14" glow animate>
                 <Zap className="w-5 h-5 mr-2" />
                 Kostenlose Analyse starten
-              </Button>
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </GradientButton>
             </Link>
             <Link to="/pakete">
-              <Button variant="outline" size="lg" className="min-w-[200px]">
+              <Button variant="outline" size="lg" className="min-w-[240px] h-14 bg-white/80 backdrop-blur-sm hover:bg-white/90">
                 <Users className="w-5 h-5 mr-2" />
                 Pakete entdecken
               </Button>
             </Link>
-          </div>
+          </motion.div>
 
-          {/* Trust Indicators */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-lg mb-3">
-                <Shield className="w-6 h-6 text-green-600" />
+          {/* Enhanced Trust Indicators with Animation */}
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-5xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <motion.div 
+              className="text-center group"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500/10 to-emerald-500/20 rounded-xl mb-4 group-hover:shadow-lg group-hover:shadow-green-500/25 transition-all duration-300">
+                <Shield className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="font-semibold text-foreground mb-2">100% DSGVO</h3>
-              <p className="text-xs text-muted-foreground">
+              <h3 className="font-bold text-foreground mb-2 text-lg">100% DSGVO</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 EU-Server • Privacy by Design • DPA verfügbar
               </p>
-            </div>
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-lg mb-3">
-                <Zap className="w-6 h-6 text-blue-600" />
+            </motion.div>
+            
+            <motion.div 
+              className="text-center group"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500/10 to-cyan-500/20 rounded-xl mb-4 group-hover:shadow-lg group-hover:shadow-blue-500/25 transition-all duration-300">
+                <Clock className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="font-semibold text-foreground mb-2">2-3 Wochen</h3>
-              <p className="text-xs text-muted-foreground">
-                Von Analyse bis Go-Live • Vorkonfiguriert
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 rounded-lg mb-3">
-                <Users className="w-6 h-6 text-purple-600" />
+              <AnimatedCounter 
+                end={3} 
+                suffix=" Wochen" 
+                size="sm"
+                title="Bis Go-Live"
+                description="Von Analyse bis Produktivbetrieb"
+              />
+            </motion.div>
+
+            <motion.div 
+              className="text-center group"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500/10 to-pink-500/20 rounded-xl mb-4 group-hover:shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300">
+                <Users className="w-8 h-8 text-purple-600" />
               </div>
-              <h3 className="font-semibold text-foreground mb-2">DACH-Fokus</h3>
-              <p className="text-xs text-muted-foreground">
+              <h3 className="font-bold text-foreground mb-2 text-lg">DACH-Fokus</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 Speziell für deutsche Compliance entwickelt
               </p>
-            </div>
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 rounded-lg mb-3">
-                <Globe className="w-6 h-6 text-orange-600" />
+            </motion.div>
+
+            <motion.div 
+              className="text-center group"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500/10 to-red-500/20 rounded-xl mb-4 group-hover:shadow-lg group-hover:shadow-orange-500/25 transition-all duration-300">
+                <Globe className="w-8 h-8 text-orange-600" />
               </div>
-              <h3 className="font-semibold text-foreground mb-2">n8n Cloud</h3>
-              <p className="text-xs text-muted-foreground">
+              <h3 className="font-bold text-foreground mb-2 text-lg">n8n Cloud</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 Enterprise-Grade • EU-zertifiziert
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-
-      {/* Background decoration */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-primary/3 rounded-full blur-2xl"></div>
-      </div>
-    </section>
+    </AnimatedGradient>
   );
 }

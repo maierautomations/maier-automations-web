@@ -1,15 +1,15 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Check, ArrowRight, Info } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Info } from "lucide-react";
+import { PricingCard } from "@/components/ui/pricing-card";
+import { motion } from "framer-motion";
 
 export function PackageGrid() {
   const packages = [
     {
       name: "Starter",
-      complexityPoints: 3,
+      cp: "3 CP",
+      price: "Preis noch nicht fix",
       description: "Ideal für erste Automatisierungen in kleinen Unternehmen",
       features: [
         "2-3 einfache Workflows",
@@ -17,12 +17,13 @@ export function PackageGrid() {
         "Standard-Support",
         "Basis-Dokumentation"
       ],
-      priceRange: "Preis noch nicht fix",
-      popular: false
+      useCases: ["E-Mail-Automatisierung", "Lead-Qualifizierung", "Basis-Berichte"],
+      isPopular: false
     },
     {
       name: "Core",
-      complexityPoints: 6,
+      cp: "6 CP",
+      price: "Preis noch nicht fix",
       description: "Umfassende Automatisierung für wachsende Unternehmen",
       features: [
         "4-6 komplexe Workflows",
@@ -31,12 +32,13 @@ export function PackageGrid() {
         "Priority Support",
         "3 Monate Optimierung"
       ],
-      priceRange: "Preis noch nicht fix",
-      popular: true
+      useCases: ["Vollständige Lead-Pipeline", "Support-Automation", "Compliance-Workflows"],
+      isPopular: true
     },
     {
       name: "Scale",
-      complexityPoints: 10,
+      cp: "10 CP",
+      price: "Preis noch nicht fix",
       description: "Maximale Automatisierung mit KI-Agenten für Unternehmen",
       features: [
         "8-10 Workflows & Prozesse",
@@ -45,13 +47,13 @@ export function PackageGrid() {
         "Dedicated Support",
         "Kontinuierliche Optimierung"
       ],
-      priceRange: "Preis noch nicht fix",
-      popular: false
+      useCases: ["Wissensmanagement", "Compliance-Automation", "Multi-System-Integration"],
+      isPopular: false
     }
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-gradient-to-b from-white to-gray-50/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-2 mb-4">
@@ -61,9 +63,9 @@ export function PackageGrid() {
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant="ghost" size="icon" className="w-6 h-6">
+                  <button className="w-6 h-6 rounded-full bg-muted hover:bg-muted/80 flex items-center justify-center transition-colors">
                     <Info className="w-4 h-4 text-muted-foreground" />
-                  </Button>
+                  </button>
                 </TooltipTrigger>
                 <TooltipContent className="max-w-sm">
                   <div className="space-y-2">
@@ -84,77 +86,26 @@ export function PackageGrid() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {packages.map((pkg, index) => (
-            <Card 
-              key={index} 
-              className={`relative group animate-fade-in card-modern border-0 ${
-                pkg.popular 
-                  ? 'ring-2 ring-primary/20 shadow-elevated scale-105' 
-                  : 'shadow-card hover:shadow-elevated hover:scale-[1.02]'
-              } transition-all duration-300 ease-out`}
-              style={{ animationDelay: `${index * 100}ms` }}
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
             >
-              {pkg.popular && (
-                <Badge className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-2 font-medium shadow-soft">
-                  Beliebteste Wahl
-                </Badge>
-              )}
-              
-              <CardHeader className="text-center pb-6">
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <CardTitle className="text-2xl font-bold text-foreground">{pkg.name}</CardTitle>
-                  <Badge variant="outline" className="text-xs font-medium border-primary/30 text-primary bg-primary/5">
-                    {pkg.complexityPoints} CP
-                  </Badge>
-                </div>
-                <div className="mb-6">
-                  <span className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent">
-                    {pkg.priceRange}
-                  </span>
-                </div>
-                <CardDescription className="text-base leading-relaxed text-muted-foreground px-2">
-                  {pkg.description}
-                </CardDescription>
-              </CardHeader>
-              
-              <CardContent className="px-6 pb-8">
-                <ul className="space-y-4 mb-8">
-                  {pkg.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-sm leading-relaxed text-foreground">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <Link to="/analyse" className="w-full block">
-                  <Button 
-                    variant={pkg.popular ? "default" : "outline"} 
-                    className={`w-full h-12 text-base font-medium rounded-lg transition-all duration-200 ${
-                      pkg.popular 
-                        ? 'bg-primary hover:bg-primary-hover shadow-soft hover:shadow-elevated' 
-                        : 'border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-soft'
-                    }`}
-                  >
-                    Kostenlose Analyse
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
+              <PricingCard
+                name={pkg.name}
+                cp={pkg.cp}
+                price={pkg.price}
+                description={pkg.description}
+                features={pkg.features}
+                useCases={pkg.useCases}
+                isPopular={pkg.isPopular}
+                href="/analyse"
+              />
+            </motion.div>
           ))}
-        </div>
-
-        <div className="text-center mt-16">
-          <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Benötigen Sie mehr als 10 Complexity Points? Wir entwickeln auch individuelle Lösungen.
-          </p>
-          <Link to="/kontakt">
-            <Button variant="outline" size="lg" className="btn-modern border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground">
-              Individuelle Lösung anfragen
-            </Button>
-          </Link>
         </div>
       </div>
     </section>

@@ -1,12 +1,15 @@
 import { Header } from "@/components/Layout/Header";
 import { Footer } from "@/components/Layout/Footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { GradientButton } from "@/components/ui/gradient-button";
 import { Badge } from "@/components/ui/badge";
-import { Check, Star, Calculator } from "lucide-react";
+import { PricingCard } from "@/components/ui/pricing-card";
+import { AnimatedGradient } from "@/components/ui/animated-gradient";
+import { Calculator, ArrowRight } from "lucide-react";
 import { CPTooltip } from "@/components/ui/cp-tooltip";
 import { Link } from "react-router-dom";
 import { SEOHead } from "@/components/SEO/SEOHead";
+import { motion } from "framer-motion";
 
 export default function Packages() {
   const packages = [
@@ -128,136 +131,90 @@ export default function Packages() {
         </section>
 
         {/* Packages */}
-        <section className="py-16">
+        <section className="py-20 bg-gradient-to-b from-white to-gray-50/50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
               {packages.map((pkg, index) => (
-                <Card 
-                  key={index} 
-                  className={`relative group animate-fade-in card-modern border-0 ${
-                    pkg.popular 
-                      ? 'ring-2 ring-primary/20 shadow-elevated scale-105' 
-                      : 'shadow-card hover:shadow-elevated hover:scale-[1.02]'
-                  } transition-all duration-300 ease-out`}
-                  style={{ animationDelay: `${index * 150}ms` }}
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  className={pkg.name === "Custom" ? "xl:col-span-1" : ""}
                 >
-                  {pkg.popular && (
-                    <div className="absolute -top-5 left-1/2 -translate-x-1/2">
-                      <Badge className="bg-primary text-primary-foreground px-6 py-2 font-semibold shadow-soft">
-                        <Star className="w-4 h-4 mr-2" />
-                        Beliebteste Wahl
-                      </Badge>
-                    </div>
-                  )}
-                  
-                  <CardHeader className="text-center pb-8">
-                    <CardTitle className="text-3xl font-bold mb-4 text-foreground">{pkg.name}</CardTitle>
-                    <div className="mb-4">
-                      <div className="flex items-center justify-center gap-2 mb-2">
-                        <span className="text-5xl font-bold bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent">
-                          {pkg.cp}
-                        </span>
-                        <CPTooltip />
-                      </div>
-                      <Badge variant="outline" className="mb-2">
-                        {pkg.price}
-                      </Badge>
-                    </div>
-                    <CardDescription className="text-lg leading-relaxed text-muted-foreground px-4 mb-4">
-                      {pkg.description}
-                    </CardDescription>
-                    <div className="text-sm text-muted-foreground px-4">
-                      <strong>Typische Anwendung:</strong> {pkg.cpDetails}
-                    </div>
-                  </CardHeader>
-                  
-                  <CardContent className="pt-0 px-8 pb-8">
-                    <ul className="space-y-5 mb-6">
-                      {pkg.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-start gap-4">
-                          <Check className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
-                          <span className="text-base leading-relaxed text-foreground">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    
-                    <div className="mb-6 p-4 bg-primary/5 rounded-lg">
-                      <h4 className="font-semibold text-sm text-primary mb-2">Typische Anwendungsfälle:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {pkg.useCases.map((useCase, ucIndex) => (
-                          <Badge key={ucIndex} variant="secondary" className="text-xs">
-                            {useCase}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <Link to="/analyse">
-                      <Button 
-                        variant={pkg.popular ? "default" : "outline"} 
-                        className={`w-full h-14 text-lg font-semibold rounded-lg transition-all duration-200 ${
-                          pkg.popular 
-                            ? 'bg-primary hover:bg-primary-hover shadow-soft hover:shadow-elevated' 
-                            : 'border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-soft'
-                        }`}
-                        size="lg"
-                      >
-                        {pkg.name === "Custom" ? "Individuelle Analyse" : "Kostenlose Analyse starten"}
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
+                  <PricingCard
+                    name={pkg.name}
+                    cp={pkg.cp}
+                    price={pkg.price}
+                    description={pkg.description}
+                    features={pkg.features}
+                    useCases={pkg.useCases}
+                    isPopular={pkg.popular}
+                    href={pkg.name === "Custom" ? "/kontakt" : "/analyse"}
+                  />
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-16 bg-surface">
+        {/* Enhanced CTA Section */}
+        <AnimatedGradient variant="subtle" className="py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Welches Paket passt zu Ihnen?
-            </h2>
-            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Unsere kostenlose Prozess-Analyse ermittelt Ihre benötigten Complexity Points und 
-              empfiehlt das optimale Paket. Unverbindlich und in nur 30 Minuten.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Link to="/analyse">
-                <Button variant="default" size="lg" className="bg-primary hover:bg-primary-hover shadow-soft btn-modern">
-                  <Calculator className="w-5 h-5 mr-2" />
-                  CP-Analyse starten
-                </Button>
-              </Link>
-              <Link to="/kontakt">
-                <Button variant="outline" size="lg" className="border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground btn-modern">
-                  Persönliche Beratung
-                </Button>
-              </Link>
-            </div>
-            
-            <div className="mt-8 p-6 bg-primary/5 rounded-lg max-w-3xl mx-auto">
-              <h3 className="font-semibold text-foreground mb-2">💡 CP-Formel verstehen</h3>
-              <p className="text-sm text-muted-foreground mb-3">
-                CP = (#Workflows) + 2×(#Agenten) + (RAG Pro? 3-4 : 0) + Komplexitäts-Extras
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
+                Welches Paket passt zu Ihnen?
+              </h2>
+              <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
+                Unsere kostenlose Prozess-Analyse ermittelt Ihre benötigten Complexity Points und 
+                empfiehlt das optimale Paket. Unverbindlich und in nur 30 Minuten.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                <div className="text-center p-3 bg-background rounded-lg">
-                  <div className="font-semibold text-blue-600">Beispiel Starter</div>
-                  <div className="text-xs text-muted-foreground">2 Workflows + 1 Simple-Task = 3 CP</div>
-                </div>
-                <div className="text-center p-3 bg-background rounded-lg">
-                  <div className="font-semibold text-green-600">Beispiel Core</div>
-                  <div className="text-xs text-muted-foreground">4 Workflows + 1 Agent = 6 CP</div>
-                </div>
-                <div className="text-center p-3 bg-background rounded-lg">
-                  <div className="font-semibold text-purple-600">Beispiel Scale</div>
-                  <div className="text-xs text-muted-foreground">3 Workflows + 1 Agent + RAG Pro = 9 CP</div>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                <Link to="/analyse">
+                  <GradientButton size="lg" className="min-w-[220px] h-14" glow>
+                    <Calculator className="w-5 h-5 mr-2" />
+                    CP-Analyse starten
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </GradientButton>
+                </Link>
+                <Link to="/kontakt">
+                  <Button variant="outline" size="lg" className="min-w-[220px] h-14 bg-white/80 backdrop-blur-sm hover:bg-white/90">
+                    Persönliche Beratung
+                  </Button>
+                </Link>
+              </div>
+              
+              <div className="max-w-4xl mx-auto">
+                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-white/30 shadow-lg">
+                  <h3 className="font-bold text-foreground mb-4 text-lg">💡 CP-Formel verstehen</h3>
+                  <p className="text-muted-foreground mb-6 text-lg">
+                    CP = (#Workflows) + 2×(#Agenten) + (RAG Pro? 3-4 : 0) + Komplexitäts-Extras
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="text-center p-6 bg-blue-50 rounded-xl border border-blue-100">
+                      <div className="font-bold text-blue-600 text-lg mb-1">Beispiel Starter</div>
+                      <div className="text-sm text-muted-foreground">2 Workflows + 1 Simple-Task = 3 CP</div>
+                    </div>
+                    <div className="text-center p-6 bg-green-50 rounded-xl border border-green-100">
+                      <div className="font-bold text-green-600 text-lg mb-1">Beispiel Core</div>
+                      <div className="text-sm text-muted-foreground">4 Workflows + 1 Agent = 6 CP</div>
+                    </div>
+                    <div className="text-center p-6 bg-purple-50 rounded-xl border border-purple-100">
+                      <div className="font-bold text-purple-600 text-lg mb-1">Beispiel Scale</div>
+                      <div className="text-sm text-muted-foreground">3 Workflows + 1 Agent + RAG Pro = 9 CP</div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </AnimatedGradient>
       </main>
       
       <Footer />

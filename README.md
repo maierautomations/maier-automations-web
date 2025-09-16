@@ -1,54 +1,90 @@
-# Welcome to your Lovable project
+# Maier Automations Website
 
-## Project info
+## 1. Wer wir sind & für wen
 
-**URL**: https://lovable.dev/projects/bcc4a286-9e14-4b74-a8d4-492b342d28f2
+Maier Automations entwickelt maßgeschneiderte Automatisierungen und KI-Agenten auf Basis von n8n Cloud (EU/Frankfurt) für KMU in der DACH-Region.
+Zielgruppe: Geschäftsführung, Operations, IT/Digital in kleinen und mittleren Unternehmen.
 
-## How can I edit this code?
+## 2. Nutzenversprechen (Nutzen vor Technik)
 
-There are several ways of editing your application.
+• Routinearbeit reduzieren, damit Teams sich auf wertschöpfende Aufgaben konzentrieren.
+• Antwortzeiten verkürzen in Vertrieb und Support (Priorisierung, Vorqualifizierung, Entwürfe).
+• Fehler senken durch Validierungen, Freigaben und klare Schritte.
+• Transparenz erhöhen: Benachrichtigungen, nachvollziehbare Abläufe, einfache Auswertungen.
+• Nahtlose Integration in bestehende Systeme (CRM, Tickets, ERP/Finance, Kommunikation, Wissensquellen).
+• DSGVO-konform: EU-Region, Datenminimierung, klare Einwilligungen.
 
-**Use Lovable**
+## 3. Angebote & Pakete (CP-Modell – knapp erklärt)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/bcc4a286-9e14-4b74-a8d4-492b342d28f2) and start prompting.
+Wir planen Umfang mit Complexity Points (CP) – einfach, transparent, erweiterbar.
+• 1 Workflow = 1 CP (typischer Automationsfluss mit 1–2 Integrationen, Fehlerpfad, Idempotenz).
+• 1 Agent = 2 CP (Tools-Orchestrierung, klare Regeln, Memory).
+• RAG Pro = 3–4 CP (Antworten mit Quellen; Tabellen werden exakt ausgewertet – Details genügen hier).
+• +1 CP bei zusätzlicher Komplexität (z. B. >2 Integrationen, Freigabe/HITL, kleines Custom-UI).
 
-Changes made via Lovable will be committed automatically to this repo.
+Formel (Richtwert):
+CP ≈ (#Workflows) + 2×(#Agenten) + (RAG Pro? 3–4 : 0) + Summe der Extras.
+Pakete: Starter (3 CP) • Core (6 CP) • Scale (10 CP) • Custom (>10 CP).
+Ablauf: Vorläufige CP-Schätzung über den Funnel → verbindlich im Blueprint; Änderungen nur in +1 CP.
 
-**Use your preferred IDE**
+## 4. RAG Pro (Premium) – kurz & verständlich
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Wissens- & Analyse-Agent: liefert Antworten mit Quellen und wertet Tabellen korrekt aus. Sinnvoll, wenn viel Wissen/Dokumente verteilt sind (Support-Wissen, interne Nachschlagefälle, Backoffice-Prüfungen). Optional On-Prem/Private.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 5. Arbeitsweise (kundenverständlich)
 
-Follow these steps:
+Discovery → Blueprint → Build → Handover → optional Run/Monitoring
+• Discovery/Funnel: Ziele, Systeme, Datenlage, EU-Vorgaben.
+• Blueprint: Scope per CP, klare Abnahmekriterien, Zeithinweise.
+• Build: kleine, testbare Einheiten; saubere Benennung; Fehlerpfade/Benachrichtigungen.
+• Handover: Runbook, kurze Schulung; optional leichter Betrieb/Health-Review.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+##6. Website-Zielbild (für Conversion & Klarheit)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Navigation: Start • Pakete • RAG Pro • Blog • Analyse (CTA) • Kontakt • Impressum • Datenschutz
+• Above-the-Fold: klare Aussage Was/Für wen/Nutzen + Primär-CTA „Kostenlose Prozess-Analyse starten“ + kleine Trust-Leiste (EU-Hosting (Frankfurt) • DPA/SCCs • RBAC • keine Tracker ohne Einwilligung).
+• Pakete/CP: drei Karten (Starter/Core/Scale) mit kurzem CP-Tooltip und Preisband „noch nicht fix“.
+• RAG Pro Seite: Nutzen, kurzer Prozessüberblick (Quellen, Tabellen korrekt), „Wann passt es?“, Hinweis auf Qualität/Eval.
+• Blog & Newsletter (DOI): praxisnahe Inhalte, klare CTAs; Newsletter stets Double-Opt-In.
+• Analyse (Funnel): siehe unten.
 
-# Step 3: Install the necessary dependencies.
-npm i
+##7. Funnel-Wizard (Lead-Erfassung & CP-Schätzung)
+• Schritt 0 (optional, empfohlen): Website-URL – wir analysieren nur öffentliche Inhalte (keine personenbezogenen Daten).
+• Danach 8 kurze Schritte (je 2–3 Felder, Chips, „Überspringen“ möglich): Branche/Abteilung • Ziele (max. 2) • Systeme • Datenlage (Dokumente/Tabellen, Mengen, Quellenpflicht ja/nein) • Volumen/Häufigkeit • Datenschutz/Region (EU-only? On-Prem?) • Zeit/Budget-Range • größter Pain-Point (kurz).
+• Ergebnis: „≈ X CP → Paketvorschlag (Starter/Core/Scale)“, ggf. „RAG Pro empfohlen“. Zeithinweis indikativ, Preise „noch nicht fix“. CTA: Termin/Analyse per E-Mail.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## 8. Content & SEO (kurz)
 
-**Edit a file directly in GitHub**
+• Kategorien: Playbooks (n8n) • Agenten-Praxis • RAG-Wissen • Compliance • Cases (kurz) • How-Tos.
+• On-Page-Basics: klare Titles/Meta-Descriptions, OG-Bilder, sitemap.xml, robots.txt, interne Links auf Pakete, RAG Pro, Analyse.
+• Jeder Beitrag endet mit CTA „Analyse starten“ + Newsletter (DOI).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 9. n8n-Umsetzung – pragmatische Leitplanken
 
-**Use GitHub Codespaces**
+• Pro Kunde eigener n8n-Cloud-Workspace (Kunde ist Owner), wir per RBAC (Least-Privilege).
+• Workflows: klein & testbar; Idempotenz; Retry/Backoff; Benachrichtigungen bei Fehlern; sinnvolle Namensgebung.
+• Agenten: klare Regeln, nur erlaubte Schritte; Memory, Freigabe (HITL) bei kritischen Aktionen.
+• Logging leichtgewichtig: nur notwendige Metadaten (keine sensiblen Inhalte); Aufbewahrung kurz halten.
+• Integration: an bestehende Systeme andocken statt „neue Tools erzwingen“.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 10. Compliance (DACH-tauglich, ohne Overkill)
+
+    • EU-Region, Datenminimierung, Double-Opt-In beim Newsletter; Cookie-Banner nur, wenn technisch nötig.
+    • Verträge: DPA/SCCs mit n8n; DPA zwischen Kunde und Maier Automations; LLM-Provider möglichst über Kundenaccounts.
+    • Transparenz statt Rechtsberatung: klare Hinweise, Checklisten, Runbooks – keine juristischen Bewertungen.
+
+## 11. Qualitäts- und Abnahmekriterien (Kurzfassung)
+
+    • Website: Above-the-Fold verständlich + CTA; Pakete mit CP-Tooltip; RAG Pro Nutzen klar; Funnel mit Schritt 0 URL und Ergebnis (≈ CP + Paket); Pflichtseiten/DOI sauber; SEO-Basics vorhanden; mobil und barrierearm.
+    • Lösungen: definierte Abnahmekriterien je Workflow/Agent (messbar), nachvollziehbare Abläufe, Fehlerpfad & Benachrichtigungen, Runbook für Übergabe.
+
+## 12. Du hast zudem Zugriff auf meinen Supabase Account mit dem Supabase MCP Server. Hier sind meine Datenbanken hinterlegt.
+
+⸻
+
+### Essenz:
+
+Wir liefern custom n8n-Workflows und KI-Agenten, die Routine entfernen, Antworten beschleunigen und Fehler senken – DSGVO-konform, im bestehenden Tool-Stack der Kunden. Das CP-Modell macht Umfang transparent; RAG Pro liefert Antworten mit Quellen und korrekten Tabellen-Ergebnissen. Die Website führt klar zu Paketen, RAG Pro und dem Analyse-Funnel.
 
 ## What technologies are used for this project?
 
@@ -59,15 +95,3 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/bcc4a286-9e14-4b74-a8d4-492b342d28f2) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)

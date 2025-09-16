@@ -1,13 +1,28 @@
 import { useState } from "react";
-import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, ArrowRight, CheckCircle, Loader2, Globe } from "lucide-react";
+import { WizardProgress } from "@/components/ui/wizard-progress";
+import { 
+  ArrowLeft, 
+  ArrowRight, 
+  CheckCircle, 
+  Loader2, 
+  Globe, 
+  User, 
+  Building2, 
+  Target, 
+  Database, 
+  FileText, 
+  Activity, 
+  Shield, 
+  Calendar, 
+  AlertCircle 
+} from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -79,6 +94,19 @@ const initialData: WizardData = {
   budgetRange: "",
   mainPainPoint: ""
 };
+
+const wizardSteps = [
+  { id: 0, label: "Website", icon: <Globe className="w-5 h-5" />, isOptional: true },
+  { id: 1, label: "Kontakt", icon: <User className="w-5 h-5" /> },
+  { id: 2, label: "Bereich", icon: <Building2 className="w-5 h-5" /> },
+  { id: 3, label: "Ziele", icon: <Target className="w-5 h-5" /> },
+  { id: 4, label: "Systeme", icon: <Database className="w-5 h-5" /> },
+  { id: 5, label: "Daten", icon: <FileText className="w-5 h-5" /> },
+  { id: 6, label: "Volumen", icon: <Activity className="w-5 h-5" /> },
+  { id: 7, label: "Sicherheit", icon: <Shield className="w-5 h-5" /> },
+  { id: 8, label: "Zeitplan", icon: <Calendar className="w-5 h-5" /> },
+  { id: 9, label: "Problem", icon: <AlertCircle className="w-5 h-5" /> }
+];
 
 export function WizardForm() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -718,16 +746,24 @@ export function WizardForm() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <Card>
-        <CardHeader>
-          <div className="flex items-center justify-between mb-4">
-            <CardTitle>Bedarfsanalyse</CardTitle>
-            <Badge variant="outline">
-              Schritt {currentStep + 1} von {totalSteps}
-            </Badge>
+    <div className="max-w-4xl mx-auto space-y-8">
+      {/* Visual Progress System */}
+      <Card className="p-8 bg-gradient-to-br from-primary/5 to-accent/5 border-0 shadow-soft">
+        <WizardProgress 
+          steps={wizardSteps} 
+          currentStep={currentStep}
+          className="mb-4"
+        />
+      </Card>
+      
+      {/* Main Content Card */}
+      <Card className="shadow-elevated">
+        <CardHeader className="pb-6">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-foreground">
+              {wizardSteps[currentStep]?.label}
+            </h2>
           </div>
-          <Progress value={progress} className="w-full" />
         </CardHeader>
         
         <CardContent className="space-y-6">
@@ -738,6 +774,7 @@ export function WizardForm() {
               variant="outline"
               onClick={handlePrev}
               disabled={currentStep === 0}
+              className="min-w-[120px]"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Zurück
@@ -751,18 +788,21 @@ export function WizardForm() {
               )}
               
               {currentStep === totalSteps - 1 ? (
-                <Button onClick={handleSubmit} disabled={isSubmitting}>
+                <Button onClick={handleSubmit} disabled={isSubmitting} className="min-w-[200px]">
                   {isSubmitting ? (
                     <>
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                       Wird übermittelt...
                     </>
                   ) : (
-                    "Analyse anfordern"
+                    <>
+                      <CheckCircle className="w-4 h-4 mr-2" />
+                      Analyse anfordern
+                    </>
                   )}
                 </Button>
               ) : (
-                <Button onClick={handleNext}>
+                <Button onClick={handleNext} className="min-w-[120px]">
                   Weiter
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
