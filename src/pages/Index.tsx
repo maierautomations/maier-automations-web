@@ -1,7 +1,7 @@
 import { Header } from "@/components/Layout/Header";
 import { Footer } from "@/components/Layout/Footer";
 import { HeroSection } from "@/components/Home/HeroSection";
-import { BentoFeatures } from "@/components/Home/BentoFeatures";
+import { FeatureSection } from "@/components/Home/FeatureSection";
 import { WorkflowShowcase } from "@/components/Home/WorkflowShowcase";
 import { PackageGrid } from "@/components/Home/PackageGrid";
 import { SocialProofSection } from "@/components/Home/SocialProofSection";
@@ -35,7 +35,7 @@ const Index = () => {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <BentoFeatures />
+        <FeatureSection />
         
         <LazySection>
           <WorkflowShowcase />

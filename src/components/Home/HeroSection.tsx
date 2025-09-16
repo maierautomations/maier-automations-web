@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { Shield, Zap, Users, Globe, FileCheck, Lock, Eye, ArrowRight, Star, Clock } from "lucide-react";
 
 export function HeroSection() {
+
   return (
     <AnimatedGradient variant="mesh" className="relative py-20 lg:py-32 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,13 +44,13 @@ export function HeroSection() {
           </motion.div>
 
           {/* Main Headline */}
-          <motion.h1 
+          <motion.h1
             className="text-5xl lg:text-7xl font-bold text-foreground mb-6 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            KI-Automatisierungen für{" "}
+            KI-Automatisierungen für<br />
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 bg-clip-text text-transparent">
               intelligente Unternehmen
             </span>
@@ -76,7 +77,7 @@ export function HeroSection() {
             <Link to="/analyse">
               <GradientButton size="lg" className="min-w-[240px] h-14" glow animate>
                 <Zap className="w-5 h-5 mr-2" />
-                Kostenlose Analyse starten
+                Analyse starten
                 <ArrowRight className="w-4 h-4 ml-2" />
               </GradientButton>
             </Link>
@@ -103,9 +104,9 @@ export function HeroSection() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500/10 to-emerald-500/20 rounded-xl mb-4 group-hover:shadow-lg group-hover:shadow-green-500/25 transition-all duration-300">
                 <Shield className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="font-bold text-foreground mb-2 text-lg">100% DSGVO</h3>
+              <h3 className="font-bold text-foreground mb-2 text-lg">60% weniger Routinearbeit</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                EU-Server • Privacy by Design • DPA verfügbar
+                durch KI-Agenten & Workflows
               </p>
             </motion.div>
             
@@ -117,13 +118,10 @@ export function HeroSection() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500/10 to-cyan-500/20 rounded-xl mb-4 group-hover:shadow-lg group-hover:shadow-blue-500/25 transition-all duration-300">
                 <Clock className="w-8 h-8 text-blue-600" />
               </div>
-              <AnimatedCounter 
-                end={3} 
-                suffix=" Wochen" 
-                size="sm"
-                title="Bis Go-Live"
-                description="Von Analyse bis Produktivbetrieb"
-              />
+              <h3 className="font-bold text-foreground mb-2 text-lg">Kickoff in 48h</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Go-Live nach 3 Wochen*
+              </p>
             </motion.div>
 
             <motion.div 
@@ -148,9 +146,9 @@ export function HeroSection() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500/10 to-red-500/20 rounded-xl mb-4 group-hover:shadow-lg group-hover:shadow-orange-500/25 transition-all duration-300">
                 <Globe className="w-8 h-8 text-orange-600" />
               </div>
-              <h3 className="font-bold text-foreground mb-2 text-lg">n8n Cloud</h3>
+              <h3 className="font-bold text-foreground mb-2 text-lg">500+ Integrationen</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Enterprise-Grade • EU-zertifiziert
+                über n8n-Cloud
               </p>
             </motion.div>
           </motion.div>

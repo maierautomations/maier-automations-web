@@ -16,6 +16,9 @@ import Imprint from "./pages/Imprint";
 import Privacy from "./pages/Privacy";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
+import Terms from "./pages/Terms";
+import CPSystem from "./pages/CPSystem";
+import FAQ from "./pages/FAQ";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +41,9 @@ const App = () => (
             <Route path="/kontakt" element={<Contact />} />
             <Route path="/impressum" element={<Imprint />} />
             <Route path="/datenschutz" element={<Privacy />} />
+            <Route path="/agb" element={<Terms />} />
+            <Route path="/cp-system" element={<CPSystem />} />
+            <Route path="/faq" element={<FAQ />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

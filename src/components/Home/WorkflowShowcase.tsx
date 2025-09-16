@@ -187,7 +187,7 @@ export function WorkflowShowcase() {
               automatisiert werden können. Kostenlos und unverbindlich.
             </p>
             <Button size="lg" className="shadow-soft hover:shadow-elevated transition-all duration-200">
-              Kostenlose Analyse starten
+              Analyse starten
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>

@@ -32,6 +32,29 @@ export function BentoFeatures() {
           <p className="text-lg text-muted-foreground">
             Wir entwickeln maßgeschneiderte KI-Lösungen, die Ihre Geschäftsprozesse intelligent automatisieren und nachhaltig optimieren.
           </p>
+
+          {/* Trust-Leiste */}
+          <div className="mt-8 flex flex-wrap justify-center items-center gap-4 text-sm font-medium text-muted-foreground">
+            <span className="flex items-center gap-1">
+              <CheckCircle2 className="w-4 h-4 text-green-600" />
+              EU-Server Frankfurt
+            </span>
+            <span className="text-gray-300">•</span>
+            <span className="flex items-center gap-1">
+              <CheckCircle2 className="w-4 h-4 text-green-600" />
+              DPA/SCCs
+            </span>
+            <span className="text-gray-300">•</span>
+            <span className="flex items-center gap-1">
+              <CheckCircle2 className="w-4 h-4 text-green-600" />
+              RBAC
+            </span>
+            <span className="text-gray-300">•</span>
+            <span className="flex items-center gap-1">
+              <CheckCircle2 className="w-4 h-4 text-green-600" />
+              n8n Cloud
+            </span>
+          </div>
         </div>
 
         <BentoGrid className="max-w-7xl mx-auto">
@@ -165,7 +188,7 @@ export function BentoFeatures() {
             </p>
             <div className="mt-auto">
               <div className="text-2xl font-bold text-purple-600 mb-1">
-                2-3 Wochen
+                Typischer Zeitrahmen: 2-4 Wochen
               </div>
               <p className="text-xs text-muted-foreground">Bis Go-Live</p>
             </div>

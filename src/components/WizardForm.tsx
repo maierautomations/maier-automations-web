@@ -7,21 +7,32 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { WizardProgress } from "@/components/ui/wizard-progress";
-import { 
-  ArrowLeft, 
-  ArrowRight, 
-  CheckCircle, 
-  Loader2, 
-  Globe, 
-  User, 
-  Building2, 
-  Target, 
-  Database, 
-  FileText, 
-  Activity, 
-  Shield, 
-  Calendar, 
-  AlertCircle 
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Check, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import {
+  ArrowLeft,
+  ArrowRight,
+  CheckCircle,
+  Loader2,
+  Globe,
+  User,
+  Building2,
+  Target,
+  Database,
+  FileText,
+  AlertCircle
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -30,82 +41,62 @@ interface WizardData {
   // Step 0 - URL Analysis
   websiteUrl: string;
   websiteAnalysisConsent: boolean;
-  
-  // Contact
+
+  // Step 1 - Branche & Abteilung
+  industry: string[];
+  industryOther: string;
+  department: string[];
+
+  // Step 2 - Ziele
+  goals: string[];
+  goalsOther: string;
+
+  // Step 3 - Genutzte Systeme
+  currentSystems: string[];
+  systemsOther: string;
+
+  // Step 4 - Datenlage
+  documentTypes: string[];
+  dataVolume: string;
+  sourceRequirements: boolean;
+
+  // Step 5 - Contact & Pain Point
   firstName: string;
   lastName: string;
   email: string;
   company: string;
   phone: string;
-  
-  // Step 1
-  industry: string[];
-  department: string[];
-  
-  // Step 2
-  goals: string[];
-  
-  // Step 3
-  currentSystems: string[];
-  
-  // Step 4
-  documentTypes: string[];
-  dataVolume: string;
-  sourceRequirements: boolean;
-  
-  // Step 5
-  monthlyQueries: string;
-  usageFrequency: string;
-  
-  // Step 6
-  dataCategory: string;
-  euProcessingOnly: boolean;
-  onPremiseRequired: boolean;
-  
-  // Step 7
-  timeframe: string;
-  budgetRange: string;
-  
-  // Step 8
   mainPainPoint: string;
 }
 
 const initialData: WizardData = {
   websiteUrl: "",
   websiteAnalysisConsent: false,
+  industry: [],
+  industryOther: "",
+  department: [],
+  goals: [],
+  goalsOther: "",
+  currentSystems: [],
+  systemsOther: "",
+  documentTypes: [],
+  dataVolume: "",
+  sourceRequirements: false,
   firstName: "",
   lastName: "",
   email: "",
   company: "",
   phone: "",
-  industry: [],
-  department: [],
-  goals: [],
-  currentSystems: [],
-  documentTypes: [],
-  dataVolume: "",
-  sourceRequirements: false,
-  monthlyQueries: "",
-  usageFrequency: "",
-  dataCategory: "",
-  euProcessingOnly: false,
-  onPremiseRequired: false,
-  timeframe: "",
-  budgetRange: "",
   mainPainPoint: ""
 };
 
 const wizardSteps = [
   { id: 0, label: "Website", icon: <Globe className="w-5 h-5" />, isOptional: true },
-  { id: 1, label: "Kontakt", icon: <User className="w-5 h-5" /> },
-  { id: 2, label: "Bereich", icon: <Building2 className="w-5 h-5" /> },
-  { id: 3, label: "Ziele", icon: <Target className="w-5 h-5" /> },
-  { id: 4, label: "Systeme", icon: <Database className="w-5 h-5" /> },
-  { id: 5, label: "Daten", icon: <FileText className="w-5 h-5" /> },
-  { id: 6, label: "Volumen", icon: <Activity className="w-5 h-5" /> },
-  { id: 7, label: "Sicherheit", icon: <Shield className="w-5 h-5" /> },
-  { id: 8, label: "Zeitplan", icon: <Calendar className="w-5 h-5" /> },
-  { id: 9, label: "Problem", icon: <AlertCircle className="w-5 h-5" /> }
+  { id: 1, label: "Bereich", icon: <Building2 className="w-5 h-5" /> },
+  { id: 2, label: "Ziele", icon: <Target className="w-5 h-5" /> },
+  { id: 3, label: "Systeme", icon: <Database className="w-5 h-5" /> },
+  { id: 4, label: "Daten", icon: <FileText className="w-5 h-5" /> },
+  { id: 5, label: "Kontakt & Problem", icon: <User className="w-5 h-5" /> }
 ];
 
 export function WizardForm() {
@@ -113,9 +104,11 @@ export function WizardForm() {
   const [data, setData] = useState<WizardData>(initialData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [systemsOpen, setSystemsOpen] = useState(false);
+  const [systemSearchTerm, setSystemSearchTerm] = useState("");
   const { toast } = useToast();
 
-  const totalSteps = 10; // URL + Contact + 8 steps
+  const totalSteps = 6; // URL + 5 steps
   const progress = ((currentStep + 1) / totalSteps) * 100;
 
   const handleArrayToggle = (field: keyof WizardData, value: string) => {
@@ -178,13 +171,13 @@ export function WizardForm() {
         document_types: data.documentTypes,
         data_volume: data.dataVolume,
         source_requirements: data.sourceRequirements,
-        monthly_queries: data.monthlyQueries ? parseInt(data.monthlyQueries) : null,
-        usage_frequency: data.usageFrequency,
-        data_category: data.dataCategory,
-        eu_processing_only: data.euProcessingOnly,
-        on_premise_required: data.onPremiseRequired,
-        timeframe: data.timeframe,
-        budget_range: data.budgetRange,
+        monthly_queries: null,
+        usage_frequency: null,
+        data_category: null,
+        eu_processing_only: false,
+        on_premise_required: false,
+        timeframe: null,
+        budget_range: null,
         main_pain_point: data.mainPainPoint,
         ip_address: null,
         user_agent: navigator.userAgent
@@ -335,70 +328,7 @@ export function WizardForm() {
           </div>
         );
 
-      case 1: // Contact Information
-        return (
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-2xl font-bold mb-2">Kontaktdaten</h2>
-              <p className="text-muted-foreground">Damit wir uns bei Ihnen melden können.</p>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="firstName">Vorname *</Label>
-                <Input
-                  id="firstName"
-                  value={data.firstName}
-                  onChange={(e) => setData(prev => ({ ...prev, firstName: e.target.value }))}
-                  placeholder="Max"
-                />
-              </div>
-              <div>
-                <Label htmlFor="lastName">Nachname *</Label>
-                <Input
-                  id="lastName"
-                  value={data.lastName}
-                  onChange={(e) => setData(prev => ({ ...prev, lastName: e.target.value }))}
-                  placeholder="Mustermann"
-                />
-              </div>
-            </div>
-            
-            <div>
-              <Label htmlFor="email">E-Mail-Adresse *</Label>
-              <Input
-                id="email"
-                type="email"
-                value={data.email}
-                onChange={(e) => setData(prev => ({ ...prev, email: e.target.value }))}
-                placeholder="max@unternehmen.de"
-              />
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="company">Unternehmen</Label>
-                <Input
-                  id="company"
-                  value={data.company}
-                  onChange={(e) => setData(prev => ({ ...prev, company: e.target.value }))}
-                  placeholder="Mustermann GmbH"
-                />
-              </div>
-              <div>
-                <Label htmlFor="phone">Telefon</Label>
-                <Input
-                  id="phone"
-                  value={data.phone}
-                  onChange={(e) => setData(prev => ({ ...prev, phone: e.target.value }))}
-                  placeholder="+49 123 456 789"
-                />
-              </div>
-            </div>
-          </div>
-        );
-
-      case 2: // Branche & Abteilung
+      case 1: // Branche & Abteilung
         return (
           <div className="space-y-6">
             <div>
@@ -420,6 +350,15 @@ export function WizardForm() {
                   </Badge>
                 ))}
               </div>
+              {data.industry.includes("Sonstiges") && (
+                <div className="mt-2">
+                  <Input
+                    value={data.industryOther}
+                    onChange={(e) => setData(prev => ({ ...prev, industryOther: e.target.value }))}
+                    placeholder="Bitte spezifizieren Sie Ihre Branche"
+                  />
+                </div>
+              )}
             </div>
             
             <div>
@@ -440,7 +379,7 @@ export function WizardForm() {
           </div>
         );
 
-      case 3: // Ziele
+      case 2: // Ziele
         return (
           <div className="space-y-6">
             <div>
@@ -457,7 +396,8 @@ export function WizardForm() {
                 "Kostenoptimierung",
                 "Compliance-Verbesserung",
                 "Mitarbeiterentlastung",
-                "Skalierung von Prozessen"
+                "Skalierung von Prozessen",
+                "Sonstige Ziele"
               ].map((goal) => (
                 <div key={goal} className="flex items-center space-x-2">
                   <Checkbox
@@ -470,6 +410,16 @@ export function WizardForm() {
                 </div>
               ))}
             </div>
+
+            {data.goals.includes("Sonstige Ziele") && (
+              <div className="mt-2">
+                <Input
+                  value={data.goalsOther}
+                  onChange={(e) => setData(prev => ({ ...prev, goalsOther: e.target.value }))}
+                  placeholder="Bitte beschreiben Sie Ihre weiteren Ziele"
+                />
+              </div>
+            )}
             
             {data.goals.length >= 2 && (
               <p className="text-sm text-muted-foreground">Sie haben die maximale Anzahl von 2 Zielen ausgewählt.</p>
@@ -477,67 +427,171 @@ export function WizardForm() {
           </div>
         );
 
-      case 4: // Genutzte Systeme
+      case 3: { // Genutzte Systeme
+        const systemCategories = [
+          {
+            label: "CRM-Systeme",
+            items: ["Salesforce", "HubSpot", "Pipedrive", "Microsoft Dynamics", "Monday.com", "Zoho CRM", "Eigenlösung", "Kein CRM"]
+          },
+          {
+            label: "Kommunikation",
+            items: ["E-Mail", "Outlook", "Gmail", "Slack", "Teams", "WhatsApp Business", "Telegram", "Discord", "Website-Chat"]
+          },
+          {
+            label: "Wissensquellen",
+            items: ["Confluence", "SharePoint", "Notion", "Google Drive", "Dropbox", "OneDrive", "Lokale Dateien", "Intranet", "Wiki"]
+          },
+          {
+            label: "Ticketing/Projekt",
+            items: ["Jira", "ServiceNow", "Zendesk", "Freshdesk", "Asana", "Trello", "Linear", "ClickUp"]
+          }
+        ];
+
+        const allSystems = systemCategories.flatMap(cat => cat.items);
+        const filteredSystems = allSystems.filter(system =>
+          system.toLowerCase().includes(systemSearchTerm.toLowerCase())
+        );
+
+        const handleSystemToggle = (system: string) => {
+          if (system === "Sonstiges + Eingabe" || system === "Weiß nicht") {
+            // Clear other selections when selecting these special options
+            setData(prev => ({ ...prev, currentSystems: [system] }));
+          } else if (data.currentSystems.includes("Sonstiges + Eingabe") || data.currentSystems.includes("Weiß nicht")) {
+            // Replace special option with new selection
+            setData(prev => ({ ...prev, currentSystems: [system] }));
+          } else {
+            handleArrayToggle('currentSystems', system);
+          }
+        };
+
         return (
           <div className="space-y-6">
             <div>
               <h2 className="text-2xl font-bold mb-2">Genutzte Systeme</h2>
               <p className="text-muted-foreground">Welche Systeme verwenden Sie aktuell?</p>
             </div>
-            
-            <div className="space-y-4">
-              <div>
-                <Label className="text-base font-medium">CRM-Systeme</Label>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {["Salesforce", "HubSpot", "Pipedrive", "Microsoft Dynamics", "Eigenlösung", "Kein CRM"].map((system) => (
-                    <Badge
-                      key={system}
-                      variant={data.currentSystems.includes(system) ? "default" : "outline"}
-                      className="cursor-pointer"
-                      onClick={() => handleArrayToggle('currentSystems', system)}
-                    >
-                      {system}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-              
-              <div>
-                <Label className="text-base font-medium">Kommunikation</Label>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {["E-Mail", "Slack", "Teams", "WhatsApp Business", "Telegram", "Website-Chat"].map((system) => (
-                    <Badge
-                      key={system}
-                      variant={data.currentSystems.includes(system) ? "default" : "outline"}
-                      className="cursor-pointer"
-                      onClick={() => handleArrayToggle('currentSystems', system)}
-                    >
-                      {system}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-              
-              <div>
-                <Label className="text-base font-medium">Wissensquellen</Label>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {["Confluence", "SharePoint", "Notion", "Google Drive", "Lokale Dateien", "Intranet"].map((system) => (
-                    <Badge
-                      key={system}
-                      variant={data.currentSystems.includes(system) ? "default" : "outline"}
-                      className="cursor-pointer"
-                      onClick={() => handleArrayToggle('currentSystems', system)}
-                    >
-                      {system}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
+
+            {/* Searchable Multi-Select */}
+            <div>
+              <Label className="text-base font-medium mb-2">System auswählen</Label>
+              <Popover open={systemsOpen} onOpenChange={setSystemsOpen}>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    role="combobox"
+                    aria-expanded={systemsOpen}
+                    className="w-full justify-between text-left font-normal"
+                  >
+                    <span className="truncate">
+                      {data.currentSystems.length === 0
+                        ? "Systeme auswählen..."
+                        : `${data.currentSystems.length} System(e) ausgewählt`}
+                    </span>
+                    <Database className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-full p-0" align="start">
+                  <Command className="max-h-[400px]">
+                    <CommandInput
+                      placeholder="System suchen..."
+                      value={systemSearchTerm}
+                      onValueChange={setSystemSearchTerm}
+                    />
+                    <CommandEmpty>Kein System gefunden.</CommandEmpty>
+                    {systemCategories.map((category) => (
+                      <CommandGroup key={category.label} heading={category.label}>
+                        {category.items.filter(item =>
+                          item.toLowerCase().includes(systemSearchTerm.toLowerCase())
+                        ).map((system) => (
+                          <CommandItem
+                            key={system}
+                            onSelect={() => handleSystemToggle(system)}
+                            className="cursor-pointer"
+                          >
+                            <Check
+                              className={cn(
+                                "mr-2 h-4 w-4",
+                                data.currentSystems.includes(system) ? "opacity-100" : "opacity-0"
+                              )}
+                            />
+                            {system}
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    ))}
+                    <CommandGroup heading="Weitere Optionen">
+                      <CommandItem
+                        onSelect={() => handleSystemToggle("Sonstiges + Eingabe")}
+                        className="cursor-pointer"
+                      >
+                        <Check
+                          className={cn(
+                            "mr-2 h-4 w-4",
+                            data.currentSystems.includes("Sonstiges + Eingabe") ? "opacity-100" : "opacity-0"
+                          )}
+                        />
+                        Sonstiges + Eingabe
+                      </CommandItem>
+                      <CommandItem
+                        onSelect={() => handleSystemToggle("Weiß nicht")}
+                        className="cursor-pointer"
+                      >
+                        <Check
+                          className={cn(
+                            "mr-2 h-4 w-4",
+                            data.currentSystems.includes("Weiß nicht") ? "opacity-100" : "opacity-0"
+                          )}
+                        />
+                        Weiß nicht
+                      </CommandItem>
+                    </CommandGroup>
+                  </Command>
+                </PopoverContent>
+              </Popover>
             </div>
+
+            {/* Selected Systems Display */}
+            {data.currentSystems.length > 0 && (
+              <div className="space-y-2">
+                <Label className="text-base font-medium">Ausgewählte Systeme:</Label>
+                <div className="flex flex-wrap gap-2">
+                  {data.currentSystems.map((system) => (
+                    <Badge
+                      key={system}
+                      variant="secondary"
+                      className="cursor-pointer"
+                    >
+                      {system}
+                      <X
+                        className="ml-2 h-3 w-3 hover:opacity-75"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleArrayToggle('currentSystems', system);
+                        }}
+                      />
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Text input for "Sonstiges" */}
+            {data.currentSystems.includes("Sonstiges + Eingabe") && (
+              <div>
+                <Label htmlFor="systemsOther">Welche weiteren Systeme nutzen Sie?</Label>
+                <Input
+                  id="systemsOther"
+                  value={data.systemsOther}
+                  onChange={(e) => setData(prev => ({ ...prev, systemsOther: e.target.value }))}
+                  placeholder="Bitte spezifizieren Sie die weiteren Systeme"
+                />
+              </div>
+            )}
           </div>
         );
+      }
 
-      case 5: // Datenlage
+      case 4: // Datenlage
         return (
           <div className="space-y-6">
             <div>
@@ -590,152 +644,81 @@ export function WizardForm() {
           </div>
         );
 
-      case 6: // Volumen & Häufigkeit
+      case 5: // Contact & Pain Point
         return (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-bold mb-2">Volumen & Häufigkeit</h2>
-              <p className="text-muted-foreground">Wie intensiv wird das System genutzt?</p>
+              <h2 className="text-2xl font-bold mb-2">Kontaktdaten & Ihr Pain Point</h2>
+              <p className="text-muted-foreground">Fast geschafft! Damit wir uns bei Ihnen melden können.</p>
             </div>
-            
-            <div>
-              <Label htmlFor="monthlyQueries">Geschätzte Anfragen pro Monat</Label>
-              <Input
-                id="monthlyQueries"
-                type="number"
-                value={data.monthlyQueries}
-                onChange={(e) => setData(prev => ({ ...prev, monthlyQueries: e.target.value }))}
-                placeholder="z.B. 500"
-              />
-            </div>
-            
-            <div>
-              <Label className="text-base font-medium">Nutzungshäufigkeit</Label>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {["Gelegentlich", "Täglich", "Mehrmals täglich", "Kontinuierlich"].map((freq) => (
-                  <Badge
-                    key={freq}
-                    variant={data.usageFrequency === freq ? "default" : "outline"}
-                    className="cursor-pointer"
-                    onClick={() => setData(prev => ({ ...prev, usageFrequency: freq }))}
-                  >
-                    {freq}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-          </div>
-        );
 
-      case 7: // Datenschutz & Region
-        return (
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-2xl font-bold mb-2">Datenschutz & Region</h2>
-              <p className="text-muted-foreground">Welche Datenschutzanforderungen haben Sie?</p>
-            </div>
-            
-            <div>
-              <Label className="text-base font-medium">Kategorie der Daten</Label>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {["Öffentlich", "Intern", "Vertraulich", "Personenbezogen"].map((category) => (
-                  <Badge
-                    key={category}
-                    variant={data.dataCategory === category ? "default" : "outline"}
-                    className="cursor-pointer"
-                    onClick={() => setData(prev => ({ ...prev, dataCategory: category }))}
-                  >
-                    {category}
-                  </Badge>
-                ))}
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="firstName">Vorname *</Label>
+                  <Input
+                    id="firstName"
+                    value={data.firstName}
+                    onChange={(e) => setData(prev => ({ ...prev, firstName: e.target.value }))}
+                    placeholder="Max"
+                    required
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="lastName">Nachname *</Label>
+                  <Input
+                    id="lastName"
+                    value={data.lastName}
+                    onChange={(e) => setData(prev => ({ ...prev, lastName: e.target.value }))}
+                    placeholder="Mustermann"
+                    required
+                  />
+                </div>
               </div>
-            </div>
-            
-            <div className="space-y-3">
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="euProcessingOnly"
-                  checked={data.euProcessingOnly}
-                  onCheckedChange={(checked) => setData(prev => ({ ...prev, euProcessingOnly: !!checked }))}
+
+              <div>
+                <Label htmlFor="email">E-Mail-Adresse *</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={data.email}
+                  onChange={(e) => setData(prev => ({ ...prev, email: e.target.value }))}
+                  placeholder="max@unternehmen.de"
+                  required
                 />
-                <Label htmlFor="euProcessingOnly" className="cursor-pointer">
-                  Datenverarbeitung nur in der EU
-                </Label>
               </div>
-              
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="onPremiseRequired"
-                  checked={data.onPremiseRequired}
-                  onCheckedChange={(checked) => setData(prev => ({ ...prev, onPremiseRequired: !!checked }))}
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="company">Unternehmen</Label>
+                  <Input
+                    id="company"
+                    value={data.company}
+                    onChange={(e) => setData(prev => ({ ...prev, company: e.target.value }))}
+                    placeholder="Mustermann GmbH"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="phone">Telefon</Label>
+                  <Input
+                    id="phone"
+                    value={data.phone}
+                    onChange={(e) => setData(prev => ({ ...prev, phone: e.target.value }))}
+                    placeholder="+49 123 456 789"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <Label htmlFor="mainPainPoint">Was ist Ihr größtes Problem, das Sie lösen möchten?</Label>
+                <Textarea
+                  id="mainPainPoint"
+                  value={data.mainPainPoint}
+                  onChange={(e) => setData(prev => ({ ...prev, mainPainPoint: e.target.value }))}
+                  placeholder="z.B. Wir verlieren zu viel Zeit bei der Suche nach Informationen in verschiedenen Systemen..."
+                  rows={4}
                 />
-                <Label htmlFor="onPremiseRequired" className="cursor-pointer">
-                  On-Premise-Lösung erforderlich
-                </Label>
               </div>
-            </div>
-          </div>
-        );
-
-      case 8: // Zeit- & Budgetrahmen
-        return (
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-2xl font-bold mb-2">Zeit- & Budgetrahmen</h2>
-              <p className="text-muted-foreground">Wann soll die Lösung implementiert werden?</p>
-            </div>
-            
-            <div>
-              <Label className="text-base font-medium">Gewünschter Zeitrahmen</Label>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {["Sofort", "In 1-3 Monaten", "In 3-6 Monaten", "In 6-12 Monaten", "Noch offen"].map((time) => (
-                  <Badge
-                    key={time}
-                    variant={data.timeframe === time ? "default" : "outline"}
-                    className="cursor-pointer"
-                    onClick={() => setData(prev => ({ ...prev, timeframe: time }))}
-                  >
-                    {time}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-            
-            <div>
-              <Label className="text-base font-medium">Budgetrahmen (optional)</Label>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {["< 5.000 €", "5.000 - 15.000 €", "15.000 - 50.000 €", "> 50.000 €", "Noch offen"].map((budget) => (
-                  <Badge
-                    key={budget}
-                    variant={data.budgetRange === budget ? "default" : "outline"}
-                    className="cursor-pointer"
-                    onClick={() => setData(prev => ({ ...prev, budgetRange: budget }))}
-                  >
-                    {budget}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-          </div>
-        );
-
-      case 9: // Pain Point
-        return (
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-2xl font-bold mb-2">Ihr größter Pain Point</h2>
-              <p className="text-muted-foreground">Beschreiben Sie kurz Ihr dringendstes Problem.</p>
-            </div>
-            
-            <div>
-              <Label htmlFor="mainPainPoint">Was beschäftigt Sie am meisten?</Label>
-              <Textarea
-                id="mainPainPoint"
-                value={data.mainPainPoint}
-                onChange={(e) => setData(prev => ({ ...prev, mainPainPoint: e.target.value }))}
-                placeholder="z.B. Wir verlieren zu viel Zeit bei der Suche nach Informationen in verschiedenen Systemen..."
-                rows={4}
-              />
             </div>
           </div>
         );

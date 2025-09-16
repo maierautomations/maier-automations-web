@@ -42,6 +42,12 @@ Werkzeuge (wenn verfügbar):
   - Navigation: http://localhost:8080 (oder URL aus Dev‑Server‑Output autodetektiert)
   - Aktionen: Screenshot, Snapshot, Konsole auslesen, Netzwerk prüfen
   - Optional: Nach Prod‑Build Preview unter http://localhost:4173 prüfen
+- Shadcn MCP (optional):
+  - Zweck: v4 Komponenten/Demos/Metadaten abrufen (z. B. Accordion, Navigation, Tooltip).
+  - Nutzung: hole Code per MCP, passe minimal an bestehende Tokens/Styles an, keine Theme-Resets.
+  - Ablage: src/components/ui/ (bestehende Struktur/Namensgebung beibehalten).
+  - Vorsicht: keine Duplikate erzeugen; erst prüfen, ob eine lokale Komponente existiert.
+  - Checks: Lint/Build nach Einbindung; visuelle Prüfung (Playwright MCP) der betroffenen Views.
 
 Arbeitsablauf (Loop):
 
@@ -79,6 +85,13 @@ Konkrete Playwright MCP Nutzung (Beispiele):
 - A11y‑Snapshot ausgeben und differenzieren.
 - Konsole/Netzwerk auf Fehler (404/500) prüfen.
 - Für Kontaktseite nach Cal.com‑Einbindung: Sichtbarkeit des Widgets validieren.
+
+Shadcn MCP Nutzung (Beispiele, optional):
+
+- Neue FAQ-Sektion: Accordion v4 Code + Demo abrufen, minimal stylen, in src/components/ui/ ablegen.
+- Navigation-Erweiterungen: Navigation Menu v4 Demo sichten, nur benötigte Teile übernehmen.
+- Kleine UI-Utilities (Tooltip, Badge, Tabs): Code beziehen, lokale Tokens/Utility-Klassen respektieren.
+- Nach Import: Lint/Build, Seite manuell prüfen, Playwright MCP Screenshot + A11y-Snapshot erstellen.
 
 Änderungsdisziplin (Formatting & Code‑Style):
 

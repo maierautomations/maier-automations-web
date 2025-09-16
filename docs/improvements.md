@@ -48,9 +48,6 @@
 
 Generelle Improvements der Funnel-Seite:
 
-- Am Anfang des Funnels ein "Jetzt starten" Button für den Funnel hinzufügen & man sollte auf der Funnel-Seite auch die Möglichkeit haben, direkt mich kontaktieren zu können mit einem Button und optional kurzer Beschreibung der Pain Points oder was für Lösungen gewünscht werden, ohne dass man den Funnel durchlaufen muss.
-- Also sollte die Seite, nachdem man auf "Kostenlose Analyse" klickt, direkt auf die Funnel-Seite weiterhin weiterleiten, wobei man zwei Option hat: 1. Funnel durchlaufen oder 2. direkt mich kontaktieren mit der kurzen Beschreibung der Pain Points oder was für Lösungen gewünscht werden.
-
 Spezifische Improvements der Funnel-Seite:
 
 - Bei Branche unter Option 'Sonstiges' einen Textfeld für die Branche hinzufügen

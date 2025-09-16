@@ -5,9 +5,18 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Calendar } from "lucide-react";
+import Cal, { getCalApi } from "@calcom/embed-react";
+import { useEffect } from "react";
 
 export default function Contact() {
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({"namespace":"30min"});
+      cal("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+    })();
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -181,6 +190,36 @@ export default function Contact() {
                   </CardContent>
                 </Card>
               </div>
+            </div>
+
+            {/* Cal.com Integration Section */}
+            <div className="mt-16">
+              <Card className="shadow-soft">
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <Calendar className="w-6 h-6 text-primary" />
+                    Direkt Termin buchen
+                  </CardTitle>
+                  <CardDescription>
+                    Sichern Sie sich jetzt Ihren persönlichen Beratungstermin. Wählen Sie einfach einen passenden Zeitslot aus.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="min-h-[900px] lg:min-h-[600px]">
+                    <Cal
+                      namespace="30min"
+                      calLink="dominik-maier/30min"
+                      style={{width:"100%",height:"100%",overflow:"scroll"}}
+                      config={{"layout":"month_view","theme":"auto"}}
+                    />
+                  </div>
+                  <div className="mt-4 p-4 bg-blue-50 rounded-lg">
+                    <p className="text-sm text-blue-800">
+                      <strong>Hinweis:</strong> Nach der Terminbuchung erhalten Sie eine Bestätigungs-E-Mail mit allen Details und einem Link für die Videokonferenz.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>

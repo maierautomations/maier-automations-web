@@ -1,10 +1,19 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { HoverLift, Magnetic, PulseHover } from "@/components/ui/micro-interactions";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,9 +21,32 @@ export function Header() {
 
   const navigation = [
     { name: "Startseite", href: "/" },
-    { name: "Pakete", href: "/pakete" },
-    { name: "RAG Pro", href: "/rag-pro" },
-    { name: "Blog", href: "/blog" },
+    {
+      name: "Pakete",
+      href: "/pakete",
+      dropdown: [
+        { name: "Alle Pakete", href: "/pakete", description: "Übersicht aller Automatisierungspakete" },
+        { name: "CP-System", href: "/cp-system", description: "Transparente Preisgestaltung erklärt" },
+      ]
+    },
+    {
+      name: "Produkte",
+      href: "#",
+      dropdown: [
+        { name: "KI-Agenten", href: "/ki-agenten", description: "Intelligente Automatisierungsagenten" },
+        { name: "n8n-Workflows", href: "/workflows", description: "Professionelle Workflow-Automatisierung" },
+        { name: "Wissensassistent (RAG Pro)", href: "/rag-pro", description: "KI-gestützte Wissensdatenbank" },
+      ]
+    },
+    {
+      name: "Ressourcen",
+      href: "#",
+      dropdown: [
+        { name: "Blog", href: "/blog", description: "Neueste Artikel und Updates" },
+        { name: "Newsletter", href: "/newsletter", description: "Bleiben Sie informiert" },
+        { name: "FAQ", href: "/faq", description: "Häufig gestellte Fragen" },
+      ]
+    },
     { name: "Kontakt", href: "/kontakt" },
   ];
 
@@ -39,38 +71,68 @@ export function Header() {
           </Magnetic>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <PulseHover key={item.name} className="relative">
-                <Link
-                  to={item.href}
-                  className={cn(
-                    "text-sm font-medium transition-all duration-200 hover:text-primary relative",
-                    isActive(item.href)
-                      ? "text-primary"
-                      : "text-muted-foreground"
+          <NavigationMenu className="hidden md:flex">
+            <NavigationMenuList>
+              {navigation.map((item) => (
+                <NavigationMenuItem key={item.name}>
+                  {item.dropdown ? (
+                    <>
+                      <NavigationMenuTrigger className="h-auto">
+                        <span className={cn(
+                          "text-sm font-medium",
+                          item.dropdown.some(sub => isActive(sub.href))
+                            ? "text-primary"
+                            : ""
+                        )}>
+                          {item.name}
+                        </span>
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1">
+                          {item.dropdown.map((subItem) => (
+                            <li key={subItem.name}>
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  to={subItem.href}
+                                  className={cn(
+                                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                                    isActive(subItem.href) ? "bg-accent" : ""
+                                  )}
+                                >
+                                  <div className="text-sm font-medium leading-none">{subItem.name}</div>
+                                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                    {subItem.description}
+                                  </p>
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </>
+                  ) : (
+                    <Link to={item.href}>
+                      <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        <span className={cn(
+                          "text-sm font-medium",
+                          isActive(item.href) ? "text-primary" : ""
+                        )}>
+                          {item.name}
+                        </span>
+                      </NavigationMenuLink>
+                    </Link>
                   )}
-                >
-                  {item.name}
-                  {/* Active indicator */}
-                  {isActive(item.href) && (
-                    <motion.div
-                      layoutId="activeTab"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </Link>
-              </PulseHover>
-            ))}
-          </nav>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
 
           {/* CTA Button */}
           <div className="hidden md:flex">
             <HoverLift scale={1.03} lift={-2}>
               <Link to="/analyse">
                 <Button variant="cta" size="default" className="shadow-soft hover:shadow-elevated transition-all duration-200">
-                  Kostenlose Analyse
+                  Analyse starten
                 </Button>
               </Link>
             </HoverLift>
@@ -82,7 +144,7 @@ export function Header() {
               type="button"
               className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-muted-foreground hover:text-primary hover:bg-accent transition-all duration-200"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-expanded="false"
+              aria-expanded={isMenuOpen}
             >
               <span className="sr-only">Hauptmenü öffnen</span>
               <motion.div
@@ -102,14 +164,14 @@ export function Header() {
         {/* Mobile Navigation */}
         <AnimatePresence>
           {isMenuOpen && (
-            <motion.div 
+            <motion.div
               className="md:hidden overflow-hidden"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              <motion.div 
+              <motion.div
                 className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t"
                 initial="closed"
                 animate="open"
@@ -125,7 +187,7 @@ export function Header() {
                   }
                 }}
               >
-                {navigation.map((item, index) => (
+                {navigation.map((item) => (
                   <motion.div
                     key={item.name}
                     variants={{
@@ -133,23 +195,49 @@ export function Header() {
                       open: { x: 0, opacity: 1 }
                     }}
                   >
-                    <HoverLift scale={1.01} lift={-1}>
-                      <Link
-                        to={item.href}
-                        className={cn(
-                          "block px-3 py-2 text-base font-medium rounded-md transition-all duration-200",
-                          isActive(item.href)
-                            ? "text-primary bg-accent"
-                            : "text-muted-foreground hover:text-primary hover:bg-accent"
-                        )}
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                    </HoverLift>
+                    {item.dropdown ? (
+                      <div className="space-y-1">
+                        <div className="px-3 py-2 text-base font-medium text-muted-foreground">
+                          {item.name}
+                        </div>
+                        <div className="pl-6 space-y-1">
+                          {item.dropdown.map((subItem) => (
+                            <HoverLift key={subItem.name} scale={1.01} lift={-1}>
+                              <Link
+                                to={subItem.href}
+                                className={cn(
+                                  "block px-3 py-2 text-sm font-medium rounded-md transition-all duration-200",
+                                  isActive(subItem.href)
+                                    ? "text-primary bg-accent"
+                                    : "text-muted-foreground hover:text-primary hover:bg-accent"
+                                )}
+                                onClick={() => setIsMenuOpen(false)}
+                              >
+                                {subItem.name}
+                              </Link>
+                            </HoverLift>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <HoverLift scale={1.01} lift={-1}>
+                        <Link
+                          to={item.href}
+                          className={cn(
+                            "block px-3 py-2 text-base font-medium rounded-md transition-all duration-200",
+                            isActive(item.href)
+                              ? "text-primary bg-accent"
+                              : "text-muted-foreground hover:text-primary hover:bg-accent"
+                          )}
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      </HoverLift>
+                    )}
                   </motion.div>
                 ))}
-                <motion.div 
+                <motion.div
                   className="px-3 py-2"
                   variants={{
                     closed: { x: -20, opacity: 0 },
@@ -159,7 +247,7 @@ export function Header() {
                   <HoverLift scale={1.02} lift={-2}>
                     <Link to="/analyse" onClick={() => setIsMenuOpen(false)}>
                       <Button variant="cta" size="default" className="w-full shadow-soft hover:shadow-elevated transition-all duration-200">
-                        Kostenlose Analyse
+                        Analyse starten
                       </Button>
                     </Link>
                   </HoverLift>

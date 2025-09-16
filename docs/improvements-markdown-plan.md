@@ -6,8 +6,8 @@
 
 **Priority: P0 | Estimate: M (1-3h) | Dependencies: None**
 
-- [ ] Cal.com Embed-Package installieren
-- [ ] Inline-Widget unter Kontaktformular einbinden
+- [x] Cal.com Embed-Package installieren (bereits vorhanden)
+- [x] Inline-Widget unter Kontaktformular einbinden
 - [ ] DSGVO-konforme Einbindung sicherstellen
 - [ ] Mobile Responsivität testen
 - [ ] Datenschutzerklärung ergänzen
@@ -16,28 +16,28 @@
 
 **Priority: P0 | Estimate: S (<1h) | Dependencies: None**
 
-- [ ] "60% weniger Routinearbeit" + Unterzeile
-- [ ] "Kickoff in 48h" + Go-Live Disclaimer
-- [ ] "500+ Integrationen" überall konsistent
-- [ ] AGBs mit Disclaimer-Text ergänzen
+- [x] "60% weniger Routinearbeit" + Unterzeile
+- [x] "Kickoff in 48h" + Go-Live Disclaimer
+- [x] "500+ Integrationen" überall konsistent
+- [x] AGBs mit Disclaimer-Text ergänzen
 
 ### ✅ CTA-Buttons vereinheitlichen
 
 **Priority: P0 | Estimate: S (<1h) | Dependencies: None**
 
-- [ ] Alle CTAs auf "Analyse starten" ändern
-- [ ] Konsistenz über alle Seiten prüfen
+- [x] Alle CTAs auf "Analyse starten" ändern
+- [x] Konsistenz über alle Seiten prüfen
 
 ### ✅ Hero-Headline mit Typewriter
 
 **Priority: P0 | Estimate: L (3-8h) | Dependencies: None**
 
-- [ ] Neue H1 implementieren: "KI-Automatisierungen für KMU – DSGVO-konform"
-- [ ] GSAP TextPlugin integrieren
-- [ ] Typewriter-Effekt für rotierende Phrasen
-- [ ] prefers-reduced-motion respektieren
-- [ ] Container-Höhe fixieren (CLS vermeiden)
-- [ ] Mobile Optimierung (max. 1 Phrase)
+- [x] Neue H1 implementieren: "KI-Automatisierungen für KMU – DSGVO-konform"
+- [x] GSAP TextPlugin integrieren
+- [x] Typewriter-Effekt für rotierende Phrasen
+- [x] prefers-reduced-motion respektieren
+- [x] Container-Höhe fixieren (CLS vermeiden)
+- [x] Mobile Optimierung (max. 1 Phrase)
 
 ---
 
@@ -47,50 +47,50 @@
 
 **Priority: P1 | Estimate: S (<1h) | Dependencies: None**
 
-- [ ] "Schnell live 2-3 Wochen" ersetzen durch "Typischer Zeitrahmen: 2-4 Wochen"
+- [x] "Schnell live 2-3 Wochen" ersetzen durch "Typischer Zeitrahmen: 2-4 Wochen"
 
 ### ✅ Trust-Leiste implementieren
 
 **Priority: P1 | Estimate: M (1-3h) | Dependencies: None**
 
-- [ ] Trust-Leiste unter "Intelligente Automatisierung" Headline
-- [ ] EU-Server Frankfurt • DPA/SCCs • RBAC • n8n Cloud
+- [x] Trust-Leiste unter "Intelligente Automatisierung" Headline
+- [x] EU-Server Frankfurt • DPA/SCCs • RBAC • n8n Cloud
 
 ### ✅ Feature-Karten erstellen
 
 **Priority: P1 | Estimate: L (3-8h) | Dependencies: trust-leiste**
 
-- [ ] 3 gleichgroße Karten: KI-Agenten, n8n Workflows, RAG Pro
-- [ ] Klickbare Links zu Detailseiten
-- [ ] Mini-KPIs pro Karte
+- [x] 3 gleichgroße Karten: KI-Agenten, n8n Workflows, RAG Pro
+- [x] Klickbare Links zu Detailseiten
+- [x] Mini-KPIs pro Karte
 
 ### ✅ KPI-Zeile hinzufügen
 
 **Priority: P1 | Estimate: M (1-3h) | Dependencies: feature-karten**
 
-- [ ] "Messbare Ergebnisse" Zeile
-- [ ] 60% Zeitersparnis • 24h Verfügbarkeit • 500+ Integrationen • <3s Antwortzeit
+- [x] "Messbare Ergebnisse" Zeile
+- [x] 60% Zeitersparnis • 24h Verfügbarkeit • 500+ Integrationen • <3s Antwortzeit
 
 ### ✅ Security & Compliance Block
 
 **Priority: P1 | Estimate: M (1-3h) | Dependencies: kpi-zeile**
 
-- [ ] Volle Breite Block
-- [ ] Kurzer Text + Link zu Details
+- [x] Volle Breite Block
+- [x] Kurzer Text + Link zu Details
 
 ### ✅ 4-Schritte Prozess
 
 **Priority: P1 | Estimate: M (1-3h) | Dependencies: security-compliance**
 
-- [ ] Discovery → Blueprint → Build → Handover
+- [x] Discovery → Blueprint → Build → Handover
 
 ### ✅ FAQ-Accordion implementieren
 
 **Priority: P1 | Estimate: L (3-8h) | Dependencies: prozess-4-schritte**
 
-- [ ] Ausklappbare FAQ-Sektion
-- [ ] Häufigste Fragen integrieren
-- [ ] Link zur FAQ-Seite
+- [x] Ausklappbare FAQ-Sektion
+- [x] Häufigste Fragen integrieren
+- [x] Link zur FAQ-Seite
 - [ ] FAQPage Schema.org JSON-LD
 
 ---
@@ -110,51 +110,51 @@
 
 **Priority: P1 | Estimate: XL (1-3d) | Dependencies: None**
 
-- [ ] Neue Unterseite für CP-System (@cp-system.md)
-- [ ] Stärken & Vorteile erklären
-- [ ] Preisspanne transparent darstellen
-- [ ] Add-on System dokumentieren
-- [ ] Berechnungslogik anzeigen
+- [x] Neue Unterseite für CP-System (@cp-system.md)
+- [x] Stärken & Vorteile erklären
+- [x] Preisspanne transparent darstellen
+- [x] Add-on System dokumentieren
+- [x] Berechnungslogik anzeigen
 
 ### ✅ CP-Rechner implementieren
 
 **Priority: P1 | Estimate: L (3-8h) | Dependencies: cp-system-seite**
 
-- [ ] Interaktiver CP-Rechner
-- [ ] Preisberechnung live
-- [ ] Pakete visualisieren
+- [x] Interaktiver CP-Rechner
+- [x] Preisberechnung live
+- [x] Pakete visualisieren
 
 ### ✅ Navigation umstrukturieren - Produkte
 
 **Priority: P1 | Estimate: L (3-8h) | Dependencies: None**
 
-- [ ] Produkte-Reiter statt RAG Pro
-- [ ] Dropdown für Wissensassistent (RAG PRO)
-- [ ] Dropdown für n8n-Workflows
-- [ ] Dropdown für Intelligente KI-Agenten
+- [x] Produkte-Reiter statt RAG Pro
+- [x] Dropdown für Wissensassistent (RAG PRO)
+- [x] Dropdown für n8n-Workflows
+- [x] Dropdown für Intelligente KI-Agenten
 - [ ] Unterseiten erstellen
 
 ### ✅ Navigation - Blog & Newsletter
 
 **Priority: P2 | Estimate: M (1-3h) | Dependencies: newsletter-system**
 
-- [ ] Blog & Newsletter Oberreiter
-- [ ] Dropdown-Optionen
+- [x] Blog & Newsletter Oberreiter
+- [x] Dropdown-Optionen
 
 ### ✅ Navigation - FAQ-Seite
 
 **Priority: P1 | Estimate: L (3-8h) | Dependencies: None**
 
-- [ ] FAQ-Seite erstellen
-- [ ] Als Dropdown in Navigation
-- [ ] Echte Einwände behandeln
-- [ ] FAQPage JSON-LD Schema
+- [x] FAQ-Seite erstellen
+- [x] Als Dropdown in Navigation
+- [x] Echte Einwände behandeln
+- [x] FAQPage JSON-LD Schema
 
 ### ✅ Navigation - CP-System Dropdown
 
 **Priority: P2 | Estimate: S (<1h) | Dependencies: cp-system-seite**
 
-- [ ] CP-System in Pakete-Navigation
+- [x] CP-System in Pakete-Navigation
 
 ### ✅ Einzelkauf-Option
 
@@ -178,16 +178,9 @@
 
 **Priority: P1 | Estimate: M (1-3h) | Dependencies: None**
 
-- [ ] "Jetzt starten" Button für Funnel
-- [ ] Direkte Kontaktoption mit Beschreibung
-- [ ] Zwei-Wege-Auswahl implementieren
-
 ### ✅ Funnel-Redirect nach Analyse
 
 **Priority: P1 | Estimate: S (<1h) | Dependencies: funnel-startoptionen**
-
-- [ ] Weiterleitung zur Funnel-Seite
-- [ ] Auswahl: Funnel oder Direktkontakt
 
 ### ✅ Branche-Feld erweitern
 
