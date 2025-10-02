@@ -28,39 +28,39 @@ export function RagTeaser() {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-slate-950">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div>
-            <Badge variant="secondary" className="mb-4">
+            <Badge className="mb-4 gradient-emerald-cyan text-slate-900 border-0">
               RAG-Technologie • Retrieval-Augmented Generation
             </Badge>
-            
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
+
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-50 mb-6">
               RAG Pro: Ihr intelligenter{" "}
-              <span className="bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent">
+              <span className="gradient-emerald-cyan bg-clip-text text-transparent">
                 Wissensassistent
               </span>
             </h2>
-            
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Verwandeln Sie Ihre Unternehmensdokumente in eine intelligente Wissensbasis. 
-              RAG Pro kombiniert modernste KI mit Ihren spezifischen Daten und liefert 
+
+            <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+              Verwandeln Sie Ihre Unternehmensdokumente in eine intelligente Wissensbasis.
+              RAG Pro kombiniert modernste KI mit Ihren spezifischen Daten und liefert
               präzise Antworten in Sekundenschnelle.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-start space-x-3">
-                  <div className="flex items-center justify-center w-8 h-8 bg-primary-light rounded-lg flex-shrink-0 mt-1">
-                    <feature.icon className="w-4 h-4 text-primary" />
+                  <div className="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-emerald-500/10 to-cyan-500/20 rounded-lg flex-shrink-0 mt-1">
+                    <feature.icon className="w-4 h-4 text-emerald-500" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground text-sm mb-1">
+                    <h3 className="font-semibold text-slate-50 text-sm mb-1">
                       {feature.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-slate-300 text-sm">
                       {feature.description}
                     </p>
                   </div>
@@ -70,7 +70,7 @@ export function RagTeaser() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/rag-pro">
-                <Button variant="cta" size="lg">
+                <Button variant="gradient-primary" size="lg" className="glow-emerald">
                   RAG Pro entdecken
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -85,26 +85,26 @@ export function RagTeaser() {
 
           {/* Visual */}
           <div className="relative">
-            <div className="bg-gradient-to-br from-primary-light to-accent rounded-2xl p-8 shadow-soft">
+            <div className="glass-card rounded-2xl p-8">
               <div className="space-y-6">
                 {/* Mock Chat Interface */}
-                <div className="bg-background rounded-lg p-4 shadow-sm">
+                <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
                   <div className="flex items-center space-x-2 mb-3">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm font-medium text-foreground">RAG Pro Assistant</span>
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                    <span className="text-sm font-medium text-slate-50">RAG Pro Assistant</span>
                   </div>
                   <div className="space-y-3">
-                    <div className="bg-surface rounded-lg p-3">
-                      <p className="text-sm text-muted-foreground">
+                    <div className="bg-slate-800/50 rounded-lg p-3">
+                      <p className="text-sm text-slate-300">
                         "Wie waren unsere Verkaufszahlen im letzten Quartal?"
                       </p>
                     </div>
-                    <div className="bg-primary-light rounded-lg p-3">
-                      <p className="text-sm text-primary">
-                        Basierend auf den Q3-Berichten: Umsatz stieg um 23% auf 2.4M€. 
+                    <div className="bg-gradient-to-br from-emerald-500/10 to-cyan-500/20 rounded-lg p-3 border border-emerald-500/20">
+                      <p className="text-sm text-slate-50">
+                        Basierend auf den Q3-Berichten: Umsatz stieg um 23% auf 2.4M€.
                         Haupttreiber waren neue Automatisierungslösungen (+45%).
                       </p>
-                      <div className="flex items-center mt-2 text-xs text-primary/70">
+                      <div className="flex items-center mt-2 text-xs text-emerald-500">
                         <FileText className="w-3 h-3 mr-1" />
                         Quelle: Q3_Finanzbericht.pdf
                       </div>
@@ -114,21 +114,21 @@ export function RagTeaser() {
 
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-background rounded-lg p-4 text-center">
-                    <div className="text-2xl font-bold text-primary">95%</div>
-                    <div className="text-xs text-muted-foreground">Antwort-Genauigkeit</div>
+                  <div className="glass-card rounded-lg p-4 text-center border-emerald-500/20">
+                    <div className="text-2xl font-bold text-emerald-500">95%</div>
+                    <div className="text-xs text-slate-400">Antwort-Genauigkeit</div>
                   </div>
-                  <div className="bg-background rounded-lg p-4 text-center">
-                    <div className="text-2xl font-bold text-primary">&lt;2s</div>
-                    <div className="text-xs text-muted-foreground">Antwortzeit</div>
+                  <div className="glass-card rounded-lg p-4 text-center border-cyan-500/20">
+                    <div className="text-2xl font-bold text-cyan-500">&lt;2s</div>
+                    <div className="text-xs text-slate-400">Antwortzeit</div>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Background decorations */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-xl"></div>
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl"></div>
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl"></div>
           </div>
         </div>
       </div>

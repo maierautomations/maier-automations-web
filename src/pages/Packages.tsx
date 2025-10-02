@@ -93,40 +93,40 @@ export default function Packages() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <SEOHead 
+    <div className="min-h-screen flex flex-col bg-slate-950">
+      <SEOHead
         title="KI-Automatisierungs-Pakete nach Complexity Points"
         description="Transparente CP-basierte Pakete für KI-Automatisierungen: Starter (3 CP), Core (6 CP), Scale (10 CP). DSGVO-konform, EU-Hosting, n8n-Workflows. Jetzt kostenlose Analyse starten."
         keywords="KI-Automatisierung Pakete, Complexity Points, n8n Workflows, KI-Agenten, RAG Pro, DSGVO-konform, EU-Hosting, Preise"
         url="https://maier-automations.de/pakete"
       />
       <Header />
-      
+
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-20 gradient-subtle">
+        <section className="py-20 bg-slate-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-4xl mx-auto">
-              <Badge variant="secondary" className="mb-6">
+              <Badge className="mb-6 bg-emerald-500/10 text-emerald-500 border-emerald-500/20">
                 <Calculator className="w-4 h-4 mr-2" />
                 Transparente CP-Preisgestaltung • Sofortige Umsetzung
               </Badge>
-              <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-4xl lg:text-5xl font-bold text-slate-50 mb-6">
                 Automatisierungs-Pakete nach{" "}
-                <span className="bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent">
                   Komplexitätspunkten
                 </span>
               </h1>
               <div className="flex items-center justify-center gap-2 mb-6">
-                <p className="text-xl text-muted-foreground leading-relaxed">
+                <p className="text-xl text-slate-300 leading-relaxed">
                   Faire Preise basierend auf tatsächlicher Komplexität (CP)
                 </p>
                 <CPTooltip />
               </div>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-2">
+              <p className="text-lg text-slate-300 leading-relaxed mb-2">
                 Alle Pakete sind DSGVO-konform, werden auf EU-Servern gehostet und enthalten transparente Abnahmekriterien.
               </p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-slate-400">
                 Preise netto, zzgl. MwSt. Kosten für Drittanbieter-Lizenzen nicht enthalten.
               </p>
             </div>
@@ -134,7 +134,7 @@ export default function Packages() {
         </section>
 
         {/* Packages */}
-        <section className="py-20 bg-gradient-to-b from-white to-gray-50/50">
+        <section className="py-20 bg-slate-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
               {packages.map((pkg, index) => (
@@ -162,7 +162,7 @@ export default function Packages() {
         </section>
 
         {/* Enhanced CTA Section */}
-        <AnimatedGradient variant="subtle" className="py-20">
+        <section className="py-20 bg-slate-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -170,14 +170,14 @@ export default function Packages() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
+              <h2 className="text-3xl lg:text-4xl font-bold text-slate-50 mb-6">
                 Welches Paket passt zu Ihnen?
               </h2>
-              <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
-                Unsere kostenlose Prozess-Analyse ermittelt Ihre benötigten Complexity Points und 
+              <p className="text-xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
+                Unsere kostenlose Prozess-Analyse ermittelt Ihre benötigten Complexity Points und
                 empfiehlt das optimale Paket. Unverbindlich und in nur 30 Minuten.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                 <Link to="/analyse">
                   <GradientButton size="lg" className="min-w-[220px] h-14" glow>
@@ -187,37 +187,37 @@ export default function Packages() {
                   </GradientButton>
                 </Link>
                 <Link to="/kontakt">
-                  <Button variant="outline" size="lg" className="min-w-[220px] h-14 bg-white/80 backdrop-blur-sm hover:bg-white/90">
+                  <Button variant="outline" size="lg" className="min-w-[220px] h-14 border-slate-700 text-slate-300 hover:bg-slate-800">
                     Persönliche Beratung
                   </Button>
                 </Link>
               </div>
-              
+
               <div className="max-w-4xl mx-auto">
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-white/30 shadow-lg">
-                  <h3 className="font-bold text-foreground mb-4 text-lg">💡 CP-Formel verstehen</h3>
-                  <p className="text-muted-foreground mb-6 text-lg">
+                <div className="glass-card p-8">
+                  <h3 className="font-bold text-slate-50 mb-4 text-lg">💡 CP-Formel verstehen</h3>
+                  <p className="text-slate-300 mb-6 text-lg">
                     CP = (#Workflows) + 2×(#Agenten) + (RAG Pro? 3-4 : 0) + Komplexitäts-Extras
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="text-center p-6 bg-blue-50 rounded-xl border border-blue-100">
-                      <div className="font-bold text-blue-600 text-lg mb-1">Beispiel Starter</div>
-                      <div className="text-sm text-muted-foreground">2 Workflows + 1 Simple-Task = 3 CP</div>
+                    <div className="text-center p-6 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
+                      <div className="font-bold text-emerald-500 text-lg mb-1">Beispiel Starter</div>
+                      <div className="text-sm text-slate-400">2 Workflows + 1 Simple-Task = 3 CP</div>
                     </div>
-                    <div className="text-center p-6 bg-green-50 rounded-xl border border-green-100">
-                      <div className="font-bold text-green-600 text-lg mb-1">Beispiel Core</div>
-                      <div className="text-sm text-muted-foreground">4 Workflows + 1 Agent = 6 CP</div>
+                    <div className="text-center p-6 bg-cyan-500/10 rounded-xl border border-cyan-500/20">
+                      <div className="font-bold text-cyan-500 text-lg mb-1">Beispiel Core</div>
+                      <div className="text-sm text-slate-400">4 Workflows + 1 Agent = 6 CP</div>
                     </div>
-                    <div className="text-center p-6 bg-purple-50 rounded-xl border border-purple-100">
-                      <div className="font-bold text-purple-600 text-lg mb-1">Beispiel Scale</div>
-                      <div className="text-sm text-muted-foreground">3 Workflows + 1 Agent + RAG Pro = 9 CP</div>
+                    <div className="text-center p-6 bg-amber-500/10 rounded-xl border border-amber-500/20">
+                      <div className="font-bold text-amber-500 text-lg mb-1">Beispiel Scale</div>
+                      <div className="text-sm text-slate-400">3 Workflows + 1 Agent + RAG Pro = 9 CP</div>
                     </div>
                   </div>
                 </div>
               </div>
             </motion.div>
           </div>
-        </AnimatedGradient>
+        </section>
       </main>
       
       <Footer />

@@ -121,26 +121,26 @@ export default function ProductAgents() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-20 lg:py-24 bg-gradient-to-b from-white to-gray-50">
+        <section className="py-20 lg:py-24 bg-slate-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-4 bg-purple-50 text-purple-700 border-purple-200">
+              <Badge className="mb-4 gradient-emerald-cyan text-slate-900 border-0">
                 KI-Powered Automatisierung
               </Badge>
-              <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-4xl lg:text-5xl font-bold text-slate-50 mb-6">
                 Intelligente{" "}
-                <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                <span className="gradient-emerald-cyan bg-clip-text text-transparent">
                   KI-Agenten
                 </span>
                 {" "}für Ihr Unternehmen
               </h1>
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-xl text-slate-300 mb-8 leading-relaxed">
                 Maßgeschneiderte KI-Assistenten, die Ihre Geschäftsprozesse verstehen,
                 eigenständig optimieren und 24/7 arbeiten. Von Support-Triage bis Sales-Follow-Up.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/analyse">
-                  <Button size="lg" className="min-w-[200px]">
+                  <Button size="lg" variant="gradient-primary" className="min-w-[200px] glow-emerald">
                     <Zap className="w-5 h-5 mr-2" />
                     Kostenlose Analyse
                     <ArrowRight className="w-4 h-4 ml-2" />
@@ -152,7 +152,7 @@ export default function ProductAgents() {
                   </Button>
                 </Link>
               </div>
-              <p className="text-sm text-muted-foreground mt-6">
+              <p className="text-sm text-slate-400 mt-6">
                 1 KI-Agent = 2 CP • Ab €2.000 Setup • Preise netto, zzgl. MwSt.
               </p>
             </div>
@@ -160,44 +160,44 @@ export default function ProductAgents() {
         </section>
 
         {/* Was sind KI-Agenten? */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-slate-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Was sind KI-Agenten?</h2>
+              <h2 className="text-3xl font-bold text-center text-slate-50 mb-12">Was sind KI-Agenten?</h2>
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <div>
-                  <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+                  <p className="text-lg text-slate-300 leading-relaxed mb-4">
                     KI-Agenten sind zustandsbehaftete Automatisierungen, die mit großen Sprachmodellen (LLMs)
                     arbeiten, um Entscheidungen zu treffen, Kontext zu verstehen und eigenständig zu handeln.
                   </p>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-lg text-slate-300 leading-relaxed">
                     Im Gegensatz zu einfachen Workflows können Agenten Tools verwenden, aus Interaktionen
                     lernen und komplexe Aufgaben koordinieren.
                   </p>
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 mt-1" />
-                    <div>
-                      <strong>Tools & Memory:</strong> Zugriff auf Datenbanken, Kalender, APIs
+                    <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-1" />
+                    <div className="text-slate-300">
+                      <strong className="text-slate-50">Tools & Memory:</strong> Zugriff auf Datenbanken, Kalender, APIs
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 mt-1" />
-                    <div>
-                      <strong>Kontextverständnis:</strong> Natürliche Sprachverarbeitung
+                    <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-1" />
+                    <div className="text-slate-300">
+                      <strong className="text-slate-50">Kontextverständnis:</strong> Natürliche Sprachverarbeitung
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 mt-1" />
-                    <div>
-                      <strong>24/7 verfügbar:</strong> Kontinuierliche Automatisierung
+                    <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-1" />
+                    <div className="text-slate-300">
+                      <strong className="text-slate-50">24/7 verfügbar:</strong> Kontinuierliche Automatisierung
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 mt-1" />
-                    <div>
-                      <strong>Skalierbar:</strong> Unbegrenzte parallele Instanzen
+                    <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-1" />
+                    <div className="text-slate-300">
+                      <strong className="text-slate-50">Skalierbar:</strong> Unbegrenzte parallele Instanzen
                     </div>
                   </div>
                 </div>
@@ -207,10 +207,10 @@ export default function ProductAgents() {
         </section>
 
         {/* Problem → Lösung → Outcome */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-slate-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">
+              <h2 className="text-3xl font-bold text-center text-slate-50 mb-12">
                 Typische Herausforderungen & Lösungen
               </h2>
               <div className="grid md:grid-cols-2 gap-6">
@@ -222,23 +222,23 @@ export default function ProductAgents() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
-                    <Card className="h-full hover:shadow-lg transition-shadow">
+                    <Card className="h-full glass-card hover:border-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/20 transition-all duration-300">
                       <CardHeader>
                         <div className="flex items-center gap-3 mb-3">
-                          <div className="p-2 rounded-lg bg-purple-100 text-purple-600">
+                          <div className="p-2 rounded-lg bg-gradient-to-br from-emerald-500/10 to-cyan-500/20 text-emerald-500">
                             {item.icon}
                           </div>
-                          <CardTitle className="text-lg">{item.problem}</CardTitle>
+                          <CardTitle className="text-lg text-slate-50">{item.problem}</CardTitle>
                         </div>
                       </CardHeader>
                       <CardContent className="space-y-3">
                         <div>
-                          <strong className="text-sm text-green-600">Lösung:</strong>
-                          <p className="text-muted-foreground">{item.solution}</p>
+                          <strong className="text-sm text-emerald-500">Lösung:</strong>
+                          <p className="text-slate-300">{item.solution}</p>
                         </div>
                         <div>
-                          <strong className="text-sm text-blue-600">Ergebnis:</strong>
-                          <p className="text-muted-foreground">{item.outcome}</p>
+                          <strong className="text-sm text-cyan-500">Ergebnis:</strong>
+                          <p className="text-slate-300">{item.outcome}</p>
                         </div>
                       </CardContent>
                     </Card>
@@ -250,47 +250,47 @@ export default function ProductAgents() {
         </section>
 
         {/* Beispiel-Agenten */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-slate-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4">Beispiel-Agenten</h2>
-                <p className="text-lg text-muted-foreground">
+                <h2 className="text-3xl font-bold text-slate-50 mb-4">Beispiel-Agenten</h2>
+                <p className="text-lg text-slate-300">
                   Typische Einsatzszenarien mit transparenter CP-Angabe
                 </p>
               </div>
               <div className="grid md:grid-cols-2 gap-6">
                 {examples.map((agent, index) => (
-                  <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <Card key={index} className="glass-card hover:border-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/20 transition-all duration-300">
                     <CardHeader>
                       <div className="flex items-center justify-between mb-2">
-                        <CardTitle>{agent.name}</CardTitle>
-                        <Badge variant="secondary">{agent.cp} CP</Badge>
+                        <CardTitle className="text-slate-50">{agent.name}</CardTitle>
+                        <Badge className="bg-slate-800/50 text-emerald-500 border-emerald-500/30">{agent.cp} CP</Badge>
                       </div>
-                      <p className="text-sm text-muted-foreground">{agent.description}</p>
+                      <p className="text-sm text-slate-300">{agent.description}</p>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div>
-                        <div className="text-sm text-blue-600 mb-1">Outcome:</div>
-                        <p className="text-sm font-semibold">{agent.outcome}</p>
+                        <div className="text-sm text-cyan-500 mb-1">Outcome:</div>
+                        <p className="text-sm font-semibold text-slate-50">{agent.outcome}</p>
                       </div>
                       <div>
-                        <div className="text-sm text-muted-foreground mb-1">Dauer:</div>
-                        <p className="text-sm">{agent.duration}</p>
+                        <div className="text-sm text-slate-400 mb-1">Dauer:</div>
+                        <p className="text-sm text-slate-300">{agent.duration}</p>
                       </div>
                       <div>
-                        <div className="text-sm text-muted-foreground mb-1">Typische Integrationen:</div>
+                        <div className="text-sm text-slate-400 mb-1">Typische Integrationen:</div>
                         <div className="flex flex-wrap gap-1">
                           {agent.integrations.map((integration, idx) => (
-                            <Badge key={idx} variant="outline" className="text-xs">
+                            <Badge key={idx} className="bg-slate-800/50 text-slate-300 border-slate-700/50 text-xs">
                               {integration}
                             </Badge>
                           ))}
                         </div>
                       </div>
-                      <div className="pt-2 border-t">
-                        <p className="text-lg font-bold text-primary">{agent.price}</p>
-                        <p className="text-xs text-muted-foreground">Setup (netto, zzgl. MwSt.)</p>
+                      <div className="pt-2 border-t border-slate-700/50">
+                        <p className="text-lg font-bold text-emerald-500">{agent.price}</p>
+                        <p className="text-xs text-slate-400">Setup (netto, zzgl. MwSt.)</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -298,7 +298,7 @@ export default function ProductAgents() {
               </div>
               <div className="text-center mt-8">
                 <Link to="/analyse">
-                  <Button size="lg">
+                  <Button size="lg" variant="gradient-primary" className="glow-emerald">
                     Ihren Agenten konfigurieren
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
@@ -309,44 +309,44 @@ export default function ProductAgents() {
         </section>
 
         {/* DSGVO & Compliance */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-slate-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white">
+              <Card className="glass-card border-emerald-500/30">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-lg bg-blue-100 text-blue-600">
+                    <div className="p-3 rounded-lg bg-gradient-to-br from-emerald-500/10 to-cyan-500/20 text-emerald-500">
                       <Shield className="w-8 h-8" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-2xl font-bold mb-4">DSGVO-konform & EU-Hosting</h3>
+                      <h3 className="text-2xl font-bold text-slate-50 mb-4">DSGVO-konform & EU-Hosting</h3>
                       <div className="grid md:grid-cols-2 gap-4 mb-4">
                         <div className="flex items-start gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-green-600 mt-1" />
-                          <div>
-                            <strong>EU-Server Frankfurt:</strong> Ihre Daten bleiben in der EU
+                          <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-1" />
+                          <div className="text-slate-300">
+                            <strong className="text-slate-50">EU-Server Frankfurt:</strong> Ihre Daten bleiben in der EU
                           </div>
                         </div>
                         <div className="flex items-start gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-green-600 mt-1" />
-                          <div>
-                            <strong>DPA/SCCs:</strong> Verträge nach EU-Standards
+                          <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-1" />
+                          <div className="text-slate-300">
+                            <strong className="text-slate-50">DPA/SCCs:</strong> Verträge nach EU-Standards
                           </div>
                         </div>
                         <div className="flex items-start gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-green-600 mt-1" />
-                          <div>
-                            <strong>On-Premise Option:</strong> Für höchste Anforderungen
+                          <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-1" />
+                          <div className="text-slate-300">
+                            <strong className="text-slate-50">On-Premise Option:</strong> Für höchste Anforderungen
                           </div>
                         </div>
                         <div className="flex items-start gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-green-600 mt-1" />
-                          <div>
-                            <strong>Kein KI-Training:</strong> Ihre Daten bleiben privat
+                          <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-1" />
+                          <div className="text-slate-300">
+                            <strong className="text-slate-50">Kein KI-Training:</strong> Ihre Daten bleiben privat
                           </div>
                         </div>
                       </div>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-slate-400">
                         Zusätzlich: RBAC-Zugriffskontrollen, Verschlüsselung at-rest und in-transit,
                         regelmäßige Security-Audits.
                       </p>
@@ -359,26 +359,26 @@ export default function ProductAgents() {
         </section>
 
         {/* Wie wir arbeiten */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-slate-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Unser Vorgehen</h2>
+              <h2 className="text-3xl font-bold text-center text-slate-50 mb-12">Unser Vorgehen</h2>
               <div className="space-y-4">
                 {process.map((step, index) => (
                   <div key={index} className="flex items-center gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center text-slate-900 font-bold">
                       {index + 1}
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-lg mb-1">{step.step}</h4>
-                      <p className="text-muted-foreground">{step.description}</p>
+                      <h4 className="font-semibold text-lg text-slate-50 mb-1">{step.step}</h4>
+                      <p className="text-slate-300">{step.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="mt-8 p-6 bg-blue-50 rounded-lg">
-                <p className="text-sm text-muted-foreground">
-                  <strong>Hinweis:</strong> Typische Umsetzungsdauer für einen KI-Agenten: 1-3 Wochen.
+              <div className="mt-8 p-6 glass-card rounded-lg">
+                <p className="text-sm text-slate-300">
+                  <strong className="text-slate-50">Hinweis:</strong> Typische Umsetzungsdauer für einen KI-Agenten: 1-3 Wochen.
                   Bei komplexeren Anforderungen (RAG, Multi-Agent-Systeme): 2-4 Wochen.
                 </p>
               </div>
@@ -387,29 +387,31 @@ export default function ProductAgents() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-purple-600 to-blue-600">
+        <section className="py-20 bg-slate-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto text-center text-white">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-                Bereit für Ihren ersten KI-Agenten?
-              </h2>
-              <p className="text-xl mb-8 text-purple-100">
-                Lassen Sie uns in einem kostenlosen Gespräch herausfinden,
-                welcher Agent Ihr Team am meisten entlastet.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/analyse">
-                  <Button size="lg" variant="secondary" className="min-w-[200px]">
-                    Kostenlose Analyse starten
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
-                <Link to="/kontakt">
-                  <Button size="lg" variant="outline" className="min-w-[200px] bg-white/10 text-white border-white hover:bg-white/20">
-                    Direktkontakt
-                  </Button>
-                </Link>
-              </div>
+            <div className="max-w-3xl mx-auto">
+              <Card className="glass-card border-emerald-500/30 p-8 text-center">
+                <h2 className="text-3xl lg:text-4xl font-bold text-slate-50 mb-6">
+                  Bereit für Ihren ersten KI-Agenten?
+                </h2>
+                <p className="text-xl text-slate-300 mb-8">
+                  Lassen Sie uns in einem kostenlosen Gespräch herausfinden,
+                  welcher Agent Ihr Team am meisten entlastet.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link to="/analyse">
+                    <Button size="lg" variant="gradient-primary" className="min-w-[200px] glow-emerald">
+                      Kostenlose Analyse starten
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
+                  <Link to="/kontakt">
+                    <Button size="lg" variant="outline" className="min-w-[200px] border-slate-700 text-slate-300 hover:border-emerald-500 hover:text-emerald-500">
+                      Direktkontakt
+                    </Button>
+                  </Link>
+                </div>
+              </Card>
             </div>
           </div>
         </section>

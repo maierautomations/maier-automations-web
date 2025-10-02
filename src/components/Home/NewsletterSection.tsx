@@ -67,14 +67,14 @@ export function NewsletterSection() {
 
   if (isSuccess) {
     return (
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-slate-950">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
-            <div className="bg-green-50 border border-green-200 rounded-lg p-8">
-              <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-green-800 mb-4">Bestätigungs-E-Mail gesendet!</h3>
-              <p className="text-green-700 mb-6">
-                Wir haben Ihnen eine E-Mail an <strong>{email}</strong> gesendet. 
+            <div className="glass-card border-emerald-500/30 rounded-lg p-8">
+              <CheckCircle className="w-16 h-16 text-emerald-500 mx-auto mb-4" />
+              <h3 className="text-2xl font-bold text-slate-50 mb-4">Bestätigungs-E-Mail gesendet!</h3>
+              <p className="text-slate-300 mb-6">
+                Wir haben Ihnen eine E-Mail an <strong className="text-emerald-500">{email}</strong> gesendet.
                 Bitte klicken Sie auf den Bestätigungslink, um Ihre Newsletter-Anmeldung abzuschließen.
               </p>
               <Button variant="outline" onClick={() => setIsSuccess(false)}>
@@ -88,27 +88,27 @@ export function NewsletterSection() {
   }
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-slate-950">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-primary/10 via-accent to-surface rounded-2xl p-8 lg:p-12 shadow-soft relative overflow-hidden">
+          <div className="glass-card rounded-2xl p-8 lg:p-12 relative overflow-hidden border-emerald-500/20">
             {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -translate-y-16 translate-x-16"></div>
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/5 rounded-full translate-y-12 -translate-x-12"></div>
-            
+            <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full -translate-y-16 translate-x-16"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-cyan-500/10 rounded-full translate-y-12 -translate-x-12"></div>
+
             <div className="relative z-10">
               <div className="text-center mb-8">
-                <Badge variant="secondary" className="mb-4">
+                <Badge className="mb-4 gradient-emerald-cyan text-slate-900 border-0">
                   <Sparkles className="w-4 h-4 mr-2" />
                   DSGVO-konformer Newsletter • Double-Opt-In
                 </Badge>
-                
-                <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+
+                <h2 className="text-3xl lg:text-4xl font-bold text-slate-50 mb-4">
                   Bleiben Sie der Automatisierung voraus
                 </h2>
-                
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Erhalten Sie monatlich die neuesten n8n-Workflows, KI-Praxistipps und Compliance-Updates 
+
+                <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+                  Erhalten Sie monatlich die neuesten n8n-Workflows, KI-Praxistipps und Compliance-Updates
                   aus der Welt der DACH-Automatisierung.
                 </p>
               </div>
@@ -120,13 +120,13 @@ export function NewsletterSection() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="ihre.email@unternehmen.de"
-                    className="flex-1 bg-background border-primary/20 focus:border-primary"
+                    className="flex-1 glass-card border-emerald-500/20 focus:border-emerald-500 text-slate-50 placeholder:text-slate-400"
                     required
                   />
-                  <Button 
-                    type="submit" 
-                    variant="cta" 
-                    className="sm:px-8"
+                  <Button
+                    type="submit"
+                    variant="gradient-primary"
+                    className="sm:px-8 glow-emerald"
                     disabled={!email || !consent || isSubmitting}
                   >
                     {isSubmitting ? (
@@ -142,7 +142,7 @@ export function NewsletterSection() {
                     )}
                   </Button>
                 </div>
-                
+
                 <div className="flex items-start space-x-2 text-left">
                   <Checkbox
                     id="newsletter-consent"
@@ -150,10 +150,10 @@ export function NewsletterSection() {
                     onCheckedChange={(checked) => setConsent(!!checked)}
                     className="mt-1"
                   />
-                  <Label htmlFor="newsletter-consent" className="text-sm text-muted-foreground cursor-pointer">
-                    Ich stimme der Verarbeitung meiner E-Mail-Adresse für den Newsletter-Versand zu. 
+                  <Label htmlFor="newsletter-consent" className="text-sm text-slate-300 cursor-pointer">
+                    Ich stimme der Verarbeitung meiner E-Mail-Adresse für den Newsletter-Versand zu.
                     Die Einwilligung kann jederzeit widerrufen werden. Weitere Informationen in der{" "}
-                    <a href="/datenschutz" className="text-primary hover:underline">Datenschutzerklärung</a>.
+                    <a href="/datenschutz" className="text-emerald-500 hover:underline">Datenschutzerklärung</a>.
                   </Label>
                 </div>
               </form>
@@ -161,25 +161,25 @@ export function NewsletterSection() {
               <div className="text-center">
                 <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 text-sm">
                   <div className="flex items-center justify-center space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-muted-foreground">Double-Opt-In</span>
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                    <span className="text-slate-300">Double-Opt-In</span>
                   </div>
                   <div className="flex items-center justify-center space-x-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span className="text-muted-foreground">Monatlich</span>
+                    <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
+                    <span className="text-slate-300">Monatlich</span>
                   </div>
                   <div className="flex items-center justify-center space-x-2">
-                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                    <span className="text-muted-foreground">Jederzeit abbestellbar</span>
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                    <span className="text-slate-300">Jederzeit abbestellbar</span>
                   </div>
                   <div className="flex items-center justify-center space-x-2">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                    <span className="text-muted-foreground">DSGVO-konform</span>
+                    <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+                    <span className="text-slate-300">DSGVO-konform</span>
                   </div>
                 </div>
-                
-                <p className="text-xs text-muted-foreground mt-4 max-w-lg mx-auto">
-                  Newsletter-Inhalte: n8n-Workflows, KI-Trends, Compliance-Updates, Praxistipps. 
+
+                <p className="text-xs text-slate-400 mt-4 max-w-lg mx-auto">
+                  Newsletter-Inhalte: n8n-Workflows, KI-Trends, Compliance-Updates, Praxistipps.
                   Keine Weitergabe an Dritte. EU-Server in Frankfurt.
                 </p>
               </div>

@@ -46,8 +46,8 @@ const App = () => (
             <Route path="/agb" element={<Terms />} />
             <Route path="/cp-system" element={<CPSystem />} />
             <Route path="/faq" element={<FAQ />} />
-            <Route path="/ki-agenten" element={<ProductAgents />} />
-            <Route path="/workflows" element={<ProductWorkflows />} />
+            <Route path="/produkte/ki-agenten" element={<ProductAgents />} />
+            <Route path="/produkte/workflows" element={<ProductWorkflows />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

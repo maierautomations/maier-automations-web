@@ -53,24 +53,24 @@ export function PackageGrid() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50/50">
+    <section className="py-20 bg-slate-950">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-50">
               Unsere Automatisierungs-Pakete
             </h2>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <button className="w-6 h-6 rounded-full bg-muted hover:bg-muted/80 flex items-center justify-center transition-colors">
-                    <Info className="w-4 h-4 text-muted-foreground" />
+                  <button className="w-6 h-6 rounded-full bg-slate-800/50 hover:bg-slate-800/80 flex items-center justify-center transition-colors border border-slate-700/50">
+                    <Info className="w-4 h-4 text-emerald-500" />
                   </button>
                 </TooltipTrigger>
-                <TooltipContent className="max-w-sm">
+                <TooltipContent className="max-w-sm bg-slate-800 border-slate-700/50">
                   <div className="space-y-2">
-                    <p className="font-semibold">Complexity Points (CP) erklärt:</p>
-                    <ul className="text-sm space-y-1">
+                    <p className="font-semibold text-slate-50">Complexity Points (CP) erklärt:</p>
+                    <ul className="text-sm space-y-1 text-slate-300">
                       <li>• 1 einfacher Workflow ≈ 1 CP</li>
                       <li>• 1 KI-Agent ≈ 2 CP</li>
                       <li>• 1 RAG-Agent ≈ 3-4 CP</li>
@@ -80,8 +80,8 @@ export function PackageGrid() {
               </Tooltip>
             </TooltipProvider>
           </div>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Transparente Preise basierend auf Complexity Points. Jedes Paket wird individuell 
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+            Transparente Preise basierend auf Complexity Points. Jedes Paket wird individuell
             an Ihre Anforderungen angepasst.
           </p>
         </div>

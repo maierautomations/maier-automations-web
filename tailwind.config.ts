@@ -68,6 +68,35 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Dark Mode Premium Colors
+				slate: {
+					950: '#020617',
+					900: '#0F172A',
+					800: '#1E293B',
+					700: '#334155',
+					600: '#475569',
+					500: '#64748B',
+					400: '#94A3B8',
+					300: '#CBD5E1',
+					200: '#E2E8F0',
+					100: '#F1F5F9',
+					50: '#F8FAFC',
+				},
+				emerald: {
+					500: '#10B981',
+					400: '#34D399',
+					600: '#059669',
+				},
+				cyan: {
+					500: '#06B6D4',
+					400: '#22D3EE',
+					600: '#0891B2',
+				},
+				amber: {
+					500: '#F59E0B',
+					400: '#FBBF24',
+					600: '#D97706',
 				}
 			},
 			borderRadius: {

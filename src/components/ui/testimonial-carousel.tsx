@@ -63,35 +63,35 @@ export function TestimonialCarousel({
         >
           {testimonials.map((testimonial, index) => (
             <div key={index} className="w-full flex-shrink-0 px-4">
-              <Card className="bg-white/90 backdrop-blur-sm border border-white/30 shadow-lg">
+              <Card className="glass-card">
                 <CardContent className="p-8 text-center">
                   <div className="flex justify-center mb-6">
-                    <div className="p-3 rounded-full bg-gradient-to-br from-blue-500/10 to-purple-500/10">
-                      <Quote className="w-8 h-8 text-blue-600" />
+                    <div className="p-3 rounded-full bg-gradient-to-br from-emerald-500/20 to-cyan-500/20">
+                      <Quote className="w-8 h-8 text-emerald-500" />
                     </div>
                   </div>
-                  
+
                   <div className="flex justify-center mb-4">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                      <Star key={i} className="w-5 h-5 fill-amber-500 text-amber-500" />
                     ))}
                   </div>
-                  
-                  <p className="text-lg text-muted-foreground mb-8 leading-relaxed italic">
+
+                  <p className="text-lg text-slate-300 mb-8 leading-relaxed italic">
                     "{testimonial.text}"
                   </p>
-                  
+
                   <div className="flex items-center justify-center gap-6">
                     <div className="text-center">
-                      <div className="font-bold text-foreground">{testimonial.company}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.industry}</div>
+                      <div className="font-bold text-slate-50">{testimonial.company}</div>
+                      <div className="text-sm text-slate-400">{testimonial.industry}</div>
                     </div>
-                    <div className="h-8 w-px bg-gray-300"></div>
+                    <div className="h-8 w-px bg-slate-700"></div>
                     <div className="text-center">
-                      <Badge variant="outline" className="bg-blue-50">
+                      <Badge className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20">
                         {testimonial.cp}
                       </Badge>
-                      <div className="text-sm font-semibold text-green-600 mt-1">
+                      <div className="text-sm font-semibold text-emerald-500 mt-1">
                         {testimonial.result}
                       </div>
                     </div>
@@ -109,11 +109,11 @@ export function TestimonialCarousel({
           variant="outline"
           size="icon"
           onClick={goToPrevious}
-          className="rounded-full bg-white/80 hover:bg-white/90"
+          className="rounded-full bg-slate-800/50 border-slate-700 text-slate-300 hover:bg-slate-700 hover:border-emerald-500/50"
         >
           <ChevronLeft className="w-4 h-4" />
         </Button>
-        
+
         {/* Dots indicator */}
         <div className="flex gap-2">
           {testimonials.map((_, index) => (
@@ -122,19 +122,19 @@ export function TestimonialCarousel({
               onClick={() => goToSlide(index)}
               className={cn(
                 "w-3 h-3 rounded-full transition-all duration-300",
-                currentIndex === index 
-                  ? "bg-blue-600 scale-110" 
-                  : "bg-gray-300 hover:bg-gray-400"
+                currentIndex === index
+                  ? "bg-emerald-500 scale-110"
+                  : "bg-slate-700 hover:bg-slate-600"
               )}
             />
           ))}
         </div>
-        
+
         <Button
           variant="outline"
           size="icon"
           onClick={goToNext}
-          className="rounded-full bg-white/80 hover:bg-white/90"
+          className="rounded-full bg-slate-800/50 border-slate-700 text-slate-300 hover:bg-slate-700 hover:border-emerald-500/50"
         >
           <ChevronRight className="w-4 h-4" />
         </Button>

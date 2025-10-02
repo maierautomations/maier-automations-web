@@ -38,24 +38,24 @@ export function WorkflowShowcase() {
   const [activeWorkflow, setActiveWorkflow] = useState(workflowExamples[0]);
 
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+    <section className="py-24 bg-slate-950">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <Badge className="mb-4 bg-green-50 text-green-700 border-green-200">
+          <Badge className="mb-4 gradient-emerald-cyan text-slate-900 border-0">
             <Workflow className="w-4 h-4 mr-2" />
             Live-Workflow Demonstration
           </Badge>
-          
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
+
+          <h2 className="text-3xl lg:text-4xl font-bold text-slate-50 mb-6">
             Sehen Sie Ihre{" "}
-            <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+            <span className="gradient-emerald-cyan bg-clip-text text-transparent">
               Automatisierung
             </span>{" "}
             in Aktion
           </h2>
-          
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Erleben Sie interaktiv, wie unsere KI-Workflows Ihre Geschäftsprozesse transformieren. 
+
+          <p className="text-lg text-slate-300 leading-relaxed">
+            Erleben Sie interaktiv, wie unsere KI-Workflows Ihre Geschäftsprozesse transformieren.
             Jeder Workflow ist maßgeschneidert und kann an Ihre spezifischen Anforderungen angepasst werden.
           </p>
         </div>
@@ -68,8 +68,8 @@ export function WorkflowShowcase() {
               className={cn(
                 "flex items-center gap-3 p-4 rounded-lg border-2 transition-all duration-200 text-left",
                 activeWorkflow.id === workflow.id
-                  ? "border-primary bg-primary/5 shadow-soft"
-                  : "border-gray-200 hover:border-gray-300 hover:bg-gray-50"
+                  ? "border-emerald-500/50 glass-card shadow-emerald-500/20 shadow-lg"
+                  : "glass-card border-slate-700/50 hover:border-slate-600"
               )}
               onClick={() => setActiveWorkflow(workflow)}
               whileHover={{ scale: 1.02 }}
@@ -78,31 +78,31 @@ export function WorkflowShowcase() {
               <div className={cn(
                 "p-2 rounded-lg",
                 activeWorkflow.id === workflow.id
-                  ? "bg-primary text-white"
-                  : "bg-gray-100 text-gray-600"
+                  ? "gradient-emerald-cyan"
+                  : "bg-slate-800/50 text-slate-400"
               )}>
                 {workflow.icon}
               </div>
-              
+
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="font-semibold text-foreground">
+                  <h3 className="font-semibold text-slate-50">
                     {workflow.title}
                   </h3>
-                  <Badge variant="outline" className="text-xs">
+                  <Badge className="text-xs bg-slate-800/50 text-emerald-500 border-emerald-500/30">
                     {workflow.category}
                   </Badge>
                 </div>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-slate-300">
                   {workflow.description}
                 </p>
               </div>
-              
+
               {activeWorkflow.id === workflow.id && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="text-primary"
+                  className="text-emerald-500"
                 >
                   <PlayCircle className="w-5 h-5" />
                 </motion.div>
@@ -126,67 +126,67 @@ export function WorkflowShowcase() {
         </AnimatePresence>
 
         {/* Workflow Stats */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="text-center p-6 bg-white rounded-xl shadow-soft border">
-            <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white mx-auto mb-3">
+          <div className="text-center p-6 glass-card rounded-xl hover:border-emerald-500/30 transition-all duration-300">
+            <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center text-slate-900 mx-auto mb-3">
               <Bot className="w-6 h-6" />
             </div>
-            <div className="text-2xl font-bold text-foreground mb-1">
+            <div className="text-2xl font-bold text-emerald-500 mb-1">
               {activeWorkflow.stats.timesSaved}
             </div>
-            <div className="text-sm text-muted-foreground">
+            <div className="text-sm text-slate-400">
               Durchschnittliche Zeitersparnis
             </div>
           </div>
 
-          <div className="text-center p-6 bg-white rounded-xl shadow-soft border">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white mx-auto mb-3">
+          <div className="text-center p-6 glass-card rounded-xl hover:border-cyan-500/30 transition-all duration-300">
+            <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-full flex items-center justify-center text-slate-900 mx-auto mb-3">
               <Workflow className="w-6 h-6" />
             </div>
-            <div className="text-2xl font-bold text-foreground mb-1">
+            <div className="text-2xl font-bold text-cyan-500 mb-1">
               {activeWorkflow.stats.accuracy}
             </div>
-            <div className="text-sm text-muted-foreground">
+            <div className="text-sm text-slate-400">
               Verarbeitungsgenauigkeit
             </div>
           </div>
 
-          <div className="text-center p-6 bg-white rounded-xl shadow-soft border">
-            <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center text-white mx-auto mb-3">
+          <div className="text-center p-6 glass-card rounded-xl hover:border-amber-500/30 transition-all duration-300">
+            <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-amber-600 rounded-full flex items-center justify-center text-slate-900 mx-auto mb-3">
               <ArrowRight className="w-6 h-6" />
             </div>
-            <div className="text-2xl font-bold text-foreground mb-1">
+            <div className="text-2xl font-bold text-amber-500 mb-1">
               3-5 Wochen
             </div>
-            <div className="text-sm text-muted-foreground">
+            <div className="text-sm text-slate-400">
               Bis zur Produktivsetzung
             </div>
           </div>
         </motion.div>
 
         {/* CTA Section */}
-        <motion.div 
+        <motion.div
           className="text-center mt-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <div className="bg-gradient-to-br from-primary/10 via-purple-500/10 to-primary/10 rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
+          <div className="glass-card rounded-2xl p-8 max-w-2xl mx-auto border-emerald-500/20">
+            <h3 className="text-2xl font-bold text-slate-50 mb-4">
               Bereit für Ihre eigene Automatisierung?
             </h3>
-            <p className="text-muted-foreground mb-6">
-              Lassen Sie uns gemeinsam analysieren, welche Workflows in Ihrem Unternehmen 
+            <p className="text-slate-300 mb-6">
+              Lassen Sie uns gemeinsam analysieren, welche Workflows in Ihrem Unternehmen
               automatisiert werden können. Kostenlos und unverbindlich.
             </p>
-            <Button size="lg" className="shadow-soft hover:shadow-elevated transition-all duration-200">
+            <Button size="lg" variant="gradient-primary" className="glow-emerald">
               Analyse starten
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>

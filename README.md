@@ -86,12 +86,93 @@ Navigation: Start • Pakete • RAG Pro • Blog • Analyse (CTA) • Kontakt 
 
 Wir liefern custom n8n-Workflows und KI-Agenten, die Routine entfernen, Antworten beschleunigen und Fehler senken – DSGVO-konform, im bestehenden Tool-Stack der Kunden. Das CP-Modell macht Umfang transparent; RAG Pro liefert Antworten mit Quellen und korrekten Tabellen-Ergebnissen. Die Website führt klar zu Paketen, RAG Pro und dem Analyse-Funnel.
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## Recent Updates (2025)
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### ✅ Phase 1-4: CP-System & Product Pages (Completed)
+1. **CP Pricing Finalized** - €1.000-€1.200/CP, Care at 10-15%
+2. **Unified Pricing** - All pages show consistent "Ab €X.XXX" format
+3. **Product Pages Created** - /produkte/ki-agenten & /produkte/workflows
+4. **Dark Mode Transformation** - Complete premium dark UI (Phases 1-6)
+
+### ✅ Dark Mode Design System
+- **Palette**: Slate-950/900/800 + Emerald/Cyan/Amber accents
+- **Style**: Glassmorphism, gradient CTAs, smooth animations
+- **Inspiration**: Vercel/Linear/Notion aesthetic
+- **Pages**: All 8+ pages transformed (homepage, pakete, products, RAG, CP-system, FAQ, etc.)
+
+## Tech Stack
+
+**Frontend:** React 18 + TypeScript, Vite 5, Tailwind CSS, shadcn/ui v4
+**Animations:** GSAP ScrollTrigger, Framer Motion, react-countup
+**Backend:** Supabase (PostgreSQL + Auth), n8n Cloud (EU)
+**Design:** Premium dark mode with glassmorphism
+
+## Quick Start
+
+```bash
+npm install
+npm run dev      # localhost:8080
+npm run build    # Production
+npm run lint     # Check code
+```
+
+## Project Structure
+
+```
+src/
+├── pages/              # Routes (Index, Packages, ProductAgents, ProductWorkflows, etc.)
+├── components/
+│   ├── Home/          # Homepage sections (Hero, PackageGrid, etc.)
+│   ├── ui/            # shadcn/ui + custom (glass-card, gradient-button, etc.)
+│   └── Layout/        # Header, Footer
+├── hooks/             # use-scroll-animation, use-toast
+└── integrations/      # Supabase client
+```
+
+## Design Patterns
+
+### Colors
+```css
+bg-slate-950           /* Page background */
+glass-card             /* Cards (glassmorphic utility) */
+text-slate-50          /* Headlines */
+text-emerald-500       /* Primary accents */
+```
+
+### Components
+```tsx
+// Gradient CTA
+<Button variant="gradient-primary">CTA</Button>
+
+// Badge
+<Badge className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20">3 CP</Badge>
+
+// Glass Card
+<Card className="glass-card hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/20">
+```
+
+## CP System Quick Reference
+
+- **Formulas**: 1 Workflow = 1 CP | 1 Agent = 2 CP | RAG Pro = 3-4 CP
+- **Pricing**: €1.000-€1.200 per CP + 10-15% monthly care
+- **Packages**: Starter (3 CP: €3.000-€3.600), Core (6 CP: €6.000-€7.500), Scale (10 CP: €10.000-€12.000)
+- **Pages**: /pakete, /cp-system, /produkte/ki-agenten, /produkte/workflows
+
+## Development Guidelines
+
+- Use `.glass-card` for all cards
+- Use `gradient-primary` for CTAs
+- Ensure slate-950/900 backgrounds (NO white)
+- Text: slate-50 (headlines), slate-300 (body)
+- Test mobile (min 375px width)
+- Add German content for customer-facing pages
+
+## Supabase MCP Access
+
+Direct access for: SQL queries, table management, edge functions, auth
+
+## License
+
+Proprietary - Maier Automations

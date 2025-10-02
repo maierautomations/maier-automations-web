@@ -201,22 +201,22 @@ export function WorkflowPreview({
   };
 
   const typeColors = {
-    trigger: "bg-blue-500",
-    action: "bg-green-500", 
+    trigger: "bg-emerald-500",
+    action: "bg-cyan-500",
     decision: "bg-amber-500",
-    output: "bg-purple-500"
+    output: "bg-emerald-600"
   };
 
   return (
-    <div className={cn("p-8 bg-gradient-to-br from-slate-50 to-white rounded-xl border", className)}>
+    <div className={cn("p-8 bg-slate-900/50 border border-slate-700/50 rounded-xl", className)}>
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h3 className="text-2xl font-bold text-foreground mb-2">
+          <h3 className="text-2xl font-bold text-slate-50 mb-2">
             {title || "Workflow Preview"}
           </h3>
           {description && (
-            <p className="text-muted-foreground">
+            <p className="text-slate-300">
               {description}
             </p>
           )}
@@ -227,7 +227,7 @@ export function WorkflowPreview({
             variant="outline"
             size="sm"
             onClick={togglePlay}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 border-slate-700 text-slate-300 hover:border-emerald-500 hover:text-emerald-500"
           >
             {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
             {isPlaying ? "Pause" : "Play"}
@@ -236,6 +236,7 @@ export function WorkflowPreview({
             variant="ghost"
             size="sm"
             onClick={resetWorkflow}
+            className="text-slate-300 hover:bg-slate-800 hover:text-slate-50"
           >
             Reset
           </Button>
@@ -272,7 +273,7 @@ export function WorkflowPreview({
                   y1={startY}
                   x2={endX}
                   y2={endY}
-                  stroke={isActive ? "#3b82f6" : "#e2e8f0"}
+                  stroke={isActive ? "#10b981" : "#475569"}
                   strokeWidth="2"
                   strokeDasharray={isActive ? "0" : "5,5"}
                   initial={{ pathLength: 0 }}
@@ -282,7 +283,7 @@ export function WorkflowPreview({
               );
             })
           )}
-          
+
           {/* Arrow markers */}
           <defs>
             <marker
@@ -295,7 +296,7 @@ export function WorkflowPreview({
             >
               <polygon
                 points="0 0, 10 3.5, 0 7"
-                fill="#3b82f6"
+                fill="#10b981"
               />
             </marker>
           </defs>
@@ -325,55 +326,55 @@ export function WorkflowPreview({
                   }}
                 >
                   <div className={cn(
-                    "relative bg-white rounded-lg border-2 p-4 shadow-soft min-w-[180px]",
-                    status === "active" && "border-primary ring-4 ring-primary/20",
-                    status === "completed" && "border-green-500 bg-green-50"
+                    "relative bg-slate-800/50 rounded-lg border-2 border-slate-700/50 p-4 shadow-lg min-w-[180px]",
+                    status === "active" && "border-emerald-500 ring-4 ring-emerald-500/20",
+                    status === "completed" && "border-emerald-500/50 bg-slate-800/70"
                   )}>
                     {/* Step Icon */}
                     <div className={cn(
-                      "w-10 h-10 rounded-full flex items-center justify-center text-white mb-3",
+                      "w-10 h-10 rounded-full flex items-center justify-center text-slate-900 mb-3",
                       typeColors[step.type],
-                      status === "completed" && "bg-green-500"
+                      status === "completed" && "bg-emerald-500"
                     )}>
                       {status === "completed" ? (
                         <CheckCircle className="w-5 h-5" />
                       ) : (
                         step.icon
                       )}
-                      
+
                       {status === "active" && (
                         <motion.div
-                          className="absolute inset-0 rounded-full border-2 border-primary"
+                          className="absolute inset-0 rounded-full border-2 border-emerald-500"
                           animate={{ scale: [1, 1.2, 1] }}
-                          transition={{ 
-                            duration: 1.5, 
+                          transition={{
+                            duration: 1.5,
                             repeat: Infinity,
                             repeatType: "loop"
                           }}
                         />
                       )}
                     </div>
-                    
+
                     {/* Step Content */}
-                    <h4 className="font-semibold text-sm mb-1">
+                    <h4 className="font-semibold text-sm mb-1 text-slate-50">
                       {step.title}
                     </h4>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-xs text-slate-400">
                       {step.description}
                     </p>
-                    
+
                     {/* Processing indicator */}
                     {status === "active" && (
                       <motion.div
-                        className="absolute -top-2 -right-2 w-6 h-6 bg-primary rounded-full flex items-center justify-center"
+                        className="absolute -top-2 -right-2 w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center"
                         animate={{ rotate: 360 }}
-                        transition={{ 
-                          duration: 2, 
+                        transition={{
+                          duration: 2,
                           repeat: Infinity,
                           ease: "linear"
                         }}
                       >
-                        <Clock className="w-3 h-3 text-white" />
+                        <Clock className="w-3 h-3 text-slate-900" />
                       </motion.div>
                     )}
                   </div>
@@ -386,16 +387,16 @@ export function WorkflowPreview({
       
       {/* Progress Bar */}
       <div className="mt-8">
-        <div className="flex justify-between text-sm text-muted-foreground mb-2">
+        <div className="flex justify-between text-sm text-slate-400 mb-2">
           <span>Workflow Fortschritt</span>
           <span>{Math.max(0, currentStep + 1)} von {workflow.length} Schritten</span>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-2">
+        <div className="w-full bg-slate-800 rounded-full h-2">
           <motion.div
-            className="bg-primary h-2 rounded-full"
+            className="bg-gradient-to-r from-emerald-500 to-cyan-500 h-2 rounded-full"
             initial={{ width: "0%" }}
-            animate={{ 
-              width: `${((currentStep + 1) / workflow.length) * 100}%` 
+            animate={{
+              width: `${((currentStep + 1) / workflow.length) * 100}%`
             }}
             transition={{ duration: 0.3 }}
           />

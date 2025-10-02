@@ -191,7 +191,7 @@ const FAQ = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-slate-950">
       <SEOHead
         title="FAQ - Häufig gestellte Fragen | Maier Automations"
         description="Antworten auf häufige Fragen zu KI-Automatisierung, Datenschutz, Kosten, Implementation und Support. DSGVO-konforme Lösungen für den Mittelstand."
@@ -208,16 +208,16 @@ const FAQ = () => {
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-20 lg:py-24 bg-gradient-to-b from-white to-gray-50">
+        <section className="py-20 lg:py-24 bg-slate-950 border-b border-slate-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border-blue-200">
+              <Badge className="mb-4 bg-emerald-500/10 text-emerald-500 border-emerald-500/20">
                 Transparenz & Klarheit
               </Badge>
-              <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-4xl lg:text-5xl font-bold text-slate-50 mb-6">
                 Häufig gestellte Fragen
               </h1>
-              <p className="text-xl text-muted-foreground mb-8">
+              <p className="text-xl text-slate-300 mb-8">
                 Alle wichtigen Antworten zu KI-Automatisierung, Datenschutz,
                 Kosten und Implementation – transparent und verständlich erklärt.
               </p>
@@ -226,14 +226,14 @@ const FAQ = () => {
         </section>
 
         {/* Category Filter */}
-        <section className="py-8 bg-white border-b">
+        <section className="py-8 bg-slate-950 border-b border-slate-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-wrap justify-center gap-3">
               {categories.map(category => (
                 <Badge
                   key={category}
                   variant="outline"
-                  className="px-4 py-2 text-sm cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
+                  className="px-4 py-2 text-sm cursor-pointer border-slate-700 text-slate-300 hover:border-emerald-500 hover:text-emerald-500 transition-colors"
                   onClick={() => {
                     const element = document.getElementById(category.replace(/ /g, '-'));
                     element?.scrollIntoView({ behavior: 'smooth' });
@@ -247,13 +247,15 @@ const FAQ = () => {
         </section>
 
         {/* FAQ Items */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-slate-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               {categories.map(category => (
                 <div key={category} id={category.replace(/ /g, '-')} className="mb-12">
-                  <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                    {faqs.find(f => f.category === category)?.icon}
+                  <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-slate-50">
+                    <span className="text-emerald-500">
+                      {faqs.find(f => f.category === category)?.icon}
+                    </span>
                     {category}
                   </h2>
                   <div className="space-y-4">
@@ -264,18 +266,18 @@ const FAQ = () => {
                         const isOpen = openItems.includes(globalIndex);
 
                         return (
-                          <Card key={globalIndex} className="overflow-hidden">
+                          <Card key={globalIndex} className="glass-card overflow-hidden border-slate-700/50">
                             <CardHeader
-                              className="cursor-pointer hover:bg-gray-50 transition-colors"
+                              className="cursor-pointer hover:bg-slate-800/50 transition-colors"
                               onClick={() => toggleItem(globalIndex)}
                             >
                               <div className="flex items-center justify-between">
-                                <h3 className="font-semibold text-lg pr-4">{faq.question}</h3>
+                                <h3 className="font-semibold text-lg pr-4 text-slate-50">{faq.question}</h3>
                                 <motion.div
                                   animate={{ rotate: isOpen ? 180 : 0 }}
                                   transition={{ duration: 0.2 }}
                                 >
-                                  <ChevronDown className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                                  <ChevronDown className="w-5 h-5 text-slate-400 flex-shrink-0" />
                                 </motion.div>
                               </div>
                             </CardHeader>
@@ -288,7 +290,7 @@ const FAQ = () => {
                                   transition={{ duration: 0.3 }}
                                 >
                                   <CardContent className="pt-0">
-                                    <p className="text-muted-foreground leading-relaxed">
+                                    <p className="text-slate-300 leading-relaxed">
                                       {faq.answer}
                                     </p>
                                   </CardContent>
@@ -306,25 +308,25 @@ const FAQ = () => {
         </section>
 
         {/* Still Questions CTA */}
-        <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <section className="py-20 bg-slate-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center">
-              <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-purple-50">
+              <Card className="glass-card border-emerald-500/30">
                 <CardContent className="p-8">
-                  <h2 className="text-2xl font-bold mb-4">Noch Fragen?</h2>
-                  <p className="text-muted-foreground mb-6">
+                  <h2 className="text-2xl font-bold mb-4 text-slate-50">Noch Fragen?</h2>
+                  <p className="text-slate-300 mb-6">
                     Lassen Sie uns in einem unverbindlichen Gespräch klären,
                     wie wir Ihre spezifischen Anforderungen umsetzen können.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link to="/kontakt">
-                      <Button size="lg" className="min-w-[200px]">
+                      <Button variant="gradient-primary" size="lg" className="min-w-[200px]">
                         Direktkontakt
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </Link>
                     <Link to="/analyse">
-                      <Button variant="outline" size="lg" className="min-w-[200px]">
+                      <Button variant="outline" size="lg" className="min-w-[200px] border-slate-700 text-slate-300 hover:bg-slate-800">
                         Analyse starten
                       </Button>
                     </Link>
@@ -333,32 +335,32 @@ const FAQ = () => {
               </Card>
 
               <div className="mt-12">
-                <h3 className="text-lg font-semibold mb-4">Schnelle Hilfe</h3>
+                <h3 className="text-lg font-semibold mb-4 text-slate-50">Schnelle Hilfe</h3>
                 <div className="grid sm:grid-cols-3 gap-6">
                   <div className="text-center">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Shield className="w-6 h-6 text-blue-600" />
+                    <div className="w-12 h-12 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Shield className="w-6 h-6 text-emerald-500" />
                     </div>
-                    <h4 className="font-medium mb-1">Datenschutz</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <h4 className="font-medium mb-1 text-slate-50">Datenschutz</h4>
+                    <p className="text-sm text-slate-400">
                       100% DSGVO-konform
                     </p>
                   </div>
                   <div className="text-center">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Clock className="w-6 h-6 text-green-600" />
+                    <div className="w-12 h-12 bg-cyan-500/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Clock className="w-6 h-6 text-cyan-500" />
                     </div>
-                    <h4 className="font-medium mb-1">Reaktionszeit</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <h4 className="font-medium mb-1 text-slate-50">Reaktionszeit</h4>
+                    <p className="text-sm text-slate-400">
                       Antwort in &lt; 24h
                     </p>
                   </div>
                   <div className="text-center">
-                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Users className="w-6 h-6 text-purple-600" />
+                    <div className="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Users className="w-6 h-6 text-amber-500" />
                     </div>
-                    <h4 className="font-medium mb-1">Persönlich</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <h4 className="font-medium mb-1 text-slate-50">Persönlich</h4>
+                    <p className="text-sm text-slate-400">
                       Direkter Ansprechpartner
                     </p>
                   </div>

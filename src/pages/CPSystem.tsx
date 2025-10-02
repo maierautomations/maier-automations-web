@@ -69,7 +69,7 @@ const CPSystem = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-slate-950">
       <SEOHead
         title="CP-System - Transparente Preisgestaltung | Maier Automations"
         description="Verstehen Sie unser Complexity Points System: Transparente, faire Preisgestaltung für KI-Automatisierungen. Keine versteckten Kosten, volle Kontrolle."
@@ -80,32 +80,32 @@ const CPSystem = () => {
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-20 lg:py-24 bg-gradient-to-b from-white to-gray-50">
+        <section className="py-20 lg:py-24 bg-slate-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border-blue-200">
+              <Badge className="mb-4 bg-emerald-500/10 text-emerald-500 border-emerald-500/20">
                 Maximale Transparenz
               </Badge>
-              <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-4xl lg:text-5xl font-bold text-slate-50 mb-6">
                 Das CP-System:{" "}
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent">
                   Faire & transparente Preise
                 </span>
               </h1>
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-xl text-slate-300 mb-8 leading-relaxed">
                 Complexity Points (CP) machen Preise nachvollziehbar, planbar und fair.
                 Statt Stunden zu schätzen, bemessen wir Komplexität und Ergebnisumfang.
                 So sehen Sie bereits vor Projektstart, was Sie bekommen.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link to="#rechner">
-                  <Button size="lg" className="min-w-[200px]">
+                  <Button variant="gradient-primary" size="lg" className="min-w-[200px]">
                     <Calculator className="w-5 h-5 mr-2" />
                     CP-Rechner testen
                   </Button>
                 </Link>
                 <Link to="/analyse">
-                  <Button variant="outline" size="lg" className="min-w-[200px]">
+                  <Button variant="outline" size="lg" className="min-w-[200px] border-slate-700 text-slate-300 hover:bg-slate-800">
                     Analyse starten
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
@@ -116,96 +116,96 @@ const CPSystem = () => {
         </section>
 
         {/* Was ist ein CP? */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-slate-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Was ist ein Complexity Point?</h2>
+              <h2 className="text-3xl font-bold text-center mb-12 text-slate-50">Was ist ein Complexity Point?</h2>
 
               <div className="grid md:grid-cols-3 gap-6 mb-12">
-                <Card className="hover:shadow-lg transition-shadow">
+                <Card className="glass-card hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/20 hover:border-emerald-500/30 transition-all duration-300">
                   <CardHeader>
                     <div className="flex items-center justify-between mb-3">
-                      <Zap className="w-8 h-8 text-blue-600" />
-                      <Badge variant="secondary">1 CP</Badge>
+                      <Zap className="w-8 h-8 text-emerald-500" />
+                      <Badge className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20">1 CP</Badge>
                     </div>
-                    <h3 className="text-xl font-semibold">Standard-Workflow</h3>
+                    <h3 className="text-xl font-semibold text-slate-50">Standard-Workflow</h3>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground mb-4">
+                    <p className="text-slate-300 mb-4">
                       Ein klar abgegrenzter, geschäftlich sinnvoller Automationsfluss mit Ein-/Ausgaben,
                       Fehlerpfaden und QA.
                     </p>
                     <ul className="text-sm space-y-1">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-green-600" />
+                      <li className="flex items-center gap-2 text-slate-300">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                         Fehlerbehandlung inkl.
                       </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-green-600" />
+                      <li className="flex items-center gap-2 text-slate-300">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                         Basis-Dokumentation
                       </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-green-600" />
+                      <li className="flex items-center gap-2 text-slate-300">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                         Standard-Tests
                       </li>
                     </ul>
                   </CardContent>
                 </Card>
 
-                <Card className="hover:shadow-lg transition-shadow">
+                <Card className="glass-card hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/20 hover:border-cyan-500/30 transition-all duration-300">
                   <CardHeader>
                     <div className="flex items-center justify-between mb-3">
-                      <Zap className="w-8 h-8 text-purple-600" />
-                      <Badge variant="secondary">2 CP</Badge>
+                      <Zap className="w-8 h-8 text-cyan-500" />
+                      <Badge className="bg-cyan-500/10 text-cyan-500 border-cyan-500/20">2 CP</Badge>
                     </div>
-                    <h3 className="text-xl font-semibold">n8n-Agent</h3>
+                    <h3 className="text-xl font-semibold text-slate-50">n8n-Agent</h3>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground mb-4">
+                    <p className="text-slate-300 mb-4">
                       Zustandsbehafteter Agent inkl. Tooling (z.B. Suche, DB, Kalender)
                       und Kurzzeit-Speicher.
                     </p>
                     <ul className="text-sm space-y-1">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-green-600" />
+                      <li className="flex items-center gap-2 text-slate-300">
+                        <CheckCircle2 className="w-4 h-4 text-cyan-500" />
                         Tools & Memory
                       </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-green-600" />
+                      <li className="flex items-center gap-2 text-slate-300">
+                        <CheckCircle2 className="w-4 h-4 text-cyan-500" />
                         KI-Integration
                       </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-green-600" />
+                      <li className="flex items-center gap-2 text-slate-300">
+                        <CheckCircle2 className="w-4 h-4 text-cyan-500" />
                         Zustandsverwaltung
                       </li>
                     </ul>
                   </CardContent>
                 </Card>
 
-                <Card className="hover:shadow-lg transition-shadow">
+                <Card className="glass-card hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/20 hover:border-amber-500/30 transition-all duration-300">
                   <CardHeader>
                     <div className="flex items-center justify-between mb-3">
-                      <Zap className="w-8 h-8 text-green-600" />
-                      <Badge variant="secondary">3-4 CP</Badge>
+                      <Zap className="w-8 h-8 text-amber-500" />
+                      <Badge className="bg-amber-500/10 text-amber-500 border-amber-500/20">3-4 CP</Badge>
                     </div>
-                    <h3 className="text-xl font-semibold">RAG-Agent Premium</h3>
+                    <h3 className="text-xl font-semibold text-slate-50">RAG-Agent Premium</h3>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground mb-4">
+                    <p className="text-slate-300 mb-4">
                       Retrieval-Augmented Generation inkl. Vektordatenbank,
                       Chunking/Pipeline, Evaluations und Guardrails.
                     </p>
                     <ul className="text-sm space-y-1">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-green-600" />
+                      <li className="flex items-center gap-2 text-slate-300">
+                        <CheckCircle2 className="w-4 h-4 text-amber-500" />
                         Vektordatenbank
                       </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-green-600" />
+                      <li className="flex items-center gap-2 text-slate-300">
+                        <CheckCircle2 className="w-4 h-4 text-amber-500" />
                         Halluzinations-Checks
                       </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-green-600" />
+                      <li className="flex items-center gap-2 text-slate-300">
+                        <CheckCircle2 className="w-4 h-4 text-amber-500" />
                         Guardrails & Evals
                       </li>
                     </ul>
@@ -214,31 +214,31 @@ const CPSystem = () => {
               </div>
 
               {/* Preislogik */}
-              <Card className="bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200">
+              <Card className="glass-card">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6 text-center">Unsere Preislogik</h3>
+                  <h3 className="text-2xl font-bold mb-6 text-center text-slate-50">Unsere Preislogik</h3>
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
-                      <h4 className="font-semibold mb-3 flex items-center gap-2">
-                        <Calculator className="w-5 h-5 text-blue-600" />
+                      <h4 className="font-semibold mb-3 flex items-center gap-2 text-slate-50">
+                        <Calculator className="w-5 h-5 text-emerald-500" />
                         Setup-Preis
                       </h4>
-                      <p className="text-muted-foreground mb-2">
-                        Standard CP-Satz: <strong>€1.000–€1.200</strong> pro CP
+                      <p className="text-slate-300 mb-2">
+                        Standard CP-Satz: <strong className="text-slate-50">€1.000–€1.200</strong> pro CP
                       </p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-slate-400">
                         Formel: Setup-Preis = CP-Anzahl × CP-Satz
                       </p>
                     </div>
                     <div>
-                      <h4 className="font-semibold mb-3 flex items-center gap-2">
-                        <Clock className="w-5 h-5 text-purple-600" />
+                      <h4 className="font-semibold mb-3 flex items-center gap-2 text-slate-50">
+                        <Clock className="w-5 h-5 text-cyan-500" />
                         Monthly Care
                       </h4>
-                      <p className="text-muted-foreground mb-2">
-                        Betreuung: <strong>10–15%</strong> des Setup-Preises/Monat
+                      <p className="text-slate-300 mb-2">
+                        Betreuung: <strong className="text-slate-50">10–15%</strong> des Setup-Preises/Monat
                       </p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-slate-400">
                         Inkl. Monitoring, Tuning & kleine Änderungen
                       </p>
                     </div>
@@ -250,53 +250,53 @@ const CPSystem = () => {
         </section>
 
         {/* Pakete */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-slate-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4">Unsere Pakete</h2>
-                <p className="text-lg text-muted-foreground mb-2">
+                <h2 className="text-3xl font-bold mb-4 text-slate-50">Unsere Pakete</h2>
+                <p className="text-lg text-slate-300 mb-2">
                   DACH-SMB-freundliche Transparenz mit klaren Leistungen
                 </p>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-slate-400">
                   Alle Preise verstehen sich netto, zzgl. MwSt. Kosten für Drittanbieter-Lizenzen nicht enthalten.
                 </p>
               </div>
 
               <div className="grid md:grid-cols-3 gap-6">
                 {packages.map((pkg) => (
-                  <Card key={pkg.name} className="hover:shadow-xl transition-shadow">
+                  <Card key={pkg.name} className="glass-card hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/20 hover:border-emerald-500/30 transition-all duration-300">
                     <CardHeader>
                       <div className="flex items-center justify-between mb-4">
-                        <Badge variant="secondary" className="text-lg px-3 py-1">
+                        <Badge className="text-lg px-3 py-1 bg-emerald-500/10 text-emerald-500 border-emerald-500/20">
                           {pkg.cp} CP
                         </Badge>
-                        <Package className="w-6 h-6 text-muted-foreground" />
+                        <Package className="w-6 h-6 text-slate-400" />
                       </div>
-                      <h3 className="text-2xl font-bold">{pkg.name}</h3>
-                      <p className="text-sm text-muted-foreground mt-2">{pkg.description}</p>
+                      <h3 className="text-2xl font-bold text-slate-50">{pkg.name}</h3>
+                      <p className="text-sm text-slate-400 mt-2">{pkg.description}</p>
                     </CardHeader>
                     <CardContent>
                       <div className="mb-6">
                         <div className="mb-3">
-                          <div className="text-sm text-muted-foreground">Setup</div>
-                          <div className="text-xl font-semibold">{pkg.setupRange}</div>
+                          <div className="text-sm text-slate-400">Setup</div>
+                          <div className="text-xl font-semibold text-slate-50">{pkg.setupRange}</div>
                         </div>
                         <div>
-                          <div className="text-sm text-muted-foreground">Monthly Care</div>
-                          <div className="text-xl font-semibold">{pkg.careRange}</div>
+                          <div className="text-sm text-slate-400">Monthly Care</div>
+                          <div className="text-xl font-semibold text-slate-50">{pkg.careRange}</div>
                         </div>
                       </div>
                       <ul className="space-y-2 mb-6">
                         {pkg.highlights.map((highlight, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-sm">
-                            <CheckCircle2 className="w-4 h-4 text-green-600" />
+                          <li key={idx} className="flex items-center gap-2 text-sm text-slate-300">
+                            <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                             {highlight}
                           </li>
                         ))}
                       </ul>
                       <Link to="/analyse">
-                        <Button className="w-full">
+                        <Button variant="gradient-primary" className="w-full">
                           {pkg.name} auswählen
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Button>
@@ -307,48 +307,48 @@ const CPSystem = () => {
               </div>
 
               {/* RAG Agent Premium */}
-              <Card className="mt-8 border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50">
+              <Card className="mt-8 glass-card border-emerald-500/30">
                 <CardContent className="p-8">
                   <div className="flex items-start justify-between">
                     <div>
-                      <Badge className="mb-3 bg-green-100 text-green-800 border-green-300">
+                      <Badge className="mb-3 bg-emerald-500/10 text-emerald-500 border-emerald-500/20">
                         Premium SKU
                       </Badge>
-                      <h3 className="text-2xl font-bold mb-2">RAG Agent Premium</h3>
-                      <p className="text-muted-foreground mb-4">
+                      <h3 className="text-2xl font-bold mb-2 text-slate-50">RAG Agent Premium</h3>
+                      <p className="text-slate-300 mb-4">
                         Intelligente Wissensdatenbank mit Retrieval-Augmented Generation
                       </p>
                       <div className="grid md:grid-cols-2 gap-4 mb-6">
                         <div>
-                          <div className="text-sm text-muted-foreground">Setup (3-4 CP)</div>
-                          <div className="text-xl font-semibold">€3.500–€6.500</div>
+                          <div className="text-sm text-slate-400">Setup (3-4 CP)</div>
+                          <div className="text-xl font-semibold text-slate-50">€3.500–€6.500</div>
                         </div>
                         <div>
-                          <div className="text-sm text-muted-foreground">Monthly Care</div>
-                          <div className="text-xl font-semibold">€350–€800</div>
+                          <div className="text-sm text-slate-400">Monthly Care</div>
+                          <div className="text-xl font-semibold text-slate-50">€350–€800</div>
                         </div>
                       </div>
                       <ul className="grid md:grid-cols-2 gap-2 text-sm">
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-600" />
+                        <li className="flex items-center gap-2 text-slate-300">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                           Vektordatenbank/Index
                         </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-600" />
+                        <li className="flex items-center gap-2 text-slate-300">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                           Ingestion/Chunking
                         </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-600" />
+                        <li className="flex items-center gap-2 text-slate-300">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                           Retrieval-Tuning
                         </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-600" />
+                        <li className="flex items-center gap-2 text-slate-300">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                           Evaluations & Guardrails
                         </li>
                       </ul>
                     </div>
                     <Link to="/rag-pro">
-                      <Button size="lg" className="min-w-[160px]">
+                      <Button variant="gradient-primary" size="lg" className="min-w-[160px]">
                         Mehr erfahren
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
@@ -361,24 +361,24 @@ const CPSystem = () => {
         </section>
 
         {/* CP-Rechner */}
-        <section id="rechner" className="py-16 bg-white">
+        <section id="rechner" className="py-16 bg-slate-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4">CP-Rechner</h2>
-                <p className="text-lg text-muted-foreground">
+                <h2 className="text-3xl font-bold mb-4 text-slate-50">CP-Rechner</h2>
+                <p className="text-lg text-slate-300">
                   Berechnen Sie Ihren voraussichtlichen Investitionsrahmen
                 </p>
               </div>
 
-              <Card>
+              <Card className="glass-card">
                 <CardContent className="p-8">
                   <div className="space-y-8">
                     {/* CP Slider */}
                     <div>
                       <div className="flex items-center justify-between mb-4">
-                        <label className="font-semibold">Complexity Points (CP)</label>
-                        <span className="text-2xl font-bold text-blue-600">{selectedCP} CP</span>
+                        <label className="font-semibold text-slate-50">Complexity Points (CP)</label>
+                        <span className="text-2xl font-bold text-emerald-500">{selectedCP} CP</span>
                       </div>
                       <Slider
                         value={[selectedCP]}
@@ -388,7 +388,7 @@ const CPSystem = () => {
                         step={1}
                         className="mb-2"
                       />
-                      <div className="flex justify-between text-sm text-muted-foreground">
+                      <div className="flex justify-between text-sm text-slate-400">
                         <span>1 CP</span>
                         <span>10 CP</span>
                         <span>20 CP</span>
@@ -398,8 +398,8 @@ const CPSystem = () => {
                     {/* CP Rate Slider */}
                     <div>
                       <div className="flex items-center justify-between mb-4">
-                        <label className="font-semibold">CP-Satz</label>
-                        <span className="text-2xl font-bold text-purple-600">€{cpRate.toLocaleString('de-DE')}</span>
+                        <label className="font-semibold text-slate-50">CP-Satz</label>
+                        <span className="text-2xl font-bold text-cyan-500">€{cpRate.toLocaleString('de-DE')}</span>
                       </div>
                       <Slider
                         value={[cpRate]}
@@ -409,7 +409,7 @@ const CPSystem = () => {
                         step={50}
                         className="mb-2"
                       />
-                      <div className="flex justify-between text-sm text-muted-foreground">
+                      <div className="flex justify-between text-sm text-slate-400">
                         <span>€1.000</span>
                         <span>€1.100</span>
                         <span>€1.200</span>
@@ -419,8 +419,8 @@ const CPSystem = () => {
                     {/* Care Percentage */}
                     <div>
                       <div className="flex items-center justify-between mb-4">
-                        <label className="font-semibold">Monthly Care</label>
-                        <span className="text-2xl font-bold text-green-600">{carePercentage}%</span>
+                        <label className="font-semibold text-slate-50">Monthly Care</label>
+                        <span className="text-2xl font-bold text-amber-500">{carePercentage}%</span>
                       </div>
                       <Slider
                         value={[carePercentage]}
@@ -430,7 +430,7 @@ const CPSystem = () => {
                         step={0.5}
                         className="mb-2"
                       />
-                      <div className="flex justify-between text-sm text-muted-foreground">
+                      <div className="flex justify-between text-sm text-slate-400">
                         <span>10%</span>
                         <span>12.5%</span>
                         <span>15%</span>
@@ -438,27 +438,27 @@ const CPSystem = () => {
                     </div>
 
                     {/* Ergebnis */}
-                    <div className="border-t pt-8">
+                    <div className="border-t border-slate-700/50 pt-8">
                       <div className="grid md:grid-cols-3 gap-6">
                         <div className="text-center">
-                          <div className="text-sm text-muted-foreground mb-2">Setup-Investition</div>
-                          <div className="text-3xl font-bold text-blue-600">
+                          <div className="text-sm text-slate-400 mb-2">Setup-Investition</div>
+                          <div className="text-3xl font-bold text-emerald-500">
                             €{setupPrice.toLocaleString('de-DE')}
                           </div>
                         </div>
                         <div className="text-center">
-                          <div className="text-sm text-muted-foreground mb-2">Monthly Care</div>
-                          <div className="text-3xl font-bold text-green-600">
+                          <div className="text-sm text-slate-400 mb-2">Monthly Care</div>
+                          <div className="text-3xl font-bold text-cyan-500">
                             €{monthlyCareMid.toLocaleString('de-DE', { maximumFractionDigits: 0 })}
                           </div>
-                          <div className="text-xs text-muted-foreground mt-1">
+                          <div className="text-xs text-slate-400 mt-1">
                             (€{monthlyCareLow.toLocaleString('de-DE', { maximumFractionDigits: 0 })} -
                             €{monthlyCareHigh.toLocaleString('de-DE', { maximumFractionDigits: 0 })})
                           </div>
                         </div>
                         <div className="text-center">
-                          <div className="text-sm text-muted-foreground mb-2">Erstes Jahr gesamt</div>
-                          <div className="text-3xl font-bold text-purple-600">
+                          <div className="text-sm text-slate-400 mb-2">Erstes Jahr gesamt</div>
+                          <div className="text-3xl font-bold text-amber-500">
                             €{(setupPrice + monthlyCareMid * 12).toLocaleString('de-DE', { maximumFractionDigits: 0 })}
                           </div>
                         </div>
@@ -467,7 +467,7 @@ const CPSystem = () => {
 
                     <div className="flex justify-center">
                       <Link to="/analyse">
-                        <Button size="lg" className="min-w-[240px]">
+                        <Button variant="gradient-primary" size="lg" className="min-w-[240px]">
                           Individuelle Analyse starten
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Button>
@@ -481,27 +481,27 @@ const CPSystem = () => {
         </section>
 
         {/* Add-ons */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-slate-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4">Optionale Add-ons</h2>
-                <p className="text-lg text-muted-foreground">
+                <h2 className="text-3xl font-bold mb-4 text-slate-50">Optionale Add-ons</h2>
+                <p className="text-lg text-slate-300">
                   Erweitern Sie Ihr Paket bei Bedarf mit transparenten Zusatzleistungen
                 </p>
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {addons.map((addon, idx) => (
-                  <Card key={idx} className="hover:shadow-md transition-shadow">
+                  <Card key={idx} className="glass-card hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className="p-2 rounded-lg bg-blue-50 text-blue-600">
+                        <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-500">
                           {addon.icon}
                         </div>
                         <div className="flex-1">
-                          <h4 className="font-semibold mb-1">{addon.name}</h4>
-                          <Badge variant="secondary" className="text-xs">
+                          <h4 className="font-semibold mb-1 text-slate-50">{addon.name}</h4>
+                          <Badge className="text-xs bg-cyan-500/10 text-cyan-500 border-cyan-500/20">
                             +{addon.cp} CP
                           </Badge>
                         </div>
@@ -511,12 +511,12 @@ const CPSystem = () => {
                 ))}
               </div>
 
-              <div className="mt-8 p-6 bg-blue-50 rounded-lg">
+              <div className="mt-8 glass-card p-6">
                 <div className="flex items-start gap-3">
-                  <Info className="w-5 h-5 text-blue-600 mt-1" />
+                  <Info className="w-5 h-5 text-emerald-500 mt-1" />
                   <div>
-                    <h4 className="font-semibold mb-2">Was ist inklusive?</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <h4 className="font-semibold mb-2 text-slate-50">Was ist inklusive?</h4>
+                    <p className="text-sm text-slate-300">
                       Viele "kleine Dinge" sind paketüblich und kosten nichts extra:
                       Sinnvolle Fehlerbehandlung, Logging, Basis-Dokumentation, Standard-Tests und QA.
                       Add-ons fallen erst an, wenn explizit gewünscht oder erhöhte Anforderungen bestehen.
@@ -529,20 +529,20 @@ const CPSystem = () => {
         </section>
 
         {/* Ablauf */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-slate-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4">Unser transparenter Ablauf</h2>
-                <p className="text-lg text-muted-foreground">
+                <h2 className="text-3xl font-bold mb-4 text-slate-50">Unser transparenter Ablauf</h2>
+                <p className="text-lg text-slate-300">
                   Von der ersten Analyse bis zum erfolgreichen Go-Live
                 </p>
               </div>
 
               <Tabs defaultValue="ablauf" className="w-full">
-                <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="ablauf">5-Schritte Ablauf</TabsTrigger>
-                  <TabsTrigger value="leistungen">Was ist enthalten?</TabsTrigger>
+                <TabsList className="grid w-full grid-cols-2 bg-slate-800 border-slate-700">
+                  <TabsTrigger value="ablauf" className="data-[state=active]:bg-slate-700 data-[state=active]:text-slate-50">5-Schritte Ablauf</TabsTrigger>
+                  <TabsTrigger value="leistungen" className="data-[state=active]:bg-slate-700 data-[state=active]:text-slate-50">Was ist enthalten?</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="ablauf" className="mt-8">
@@ -555,15 +555,15 @@ const CPSystem = () => {
                       { step: 5, title: "Go-Live & Handover", desc: "Übergabe, Schulung, Start der Care-Phase", time: "Woche 3-4" }
                     ].map((item) => (
                       <div key={item.step} className="flex items-center gap-6">
-                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center text-slate-900 font-bold">
                           {item.step}
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center justify-between">
-                            <h4 className="font-semibold text-lg">{item.title}</h4>
-                            <Badge variant="outline">{item.time}</Badge>
+                            <h4 className="font-semibold text-lg text-slate-50">{item.title}</h4>
+                            <Badge className="border-slate-700 text-slate-300">{item.time}</Badge>
                           </div>
-                          <p className="text-muted-foreground">{item.desc}</p>
+                          <p className="text-slate-300">{item.desc}</p>
                         </div>
                       </div>
                     ))}
@@ -573,50 +573,50 @@ const CPSystem = () => {
                 <TabsContent value="leistungen" className="mt-8">
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
-                      <h3 className="font-semibold mb-4 flex items-center gap-2">
-                        <Package className="w-5 h-5 text-blue-600" />
+                      <h3 className="font-semibold mb-4 flex items-center gap-2 text-slate-50">
+                        <Package className="w-5 h-5 text-emerald-500" />
                         Im Setup enthalten
                       </h3>
                       <ul className="space-y-2">
                         <li className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 mt-1" />
-                          <span className="text-sm">Discovery & Design: Zielbild, Datenflüsse, Schnittstellen</span>
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-1" />
+                          <span className="text-sm text-slate-300">Discovery & Design: Zielbild, Datenflüsse, Schnittstellen</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 mt-1" />
-                          <span className="text-sm">Implementierung: Workflows/Agenten, Konnektoren, Fehlerpfade</span>
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-1" />
+                          <span className="text-sm text-slate-300">Implementierung: Workflows/Agenten, Konnektoren, Fehlerpfade</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 mt-1" />
-                          <span className="text-sm">Qualitätssicherung: Tests, Evals, Security/Privacy-Checks</span>
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-1" />
+                          <span className="text-sm text-slate-300">Qualitätssicherung: Tests, Evals, Security/Privacy-Checks</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 mt-1" />
-                          <span className="text-sm">Dokumentation & Handover: Technische Doku, Runbooks, Schulung</span>
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-1" />
+                          <span className="text-sm text-slate-300">Dokumentation & Handover: Technische Doku, Runbooks, Schulung</span>
                         </li>
                       </ul>
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-4 flex items-center gap-2">
-                        <Clock className="w-5 h-5 text-purple-600" />
+                      <h3 className="font-semibold mb-4 flex items-center gap-2 text-slate-50">
+                        <Clock className="w-5 h-5 text-cyan-500" />
                         Monthly Care umfasst
                       </h3>
                       <ul className="space-y-2">
                         <li className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 mt-1" />
-                          <span className="text-sm">Proaktives Monitoring und Ausfall-Alarmierung</span>
+                          <CheckCircle2 className="w-4 h-4 text-cyan-500 mt-1" />
+                          <span className="text-sm text-slate-300">Proaktives Monitoring und Ausfall-Alarmierung</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 mt-1" />
-                          <span className="text-sm">Tuning/Optimierungen, kleine Änderungswünsche</span>
+                          <CheckCircle2 className="w-4 h-4 text-cyan-500 mt-1" />
+                          <span className="text-sm text-slate-300">Tuning/Optimierungen, kleine Änderungswünsche</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 mt-1" />
-                          <span className="text-sm">Regelmäßige Reports (Nutzung, Qualität, Auffälligkeiten)</span>
+                          <CheckCircle2 className="w-4 h-4 text-cyan-500 mt-1" />
+                          <span className="text-sm text-slate-300">Regelmäßige Reports (Nutzung, Qualität, Auffälligkeiten)</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 mt-1" />
-                          <span className="text-sm">Empfehlung von Verbesserungen (Roadmap)</span>
+                          <CheckCircle2 className="w-4 h-4 text-cyan-500 mt-1" />
+                          <span className="text-sm text-slate-300">Empfehlung von Verbesserungen (Roadmap)</span>
                         </li>
                       </ul>
                     </div>
@@ -628,26 +628,26 @@ const CPSystem = () => {
         </section>
 
         {/* Warum CP? */}
-        <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
+        <section className="py-16 bg-slate-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4">Warum CP statt Stunden?</h2>
-                <p className="text-lg text-muted-foreground">
+                <h2 className="text-3xl font-bold mb-4 text-slate-50">Warum CP statt Stunden?</h2>
+                <p className="text-lg text-slate-300">
                   Unser System bietet Ihnen entscheidende Vorteile
                 </p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-12">
-                <Card>
+                <Card className="glass-card">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className="p-3 rounded-lg bg-blue-100 text-blue-600">
+                      <div className="p-3 rounded-lg bg-emerald-500/10 text-emerald-500">
                         <Eye className="w-6 h-6" />
                       </div>
                       <div>
-                        <h4 className="font-semibold mb-2">Transparenz</h4>
-                        <p className="text-sm text-muted-foreground">
+                        <h4 className="font-semibold mb-2 text-slate-50">Transparenz</h4>
+                        <p className="text-sm text-slate-300">
                           Sie sehen früh, wofür Sie zahlen – konkrete Workflows und Agenten statt abstrakter Stunden.
                         </p>
                       </div>
@@ -655,15 +655,15 @@ const CPSystem = () => {
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card className="glass-card">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className="p-3 rounded-lg bg-purple-100 text-purple-600">
+                      <div className="p-3 rounded-lg bg-cyan-500/10 text-cyan-500">
                         <TrendingUp className="w-6 h-6" />
                       </div>
                       <div>
-                        <h4 className="font-semibold mb-2">Planbarkeit</h4>
-                        <p className="text-sm text-muted-foreground">
+                        <h4 className="font-semibold mb-2 text-slate-50">Planbarkeit</h4>
+                        <p className="text-sm text-slate-300">
                           Klare Pakete, fester Rahmen, optionale Add-ons – keine Überraschungen.
                         </p>
                       </div>
@@ -671,15 +671,15 @@ const CPSystem = () => {
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card className="glass-card">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className="p-3 rounded-lg bg-green-100 text-green-600">
+                      <div className="p-3 rounded-lg bg-amber-500/10 text-amber-500">
                         <Shield className="w-6 h-6" />
                       </div>
                       <div>
-                        <h4 className="font-semibold mb-2">Qualität</h4>
-                        <p className="text-sm text-muted-foreground">
+                        <h4 className="font-semibold mb-2 text-slate-50">Qualität</h4>
+                        <p className="text-sm text-slate-300">
                           CP beinhaltet QA/Evals – Qualität wird nicht "weggespart", sondern ist einkalkuliert.
                         </p>
                       </div>
@@ -687,15 +687,15 @@ const CPSystem = () => {
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card className="glass-card">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className="p-3 rounded-lg bg-orange-100 text-orange-600">
+                      <div className="p-3 rounded-lg bg-emerald-500/10 text-emerald-500">
                         <CheckCircle2 className="w-6 h-6" />
                       </div>
                       <div>
-                        <h4 className="font-semibold mb-2">Fairness</h4>
-                        <p className="text-sm text-muted-foreground">
+                        <h4 className="font-semibold mb-2 text-slate-50">Fairness</h4>
+                        <p className="text-sm text-slate-300">
                           Nur tatsächlich gelieferte CP werden abgerechnet. Änderungen nur nach Freigabe.
                         </p>
                       </div>
@@ -705,28 +705,28 @@ const CPSystem = () => {
               </div>
 
               {/* Garantien */}
-              <Card className="border-2 border-blue-200 bg-blue-50">
+              <Card className="glass-card border-emerald-500/30">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6 text-center">Unsere Transparenz-Garantien</h3>
+                  <h3 className="text-2xl font-bold mb-6 text-center text-slate-50">Unsere Transparenz-Garantien</h3>
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 mt-1" />
-                      <div>
-                        <strong>CP-Rahmen:</strong> Wir nennen einen CP-Rahmen (z.B. 5–6 CP).
+                      <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-1" />
+                      <div className="text-slate-300">
+                        <strong className="text-slate-50">CP-Rahmen:</strong> Wir nennen einen CP-Rahmen (z.B. 5–6 CP).
                         Liegen wir darunter, zahlen Sie nur die tatsächlich gelieferten CP.
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 mt-1" />
-                      <div>
-                        <strong>Begründeter CP-Satz:</strong> Der CP-Satz wird transparent begründet
+                      <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-1" />
+                      <div className="text-slate-300">
+                        <strong className="text-slate-50">Begründeter CP-Satz:</strong> Der CP-Satz wird transparent begründet
                         (Systemkomplexität, QA-Tiefe). Wir bleiben im vereinbarten Band.
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 mt-1" />
-                      <div>
-                        <strong>Flexibler Retainer:</strong> Monthly Care ist monatlich kündbar
+                      <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-1" />
+                      <div className="text-slate-300">
+                        <strong className="text-slate-50">Flexibler Retainer:</strong> Monthly Care ist monatlich kündbar
                         oder nach Projektphase anpassbar.
                       </div>
                     </div>
@@ -738,28 +738,30 @@ const CPSystem = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+        <section className="py-20 bg-slate-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto text-center text-white">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-                Bereit für transparente Automatisierung?
-              </h2>
-              <p className="text-xl mb-8 text-blue-100">
-                Lassen Sie uns gemeinsam herausfinden, wie viele CP Ihr Projekt benötigt.
-                Unverbindlich und kostenfrei.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/analyse">
-                  <Button size="lg" variant="secondary" className="min-w-[200px]">
-                    Analyse starten
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
-                <Link to="/kontakt">
-                  <Button size="lg" variant="outline" className="min-w-[200px] bg-white/10 text-white border-white hover:bg-white/20">
-                    Direktkontakt
-                  </Button>
-                </Link>
+            <div className="max-w-3xl mx-auto text-center">
+              <div className="glass-card p-12">
+                <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-slate-50">
+                  Bereit für transparente Automatisierung?
+                </h2>
+                <p className="text-xl mb-8 text-slate-300">
+                  Lassen Sie uns gemeinsam herausfinden, wie viele CP Ihr Projekt benötigt.
+                  Unverbindlich und kostenfrei.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link to="/analyse">
+                    <Button variant="gradient-primary" size="lg" className="min-w-[200px]">
+                      Analyse starten
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
+                  <Link to="/kontakt">
+                    <Button variant="outline" size="lg" className="min-w-[200px] border-slate-700 text-slate-300 hover:bg-slate-800">
+                      Direktkontakt
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

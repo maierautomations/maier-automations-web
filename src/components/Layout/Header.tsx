@@ -33,8 +33,8 @@ export function Header() {
       name: "Produkte",
       href: "#",
       dropdown: [
-        { name: "KI-Agenten", href: "/ki-agenten", description: "Intelligente Automatisierungsagenten" },
-        { name: "n8n-Workflows", href: "/workflows", description: "Professionelle Workflow-Automatisierung" },
+        { name: "KI-Agenten", href: "/produkte/ki-agenten", description: "Intelligente Automatisierungsagenten" },
+        { name: "n8n-Workflows", href: "/produkte/workflows", description: "Professionelle Workflow-Automatisierung" },
         { name: "Wissensassistent (RAG Pro)", href: "/rag-pro", description: "KI-gestützte Wissensdatenbank" },
       ]
     },
@@ -53,18 +53,18 @@ export function Header() {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full glass-card border-b border-slate-700/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Magnetic strength={0.2}>
             <Link to="/" className="flex items-center space-x-2">
               <HoverLift scale={1.05}>
-                <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center transition-all duration-200 hover:shadow-lg hover:shadow-primary/20">
-                  <span className="text-primary-foreground font-bold text-sm">M</span>
+                <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center transition-all duration-200 glow-emerald">
+                  <span className="text-slate-900 font-bold text-sm">M</span>
                 </div>
               </HoverLift>
-              <span className="font-semibold text-xl text-foreground transition-colors hover:text-primary">
+              <span className="font-semibold text-xl text-slate-50 transition-colors hover:text-emerald-500">
                 Maier Automations
               </span>
             </Link>
@@ -79,9 +79,9 @@ export function Header() {
                     <>
                       <NavigationMenuTrigger className="h-auto">
                         <span className={cn(
-                          "text-sm font-medium",
+                          "text-sm font-medium text-slate-300 hover:text-emerald-500 transition-colors",
                           item.dropdown.some(sub => isActive(sub.href))
-                            ? "text-primary"
+                            ? "text-emerald-500"
                             : ""
                         )}>
                           {item.name}
@@ -114,8 +114,8 @@ export function Header() {
                     <Link to={item.href}>
                       <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                         <span className={cn(
-                          "text-sm font-medium",
-                          isActive(item.href) ? "text-primary" : ""
+                          "text-sm font-medium text-slate-300 hover:text-emerald-500 transition-colors",
+                          isActive(item.href) ? "text-emerald-500" : ""
                         )}>
                           {item.name}
                         </span>
@@ -131,7 +131,7 @@ export function Header() {
           <div className="hidden md:flex">
             <HoverLift scale={1.03} lift={-2}>
               <Link to="/analyse">
-                <Button variant="cta" size="default" className="shadow-soft hover:shadow-elevated transition-all duration-200">
+                <Button variant="gradient-primary" size="default">
                   Analyse starten
                 </Button>
               </Link>
@@ -142,7 +142,7 @@ export function Header() {
           <PulseHover>
             <button
               type="button"
-              className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-muted-foreground hover:text-primary hover:bg-accent transition-all duration-200"
+              className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-emerald-500 hover:bg-slate-800/50 transition-all duration-200"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-expanded={isMenuOpen}
             >
@@ -246,7 +246,7 @@ export function Header() {
                 >
                   <HoverLift scale={1.02} lift={-2}>
                     <Link to="/analyse" onClick={() => setIsMenuOpen(false)}>
-                      <Button variant="cta" size="default" className="w-full shadow-soft hover:shadow-elevated transition-all duration-200">
+                      <Button variant="gradient-primary" size="default" className="w-full">
                         Analyse starten
                       </Button>
                     </Link>
