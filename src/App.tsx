@@ -19,6 +19,8 @@ import NotFound from "./pages/NotFound";
 import Terms from "./pages/Terms";
 import CPSystem from "./pages/CPSystem";
 import FAQ from "./pages/FAQ";
+import ProductAgents from "./pages/ProductAgents";
+import ProductWorkflows from "./pages/ProductWorkflows";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +46,8 @@ const App = () => (
             <Route path="/agb" element={<Terms />} />
             <Route path="/cp-system" element={<CPSystem />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/ki-agenten" element={<ProductAgents />} />
+            <Route path="/workflows" element={<ProductWorkflows />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

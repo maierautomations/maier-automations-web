@@ -8,11 +8,11 @@ export function PackageTeaser() {
   const packages = [
     {
       name: "Starter",
-      price: "1.990€",
-      period: "einmalig",
+      price: "Ab €3.000",
+      period: "Setup (3 CP)",
       description: "Perfekt für kleine Unternehmen, die erste Automatisierungen umsetzen möchten.",
       features: [
-        "2 Basis-Workflows",
+        "2-3 Basis-Workflows",
         "E-Mail Integration",
         "Standard Support",
         "Dokumentation"
@@ -20,12 +20,12 @@ export function PackageTeaser() {
       popular: false
     },
     {
-      name: "Professional",
-      price: "4.990€",
-      period: "einmalig",
+      name: "Core",
+      price: "Ab €6.000",
+      period: "Setup (6 CP)",
       description: "Umfassende Automatisierungslösung für wachsende Unternehmen.",
       features: [
-        "5 komplexe Workflows",
+        "4-6 komplexe Workflows",
         "API-Integrationen",
         "KI-Agent inklusive",
         "Priority Support",
@@ -34,16 +34,16 @@ export function PackageTeaser() {
       popular: true
     },
     {
-      name: "Enterprise",
-      price: "Auf Anfrage",
-      period: "",
-      description: "Maßgeschneiderte Lösungen für Großunternehmen mit individuellen Anforderungen.",
+      name: "Scale",
+      price: "Ab €10.000",
+      period: "Setup (10 CP)",
+      description: "Maximale Automatisierung mit KI-Agenten für Unternehmen.",
       features: [
-        "Unbegrenzte Workflows",
-        "Custom KI-Entwicklung",
+        "8-10 Workflows & Prozesse",
+        "2-3 spezialisierte KI-Agenten",
+        "RAG-System optional",
         "Dedicated Support",
-        "SLA-Garantie",
-        "Fortlaufende Betreuung"
+        "Kontinuierliche Optimierung"
       ],
       popular: false
     }

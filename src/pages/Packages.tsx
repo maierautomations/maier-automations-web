@@ -16,8 +16,8 @@ export default function Packages() {
     {
       name: "Starter",
       cp: "3 CP",
-      price: "Preis noch nicht fix",
-      period: "",
+      price: "Ab €3.000",
+      period: "Setup + €300-€540/Monat Care",
       description: "Perfekt für erste Automatisierungen. Ideal für kleine Teams, die Routinearbeit reduzieren möchten.",
       features: [
         "3 Basis-Workflows ODER 1 Agent + 1 Workflow",
@@ -34,8 +34,8 @@ export default function Packages() {
     {
       name: "Core",
       cp: "6 CP",
-      price: "Preis noch nicht fix",
-      period: "",
+      price: "Ab €6.000",
+      period: "Setup + €600-€1.125/Monat Care",
       description: "Umfassende Automatisierung für wachsende Unternehmen mit individuellen Anforderungen.",
       features: [
         "6 komplexe Workflows ODER 3 Agenten",
@@ -53,8 +53,8 @@ export default function Packages() {
     {
       name: "Scale",
       cp: "10 CP",
-      price: "Preis noch nicht fix",
-      period: "",
+      price: "Ab €10.000",
+      period: "Setup + €1.000-€1.800/Monat Care",
       description: "Enterprise-Lösung mit RAG Pro für datenintensive Unternehmen und komplexe Automatisierungen.",
       features: [
         "10 CP flexibel verteilbar",
@@ -123,8 +123,11 @@ export default function Packages() {
                 </p>
                 <CPTooltip />
               </div>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed mb-2">
                 Alle Pakete sind DSGVO-konform, werden auf EU-Servern gehostet und enthalten transparente Abnahmekriterien.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Preise netto, zzgl. MwSt. Kosten für Drittanbieter-Lizenzen nicht enthalten.
               </p>
             </div>
           </div>

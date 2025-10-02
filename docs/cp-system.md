@@ -5,8 +5,8 @@ Das CP‑System macht Preise nachvollziehbar, planbar und fair. Statt Stunden zu
 ### Kurzfassung
 
 - **Prinzip**: Ergebnisorientierte Kalkulation auf Basis von Komplexität – nicht auf Stunden.
-- **Einheit**: 1 CP ≈ 1 signifikanter Workflow. Ein typischer n8n‑Agent (Tools + Memory) ≈ 2 CP. Ein RAG‑Agent (Premium) ≈ 3–4 CP.
-- **Preisrahmen**: Standard‑CP‑Satz für Setup: **€800–€1.200** pro CP. Monthly Care: **10–15%** des Setup‑Preises/Monat.
+- **Einheit**: 1 CP ≈ 1 signifikanter Workflow. Ein typischer n8n‑Agent (Tools + Memory) ≈ 2 CP. Ein RAG‑Agent ≈ 3–4 CP.
+- **Preisrahmen**: CP‑Satz für Setup: **€1.000–€1.200** pro CP. Monthly Care: **10–15%** des Setup‑Preises/Monat.
 - **Pakete**: Starter (3 CP), Core (6 CP), Scale (10 CP), sowie „RAG Agent Premium“ (3–4 CP als feste SKU).
 
 ---
@@ -17,7 +17,7 @@ Ein Complexity Point (CP) ist eine neutrale Maßeinheit für Umfang und Schwieri
 
 - **1 Workflow ≈ 1 CP**: Ein klar abgegrenzter, geschäftlich sinnvoller Automationsfluss mit Ein-/Ausgaben, Fehlerpfaden und QA.
 - **n8n‑Agent (Tools + Memory) ≈ 2 CP**: Zustandsbehafteter Agent inkl. Tooling (z. B. Suche, DB, Kalender) und Kurzzeit‑Speicher.
-- **RAG‑Agent (Premium) ≈ 3–4 CP**: Retrieval‑Augmented‑Generation inklusive Vektordatenbank, Chunking/Pipeline, Evaluations und Guardrails.
+- **RAG‑Agent ≈ 3–4 CP**: Retrieval‑Augmented‑Generation inklusive Vektordatenbank, Chunking/Pipeline, Evaluations und Guardrails.
 
 Heuristiken (Richtwerte) zur Selbst‑Einschätzung:
 
@@ -25,7 +25,7 @@ Heuristiken (Richtwerte) zur Selbst‑Einschätzung:
 | -------------------------------------------------------------- | ----------------- |
 | Eigenständiger Workflow (inkl. QA)                             | 1,0 CP            |
 | n8n‑Agent mit Tools + Memory                                   | 2,0 CP            |
-| RAG‑Agent (Premium)                                            | 3,0–4,0 CP        |
+| RAG‑Agent                                                      | 3,0–4,0 CP        |
 | Neuer Connector (API/System), Standard‑Komplexität             | +0,25–0,5 CP      |
 | Approval/HITL‑Schritt (Human‑in‑the‑Loop)                      | +0,5 CP           |
 | On‑Prem/Local Deployment                                       | +0,5–1,0 CP       |
@@ -38,7 +38,7 @@ Nicht jeder Sonderwunsch kostet extra: Was „typisch“ zum Paket gehört (sinn
 
 ## Preislogik & Formeln
 
-Standard‑CP‑Satz (Setup): **€800–€1.200 je CP**
+CP‑Satz (Setup): **€1.000–€1.200 je CP**
 
 Monthly Care (Monitoring/Tuning/Kleinänderungen): **10–15% des Setup‑Preises/Monat**
 
@@ -47,7 +47,7 @@ Formeln:
 - \( Setup\text{-Preis} = CP\_{gesamt} \times CP\text{-Satz} \)
 - \( Care\_{Monat} = Setup\text{-Preis} \times (10\%\ \text{bis}\ 15\%) \)
 
-Hinweis: Für besonders anspruchsvolle Premium‑Komponenten (z. B. RAG) kann der effektive CP‑Satz am oberen Band liegen, um zusätzliche QA/Evals abzudecken.
+Hinweis: Höhere Anforderungen (z. B. RAG‑Pipelines, Guardrails/Evaluations, On‑Prem/Local, zusätzliche Connectoren, Custom UI) werden über **zusätzliche CP gemäß den Add‑on‑Heuristiken** abgebildet – nicht über unterschiedliche Tarife.
 
 ---
 
@@ -55,9 +55,9 @@ Hinweis: Für besonders anspruchsvolle Premium‑Komponenten (z. B. RAG) kann de
 
 | Paket   | Enthaltene CP | Typischer Setup‑Preis | Monthly Care (10–15%) | Typischer Einsatz                                 |
 | ------- | ------------- | --------------------- | --------------------- | ------------------------------------------------- |
-| Starter | 3 CP          | €2.400–€3.600         | €240–€480             | 1–3 Kern‑Workflows, schneller Start               |
-| Core    | 6 CP          | €4.800–€7.500         | €480–€900             | Mehrere Workflows + 1 Agent oder komplexere Kette |
-| Scale   | 10 CP         | €8.000–€12.000        | €800–€1.500           | Größeres Setup, mehrere Teams/Abteilungen         |
+| Starter | 3 CP          | €3.000–€3.600         | €300–€540             | 1–3 Kern‑Workflows, schneller Start               |
+| Core    | 6 CP          | €6.000–€7.500         | €600–€1.125           | Mehrere Workflows + 1 Agent oder komplexere Kette |
+| Scale   | 10 CP         | €10.000–€12.000       | €1.000–€1.800         | Größeres Setup, mehrere Teams/Abteilungen         |
 
 Besondere SKU:
 
@@ -102,7 +102,7 @@ Feinschliff: „Inklusive vs. Add-on“: 3 konkrete Beispiele je Kategorie, dami
 ## Ablauf & Transparenz‑Mechaniken
 
 1. Unverbindlicher Scoping‑Call (30–45 Min.)
-2. CP‑Schätzung und Angebotsband (z. B. 5–6 CP, Standard‑Satz)
+2. CP‑Schätzung und Angebotsband (z. B. 5–6 CP)
 3. Angebot mit klaren Positionen (Setup, Care, evtl. Add‑ons)
 4. Umsetzung mit Zwischenabnahmen; CP werden laufend gespiegelt
 5. Go‑Live, Handover, Start der Care‑Phase
@@ -119,7 +119,7 @@ Leitlinien:
 
 - Starter (3 CP), CP‑Satz €1.000: Setup = 3 × 1.000 = **€3.000**; Care = **€300–€450**
 - Core (6 CP + 0,5 CP HITL), CP‑Satz €1.100: Setup = 6,5 × 1.100 = **€7.150**; Care = **€715–€1.072**
-- RAG Agent Premium (4 CP, Premium‑Satz), Setup ≈ **€5.600**; Care = **€560–€840**
+- RAG‑Agent (4 CP inkl. Add‑ons), Setup ≈ **€5.600**; Care = **€560–€840**
 
 Diese Beispiele sind repräsentativ – konkrete Angebote hängen von Systemlandschaft, Sicherheit/Compliance und QA‑Tiefe ab.
 

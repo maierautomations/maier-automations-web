@@ -37,24 +37,24 @@ const CPSystem = () => {
     {
       name: "Starter",
       cp: 3,
-      setupRange: "€2.400–€3.600",
-      careRange: "€240–€480",
+      setupRange: "€3.000–€3.600",
+      careRange: "€300–€540",
       description: "1–3 Kern-Workflows, schneller Start",
       highlights: ["Basis-Automatisierung", "Standard-Integrationen", "Email-Support"]
     },
     {
       name: "Core",
       cp: 6,
-      setupRange: "€4.800–€7.500",
-      careRange: "€480–€900",
+      setupRange: "€6.000–€7.500",
+      careRange: "€600–€1.125",
       description: "Mehrere Workflows + 1 Agent oder komplexere Kette",
       highlights: ["KI-Agent Integration", "Advanced Workflows", "Priority Support"]
     },
     {
       name: "Scale",
       cp: 10,
-      setupRange: "€8.000–€12.000",
-      careRange: "€800–€1.500",
+      setupRange: "€10.000–€12.000",
+      careRange: "€1.000–€1.800",
       description: "Größeres Setup, mehrere Teams/Abteilungen",
       highlights: ["Multi-Team Setup", "Custom Integrationen", "Dedicated Support"]
     }
@@ -224,7 +224,7 @@ const CPSystem = () => {
                         Setup-Preis
                       </h4>
                       <p className="text-muted-foreground mb-2">
-                        Standard CP-Satz: <strong>€800–€1.200</strong> pro CP
+                        Standard CP-Satz: <strong>€1.000–€1.200</strong> pro CP
                       </p>
                       <p className="text-sm text-muted-foreground">
                         Formel: Setup-Preis = CP-Anzahl × CP-Satz
@@ -255,8 +255,11 @@ const CPSystem = () => {
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Unsere Pakete</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-muted-foreground mb-2">
                   DACH-SMB-freundliche Transparenz mit klaren Leistungen
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Alle Preise verstehen sich netto, zzgl. MwSt. Kosten für Drittanbieter-Lizenzen nicht enthalten.
                 </p>
               </div>
 
@@ -401,14 +404,14 @@ const CPSystem = () => {
                       <Slider
                         value={[cpRate]}
                         onValueChange={(value) => setCpRate(value[0])}
-                        min={800}
+                        min={1000}
                         max={1200}
                         step={50}
                         className="mb-2"
                       />
                       <div className="flex justify-between text-sm text-muted-foreground">
-                        <span>€800</span>
                         <span>€1.000</span>
+                        <span>€1.100</span>
                         <span>€1.200</span>
                       </div>
                     </div>

@@ -9,7 +9,7 @@ export function PackageGrid() {
     {
       name: "Starter",
       cp: "3 CP",
-      price: "Preis noch nicht fix",
+      price: "Ab €3.000",
       description: "Ideal für erste Automatisierungen in kleinen Unternehmen",
       features: [
         "2-3 einfache Workflows",
@@ -23,7 +23,7 @@ export function PackageGrid() {
     {
       name: "Core",
       cp: "6 CP",
-      price: "Preis noch nicht fix",
+      price: "Ab €6.000",
       description: "Umfassende Automatisierung für wachsende Unternehmen",
       features: [
         "4-6 komplexe Workflows",
@@ -38,7 +38,7 @@ export function PackageGrid() {
     {
       name: "Scale",
       cp: "10 CP",
-      price: "Preis noch nicht fix",
+      price: "Ab €10.000",
       description: "Maximale Automatisierung mit KI-Agenten für Unternehmen",
       features: [
         "8-10 Workflows & Prozesse",

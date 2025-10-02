@@ -101,19 +101,19 @@ function calculateComplexityPoints(submission: WizardSubmission): CPCalculationR
   
   if (totalCP <= 3) {
     recommendedPackage = "Starter";
-    priceRange = "2.500€ - 4.500€";
+    priceRange = "€3.000 - €3.600 Setup + €300-€540/Monat";
     timeframeEstimate = "2-3 Wochen";
   } else if (totalCP <= 6) {
     recommendedPackage = "Core";
-    priceRange = "5.000€ - 9.000€";
+    priceRange = "€6.000 - €7.500 Setup + €600-€1.125/Monat";
     timeframeEstimate = "3-5 Wochen";
   } else if (totalCP <= 10) {
     recommendedPackage = "Scale";
-    priceRange = "8.000€ - 15.000€";
+    priceRange = "€10.000 - €12.000 Setup + €1.000-€1.800/Monat";
     timeframeEstimate = "4-7 Wochen";
   } else {
     recommendedPackage = "Custom";
-    priceRange = "15.000€+";
+    priceRange = "Individuell (>€12.000)";
     timeframeEstimate = "6-12 Wochen";
   }
   

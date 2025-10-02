@@ -77,7 +77,7 @@ const FAQ = () => {
     {
       category: "Kosten & Transparenz",
       question: "Was kostet ein typisches Projekt?",
-      answer: "Ein Starter-Paket (3 CP) liegt bei €2.400-€3.600 Setup plus €240-€480 monatliche Betreuung. Das Core-Paket (6 CP) bei €4.800-€7.500 Setup. Die genauen Kosten hängen von Systemkomplexität und QA-Anforderungen ab. Nutzen Sie unseren CP-Rechner für eine individuelle Schätzung.",
+      answer: "Ein Starter-Paket (3 CP) liegt bei €3.000-€3.600 Setup plus €300-€540 monatliche Betreuung. Das Core-Paket (6 CP) bei €6.000-€7.500 Setup plus €600-€1.125 monatliche Betreuung. Die genauen Kosten hängen von Systemkomplexität und QA-Anforderungen ab. Nutzen Sie unseren CP-Rechner für eine individuelle Schätzung.",
       icon: <Euro className="w-5 h-5" />
     },
     {
